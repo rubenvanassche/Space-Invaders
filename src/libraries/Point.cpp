@@ -73,3 +73,22 @@ unsigned int Point::getX() const {
 unsigned int Point::getY() const {
 	return fY;
 }
+
+bool Point::move(Direction direction, int movePixels){
+	if(direction == UP){
+		this->fY += movePixels;
+		return true;
+	}else if(direction == DOWN){
+		this->fY -= movePixels;
+		return true;
+	}else if(direction == LEFT){
+		this->fX -= movePixels;
+		return true;
+	}else if(direction == RIGHT){
+		this->fX += movePixels;
+		return true;
+	}else{
+
+		return false;
+	}
+}

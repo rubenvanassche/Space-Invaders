@@ -1,3 +1,7 @@
+# compiler flags
+SET(CMAKE_CXX_FLAGS "-Wall")
+SET(CMAKE_CXX_FLAGS "-std=c++11")
+
 # Extend the CMake module path to find the FindSFML.cmake
 # file in {project root}/cmake/Modules
 SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/CMake")
@@ -6,7 +10,8 @@ SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/CMake")
 FIND_PACKAGE(SFML 2 COMPONENTS system window graphics)
 
 # The source files to compile
-SET(SRC SpaceInvaders.cpp Point.cpp Size.cpp)
+#SET(SRC SpaceInvaders.cpp)
+file(GLOB_RECURSE SRC ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
 # Add include dirs for SFML
 # (The SFML_INCLUDE_DIR variable is defined by FindSFML.cmake, if SFML was found)

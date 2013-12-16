@@ -9,12 +9,13 @@
 #define ALIEN_H_
 
 #include "Bullet.h"
-#include "Size.h"
-#include "Point.h"
-#include "Color.h"
+#include "../libraries/Size.h"
+#include "../libraries/Point.h"
+#include "../libraries/Color.h"
 
-enum Direction{UP, DOWN, LEFT, RIGHT};
-
+/*
+ * @brief The Alien model
+ */
 class Alien {
 public:
 	Alien();
@@ -40,10 +41,7 @@ private:
 	Bullet* fBullet;
 	Point fPosition;
 	Size fSize;
-	Color fColor;
 	bool dead;
-
-	Size spaceSize;
 };
 
 #endif /* ALIEN_H_ */

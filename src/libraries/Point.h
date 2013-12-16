@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+enum Direction{UP, DOWN, LEFT, RIGHT};
+
 class Point {
 public:
 	friend std::ostream& operator<< (std::ostream& stream, const Point& pointobject);
@@ -29,7 +31,6 @@ public:
 	void setY(const int& y);
 	// change the y coordinates only
 
-
 	void set(const int& x, const int& y);
 	// change the x and y coordinates
 
@@ -38,6 +39,8 @@ public:
 
 
 	unsigned int getY() const;
+
+	bool move(Direction direction, int movePixels);
 
 
 private:

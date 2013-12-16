@@ -12,6 +12,14 @@ Alien::Alien() {
 
 }
 
+bool Alien::Collusion(Bullet bullet){
+
+}
+
+void Alien::move(Direction direction){
+
+}
+
 Alien::~Alien() {
 	// TODO Auto-generated destructor stub
 }
