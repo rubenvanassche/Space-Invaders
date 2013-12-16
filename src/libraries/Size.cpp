@@ -1,12 +1,3 @@
-/*
- * Size.cpp
- *
- * @author:		Stijn Wouters - 20121136 - stijn.wouters2@student.ua.ac.be
- * @version:	2.0
- * @date:		Friday 26 April 2013
- * 
- */
-
 #include "Size.h"
 
 

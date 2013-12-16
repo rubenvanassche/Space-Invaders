@@ -16,7 +16,7 @@ bool Alien::Collusion(Bullet bullet){
 
 }
 
-void Alien::move(Direction direction){
+void Alien::move(util::Direction direction){
 
 }
 

@@ -10,8 +10,8 @@
 
 #include "Bullet.h"
 #include "../libraries/Size.h"
-#include "../libraries/Point.h"
-#include "../libraries/Color.h"
+#include "../libraries/Utilities.h"
+#include <SFML/System/Vector2.hpp>
 
 /*
  * @brief The Alien model
@@ -34,12 +34,12 @@ public:
 	 *
 	 * @param direction the direction to go to
 	 */
-	void move(Direction direction);
+	void move(util::Direction direction);
 
 	virtual ~Alien();
 private:
 	Bullet* fBullet;
-	Point fPosition;
+	sf::Vector2f fPosition;
 	Size fSize;
 	bool dead;
 };

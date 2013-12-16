@@ -8,8 +8,9 @@
 #ifndef BULLET_H_
 #define BULLET_H_
 
-#include "../libraries/Point.h"
+#include <SFML/System/Vector2.hpp>
 #include "../libraries/Size.h"
+#include "../libraries/Utilities.h"
 
 /*
  * @brief The Bullet model
@@ -23,11 +24,11 @@ public:
 	 *
 	 * @param direction the direction to go to
 	 */
-	void move(Direction direction);
+	void move(util::Direction direction);
 
 	virtual ~Bullet();
 private:
-	Point fPosition;
+	sf::Vector2f fPosition;
 	Size fSize;
 };
 
