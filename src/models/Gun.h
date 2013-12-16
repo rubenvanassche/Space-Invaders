@@ -52,7 +52,7 @@ private:
 	sf::Vector2f fLocation;
 	int fScale;
 
-	int fMovePixels = 2; // Amount of pixels to move with move action
+	int fMovePixels = 5; // Amount of pixels to move with move action
 };
 
 #endif /* GUN_H_ */

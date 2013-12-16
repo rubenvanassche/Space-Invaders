@@ -8,7 +8,10 @@
 #include <exception>
 #include "models/Gun.h"
 #include "views/GunView.h"
+#include "models/Alien.h"
+#include "views/AlienView.h"
 #include "Game.h"
+#include "libraries/Utilities.h"
 
 std::string resourcePath(){
 	return "/media/psf/Home/documents/school/Gevorderd Programmeren/space-invaders/Resources";
@@ -16,7 +19,6 @@ std::string resourcePath(){
 
 int main(int argc, char * argv[])
 {
-	/*
 	std::cout << "the address is: " << argv [0] << std::endl;
 
     // Create the main window
@@ -25,11 +27,18 @@ int main(int argc, char * argv[])
     Gun g(sf::Vector2f(100,10), 10);
     GunView gV(&g);
 
+    Alien a(sf::Vector2f(100,100));
+    AlienView aV(&a);
+
+    sf::Clock clock;
+    sf::Time second = sf::seconds(1.0);
+
     // Start the game loop
     while (window.isOpen())
     {
         // Process events
         sf::Event event;
+
         while (window.pollEvent(event))
         {
             // Close window : exit
@@ -41,19 +50,33 @@ int main(int argc, char * argv[])
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
                 window.close();
             }
+            // Escape pressed : exit
+			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Left) {
+				g.move(util::LEFT);
+			}
+
+			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Right) {
+				g.move(util::RIGHT);
+			}
+
+        }
+
+        std::cout << clock.getElapsedTime().asSeconds() <<std::endl;
+
+        if(clock.getElapsedTime() >= second){
+        	clock.restart();
+        	a.move(util::LEFT);
         }
 
         // Clear screen
         window.clear();
 
         window.draw(gV.draw());
+        window.draw(aV.draw());
 
         // Update the window
         window.display();
     }
 
     return EXIT_SUCCESS;
-    */
-	Game game(1);
-	game.run();
 }

@@ -7,17 +7,13 @@
 
 #include "Alien.h"
 
-Alien::Alien() {
-	// TODO Auto-generated constructor stub
-
-}
 
 bool Alien::Collusion(Bullet bullet){
 
 }
 
-void Alien::move(util::Direction direction){
-
+bool Alien::move(util::Direction direction){
+	return util::move(this->fLocation, direction, this->fMovePixels);
 }
 
 Alien::~Alien() {
