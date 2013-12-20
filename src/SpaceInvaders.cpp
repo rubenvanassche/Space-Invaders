@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <exception>
+#include <memory>
 #include "models/Gun.h"
 #include "views/GunView.h"
 #include "models/Alien.h"
@@ -23,12 +24,15 @@ int main(int argc, char * argv[])
 
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(800, 600), "Space Invaders");
+    std::shared_ptr<sf::RenderWindow> windowPtr(&window);
 
     Gun g(sf::Vector2f(100,10), 10);
-    GunView gV(&g);
+    GunView gV(windowPtr.get(), &g);
+    g.appendView(&gV);
 
     Alien a(sf::Vector2f(100,100));
-    AlienView aV(&a);
+    AlienView aV(windowPtr.get(), &a);
+    a.appendView(&aV);
 
     sf::Clock clock;
     sf::Time second = sf::seconds(1.0);
@@ -61,7 +65,7 @@ int main(int argc, char * argv[])
 
         }
 
-        std::cout << clock.getElapsedTime().asSeconds() <<std::endl;
+        //std::cout << clock.getElapsedTime().asSeconds() <<std::endl;
 
         if(clock.getElapsedTime() >= second){
         	clock.restart();
@@ -69,10 +73,7 @@ int main(int argc, char * argv[])
         }
 
         // Clear screen
-        window.clear();
-
-        window.draw(gV.draw());
-        window.draw(aV.draw());
+        //window.clear();
 
         // Update the window
         window.display();

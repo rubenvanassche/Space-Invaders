@@ -15,14 +15,10 @@
 
 class Factory {
 public:
-	Factory(std::list<Model*>* models,
-	std::list<View*>* views
-	) :
-		fModels(models),
-		fViews(views){};
+	Factory(std::list<Model*>* models, std::list<View*>* views) : fModels(models), fViews(views){};
 
 	virtual ~Factory(){};
-
+protected:
 	std::list<Model*>* fModels;
 	std::list<View*>* fViews;
 };

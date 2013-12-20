@@ -13,7 +13,9 @@ bool Alien::Collusion(Bullet bullet){
 }
 
 bool Alien::move(util::Direction direction){
-	return util::move(this->fLocation, direction, this->fMovePixels);
+	bool success =  util::move(this->fLocation, direction, this->fMovePixels);
+	this->fView->draw();
+	return success;
 }
 
 Alien::~Alien() {

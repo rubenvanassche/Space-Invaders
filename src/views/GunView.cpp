@@ -7,7 +7,7 @@
 
 #include "GunView.h"
 
-sf::VertexArray GunView::draw(){
+void GunView::draw(){
 	// Get the starting point
 	sf::Vector2f gunLocation = this->fGun->getLocation();
 	// Get the scale
@@ -35,7 +35,7 @@ sf::VertexArray GunView::draw(){
 		array[i].color = this->fColor;
 	}
 
-	return array;
+	this->fWindow->draw(array);
 }
 
 GunView::~GunView() {

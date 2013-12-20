@@ -17,7 +17,7 @@
 /*
  * @brief The Alien model
  */
-class Alien : Model{
+class Alien : public Model{
 public:
 	/*
 	 * @brief Alien Constructor

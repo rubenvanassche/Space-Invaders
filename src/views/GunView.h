@@ -23,7 +23,7 @@ public:
 	 *
 	 * @param gun A pointer to the Gun instance
 	 */
-	GunView(Gun* gun) : fGun(gun){this->fColor = sf::Color(255, 0, 0);};
+	GunView(sf::RenderWindow* window, Gun* gun) : fGun(gun), View(window){this->fColor = sf::Color(255, 0, 0);};
 
 	/*
 	 * @brief Constructor for the Gun View
@@ -31,14 +31,12 @@ public:
 	 * @param gun A pointer to the Gun instance
 	 * @param color The color of the gun
 	 */
-	GunView(Gun* gun, sf::Color color) : fGun(gun), fColor(color){};
+	GunView(sf::RenderWindow* window, Gun* gun, sf::Color color) : fGun(gun), fColor(color), View(window){};
 
 	/*
 	 * @brief Draw the Gun by returning a VertexArray
-	 *
-	 * @return VertexArray containing info about the gun
 	 */
-	sf::VertexArray draw();
+	void draw();
 
 	virtual ~GunView();
 private:

@@ -20,31 +20,41 @@
 #include "libraries/View.h"
 #include "libraries/Factory.h"
 
+#include "controllers/EventController.h"
+#include "controllers/MotionCOntroller.h"
+#include "controllers/ScreenController.h"
+
 #include "factories/GunFactory.h"
 
-#include "controllers/GunController.h"
 #include "models/Gun.h"
 #include "views/GunView.h"
 
 class Game {
 public:
 	Game(int level);
+
+	/*
+	 * @brief generate all the needed stuff
+	 */
+	void build();
+
 	void run();
+
 	virtual ~Game();
 private:
-	void buildGuns();
-	void buildAliens();
-
 	std::list<View*> views;
-	std::list<Controller*> controllers;
 	std::list<Model*> models;
 
 	int level;
+	int lives;
 
 	int width = 600;
 	int height = 800;
 
-	std::shared_ptr<sf::RenderWindow> window;
+	sf::RenderWindow* window = nullptr;
+	EventController* eventController = nullptr;
+	MotionController* motionController = nullptr;
+	ScreenController* screenController = nullptr;
 };
 
 #endif /* GAME_H_ */

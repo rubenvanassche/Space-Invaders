@@ -8,11 +8,16 @@
 #ifndef VIEW_H_
 #define VIEW_H_
 
+#include <SFML/Graphics.hpp>
+#include <memory>
+
 class View {
 public:
-	View(){};
+	View(sf::RenderWindow* window) : fWindow(window){};
+	virtual void draw() =0;
 	virtual ~View(){};
-private:
+protected:
+	sf::RenderWindow* fWindow;
 };
 
 #endif /* VIEW_H_ */

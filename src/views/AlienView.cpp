@@ -7,7 +7,7 @@
 
 #include "AlienView.h"
 
-sf::VertexArray AlienView::draw(){
+void AlienView::draw(){
 	// Get the starting point
 	sf::Vector2f gunLocation = this->fAlien->getLocation();
 
@@ -23,7 +23,7 @@ sf::VertexArray AlienView::draw(){
 		array[i].color = this->fColor;
 	}
 
-	return array;
+	this->fWindow->draw(array);
 }
 
 AlienView::~AlienView() {

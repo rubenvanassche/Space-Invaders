@@ -8,7 +8,9 @@
 #include "Gun.h"
 
 bool Gun::move(util::Direction direction){
-	return util::move(this->fLocation, direction, this->fMovePixels);
+	bool success = util::move(this->fLocation, direction, this->fMovePixels);
+	this->fView->draw();
+	return success;
 }
 
 Gun::~Gun() {

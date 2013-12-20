@@ -9,28 +9,35 @@
 
 Game::Game(int level){
 	this->level = level;
+	this->lives = 3;
+}
 
-	std::shared_ptr<sf::RenderWindow> windowPtr(new sf::RenderWindow(sf::VideoMode(height, width), "Space Invaders"));
-	this->window = windowPtr;
+void Game::build(){
+	// Set up the window
+	std::auto_ptr<sf::RenderWindow> windowPtr(new sf::RenderWindow(sf::VideoMode(height, width), "Space Invaders"));
+	this->window = windowPtr.get();
+
+	// Set up the motion Controller
+	std::auto_ptr<MotionController> motionControllerPtr(new MotionController(&this->models, &this->views));
+	this->motionController = motionControllerPtr.get();
+
+	// Set up the Event Controller
+	std::auto_ptr<EventController> eventControllerPtr(new EventController(&this->models, &this->views, this->screenController, this->motionController));
+	this->eventController = eventControllerPtr.get();
+
+	// Build the gun
+	GunFactory gunFactory(&this->models, &this->views, this->window);
+	gunFactory.createBlaster(sf::Vector2f(12, 12));
 }
 
 void Game::run(){
-	this->buildGuns();
+	this->build();
 	 while (this->window->isOpen())
 	    {
 	        // Process events
 	        sf::Event event;
-	        while (window->pollEvent(event))
-	        {
-	            // Close window : exit
-	            if (event.type == sf::Event::Closed) {
-	                window->close();
-	            }
-
-	            // Escape pressed : exit
-	            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-	                window->close();
-	            }
+	        while (window->pollEvent(event)){
+	            this->eventController->record(event);
 	        }
 
 	        // Clear screen
@@ -40,10 +47,6 @@ void Game::run(){
 	        // Update the window
 	        window->display();
 	    }
-}
-
-void Game::buildGuns(){
-
 }
 
 
