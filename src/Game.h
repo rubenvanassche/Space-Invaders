@@ -14,6 +14,7 @@
 
 #include <list>
 #include <memory>
+#include <iostream>
 
 #include "libraries/Model.h"
 #include "libraries/Controller.h"
@@ -44,6 +45,10 @@ public:
 private:
 	std::list<View*> views;
 	std::list<Model*> models;
+	std::list<Model*> guns;
+	std::list<Model*> aliens;
+	std::list<Model*> walls;
+	std::list<Model*> bullets;
 
 	int level;
 	int lives;
@@ -51,10 +56,10 @@ private:
 	int width = 600;
 	int height = 800;
 
-	sf::RenderWindow* window = nullptr;
-	EventController* eventController = nullptr;
-	MotionController* motionController = nullptr;
-	ScreenController* screenController = nullptr;
+	std::shared_ptr<sf::RenderWindow> window;
+	std::shared_ptr<EventController> eventController;
+	std::shared_ptr<MotionController> motionController;
+	std::shared_ptr<ScreenController> screenController;
 };
 
 #endif /* GAME_H_ */

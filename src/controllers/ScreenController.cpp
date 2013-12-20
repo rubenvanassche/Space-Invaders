@@ -15,9 +15,12 @@ void ScreenController::redraw(){
 	this->fWindow->clear();
 
 	// Redraw all our views
-	for(auto i: *(this->fViews)){
-		i->draw();
+
+	for(auto it = this->fViews->begin();it != this->fViews->end();it++){
+		(*it)->draw();
 	}
+
+	std::cout << "Redraw of " << this->fViews->size() << " objects" <<std::endl;
 
 	// Ok let's print everything
 	this->fWindow->display();

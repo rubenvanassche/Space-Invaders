@@ -11,10 +11,13 @@
 #include "../libraries/Controller.h"
 #include "../libraries/Utilities.h"
 #include <SFML/Window.hpp>
+#include <iostream>
+#include <memory>
+#include "../libraries/view.h"
 
 class ScreenController : public Controller {
 public:
-	ScreenController(std::list<Model*>* models, std::list<View*>* views, sf::RenderWindow* window) : Controller(models, views), fWindow(window){};
+	ScreenController(std::list<View*>* views, sf::RenderWindow* window) : fViews(views), fWindow(window){};
 
 	/*
 	 * @brief closes the window
@@ -28,6 +31,7 @@ public:
 	virtual ~ScreenController();
 private:
 	sf::RenderWindow* fWindow;
+	std::list<View*>* fViews;
 };
 
 #endif /* SCREENCONTROLLER_H_ */

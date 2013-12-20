@@ -29,7 +29,12 @@ void GunView::draw(){
 	array[2].position = sf::Vector2f(gunLocation.x + 3*scale, gunLocation.y + 1*scale);
 	array[3].position = sf::Vector2f(gunLocation.x, gunLocation.y + 1*scale);
 
+	/*
+	std::cout << "Drawing gun" <<std::endl;
+	std::cout << "location:" << gunLocation.x << "," << gunLocation.y <<std::endl;
+	std::cout << "scale:" << scale << std::endl;
 
+	*/
 
 	for(unsigned int i = 0;i < 4;i++){
 		array[i].color = this->fColor;

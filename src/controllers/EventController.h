@@ -19,7 +19,7 @@
  */
 class EventController : public Controller{
 public:
-	EventController( std::list<Model*>* models, std::list<View*>* views, ScreenController* screenController, MotionController* motionController) : Controller(models, views), fScreenController(screenController), fMotionController(motionController){};
+	EventController(ScreenController* screenController, MotionController* motionController) : fScreenController(screenController), fMotionController(motionController){};
 
 	/*
 	 * @brief records an user defined event

@@ -14,11 +14,9 @@
 
 class Controller {
 public:
-	Controller(std::list<Model*>* models, std::list<View*>* views) : fViews(views), fModels(models){};
+	Controller(){};
 	virtual ~Controller(){};
 protected:
-	std::list<View*>* fViews;
-	std::list<Model*>* fModels;
 };
 
 #endif /* CONTROLLER_H_ */

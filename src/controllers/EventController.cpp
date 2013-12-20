@@ -22,11 +22,15 @@ void EventController::record(sf::Event event){
     // Left key pressed : move Gun
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Left) {
 		this->fMotionController->moveGun(util::LEFT);
+		std::cout << "LEFT" << std::endl;
+		this->fScreenController->redraw();
 	}
 
     // Right key pressed : move Gun
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Right) {
     	this->fMotionController->moveGun(util::RIGHT);
+    	std::cout << "RIGHT" << std::endl;
+    	this->fScreenController->redraw();
 	}
 }
 

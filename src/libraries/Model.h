@@ -23,6 +23,20 @@ public:
 	 */
 	void appendView(View* view){this->fView = view;};
 
+	/*
+	 * @brief Get the location of the model object
+	 *
+	 * @return An vector2 containing the location
+	 */
+	virtual sf::Vector2f getLocation() =0;
+
+	/*
+	 * @brief Get the scale of the model object
+	 *
+	 * @retunr An int
+	 */
+	virtual int getScale() =0;
+
 	virtual ~Model(){};
 protected:
 	View* fView = nullptr;

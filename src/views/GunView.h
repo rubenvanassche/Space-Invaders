@@ -11,6 +11,7 @@
 #include "../models/Gun.h"
 #include "../libraries/View.h"
 #include <SFML/Graphics.hpp>
+#include <iostream>
 /*
  * @brief The view of the gun
  *    ||
@@ -37,6 +38,8 @@ public:
 	 * @brief Draw the Gun by returning a VertexArray
 	 */
 	void draw();
+
+	int getScale(){return this->fScale;};
 
 	virtual ~GunView();
 private:

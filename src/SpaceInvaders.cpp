@@ -20,6 +20,7 @@ std::string resourcePath(){
 
 int main(int argc, char * argv[])
 {
+	/*
 	std::cout << "the address is: " << argv [0] << std::endl;
 
     // Create the main window
@@ -78,6 +79,9 @@ int main(int argc, char * argv[])
         // Update the window
         window.display();
     }
+    */
+	Game g(1);
+	g.run();
 
     return EXIT_SUCCESS;
 }
