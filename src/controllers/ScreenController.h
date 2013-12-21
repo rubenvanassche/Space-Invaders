@@ -10,6 +10,7 @@
 
 #include "../libraries/Controller.h"
 #include "../libraries/Utilities.h"
+#include "../libraries/Config.h"
 #include <SFML/Window.hpp>
 #include <iostream>
 #include <memory>
@@ -17,7 +18,7 @@
 
 class ScreenController : public Controller {
 public:
-	ScreenController(std::list<View*>* views, sf::RenderWindow* window) : fViews(views), fWindow(window){};
+	ScreenController(std::list<View*>* views, Config* config) : fViews(views), Controller(config){};
 
 	/*
 	 * @brief closes the window
@@ -30,7 +31,6 @@ public:
 	void redraw();
 	virtual ~ScreenController();
 private:
-	sf::RenderWindow* fWindow;
 	std::list<View*>* fViews;
 };
 

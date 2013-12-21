@@ -12,10 +12,9 @@ bool Alien::Collusion(Bullet bullet){
 
 }
 
-bool Alien::move(util::Direction direction){
+void Alien::move(util::Direction direction){
 	bool success =  util::move(this->fLocation, direction, this->fMovePixels);
-	this->fView->draw();
-	return success;
+	//this->fScreenController->redraw();
 }
 
 Alien::~Alien() {

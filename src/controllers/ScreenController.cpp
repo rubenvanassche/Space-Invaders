@@ -7,12 +7,12 @@
 
 #include "ScreenController.h"
 void ScreenController::closeWindow(){
-	this->fWindow->close();
+	this->fConfig->window()->close();
 }
 
 void ScreenController::redraw(){
 	// Clean the Window
-	this->fWindow->clear();
+	this->fConfig->window()->clear();
 
 	// Redraw all our views
 
@@ -20,10 +20,8 @@ void ScreenController::redraw(){
 		(*it)->draw();
 	}
 
-	std::cout << "Redraw of " << this->fViews->size() << " objects" <<std::endl;
-
 	// Ok let's print everything
-	this->fWindow->display();
+	this->fConfig->window()->display();
 }
 
 ScreenController::~ScreenController() {

@@ -10,6 +10,7 @@
 
 #include "../libraries/Controller.h"
 #include "../libraries/Utilities.h"
+#include "../libraries/Config.h"
 #include <SFML/Window.hpp>
 #include "MotionController.h"
 #include "ScreenController.h"
@@ -19,7 +20,7 @@
  */
 class EventController : public Controller{
 public:
-	EventController(ScreenController* screenController, MotionController* motionController) : fScreenController(screenController), fMotionController(motionController){};
+	EventController(Config* config) : Controller(config){};
 
 	/*
 	 * @brief records an user defined event
@@ -27,9 +28,7 @@ public:
 	void record(sf::Event event);
 
 	virtual ~EventController();
-private:
-	ScreenController* fScreenController;
-	MotionController* fMotionController;
+
 };
 
 #endif /* EVENTCONTROLLER_H_ */

@@ -9,21 +9,31 @@
 
 void AlienView::draw(){
 	// Get the starting point
-	sf::Vector2f gunLocation = this->fAlien->getLocation();
+	sf::Vector2f alienLocation = this->fAlien->getLocation();
 
-	sf::VertexArray array(sf::Quads, 4);
-	array[0].position = sf::Vector2f(gunLocation.x, gunLocation.y);
-	array[1].position = sf::Vector2f(gunLocation.x + 10, gunLocation.y);
-	array[2].position = sf::Vector2f(gunLocation.x + 10, gunLocation.y + 10);
-	array[3].position = sf::Vector2f(gunLocation.x, gunLocation.y + 10);
+	// Do we need the open or closed version(ticktock)
+	if(this->fTickTock == 0){
+		sf::Texture texture;
+		if (!texture.loadFromFile("Resources/Russel/open.png")){
+		    std::runtime_error("Resource couldn't be found!");
+		}
+		sf::Sprite sprite(texture);
 
+		sprite.setPosition(alienLocation);
 
+		this->fWindow->draw(sprite);
+		this->fTickTock = 1;
+	}else if(this->fTickTock == 1){
+		sf::Texture texture;
+		if (!texture.loadFromFile("Resources/Russel/closed.png")){
+			std::runtime_error("Resource couldn't be found!");
+		}
+		sf::Sprite sprite(texture);
 
-	for(unsigned int i = 0;i < 4;i++){
-		array[i].color = this->fColor;
+		sprite.setPosition(alienLocation);
+		this->fWindow->draw(sprite);
+		this->fTickTock = 0;
 	}
-
-	this->fWindow->draw(array);
 }
 
 AlienView::~AlienView() {

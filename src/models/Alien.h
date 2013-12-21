@@ -24,7 +24,7 @@ public:
 	 *
 	 * @param location A point containing info of the location of the alien
 	 */
-	Alien(sf::Vector2f location) : fLocation(location) {dead = false;};
+	Alien(sf::Vector2f location, Config* config) : fLocation(location), Model(config) {dead = false;};
 
 	/*
 	 * @brief Check whether a bullet collides with this Alien
@@ -40,7 +40,7 @@ public:
 	 *
 	 * @param direction the direction to go to
 	 */
-	bool move(util::Direction direction);
+	void move(util::Direction direction);
 
 	/*
 	 * @brief Get the location of the Alien
@@ -48,6 +48,13 @@ public:
 	 * @return An vector2 containing the location
 	 */
 	sf::Vector2f getLocation(){return this->fLocation;};
+
+	/*
+	 * @brief Get's the scale of the alien
+	 *
+	 * @retun Integer = 1
+	 */
+	int getScale(){return 1;}
 
 	virtual ~Alien();
 private:

@@ -8,15 +8,15 @@
 #ifndef CONTROLLER_H_
 #define CONTROLLER_H_
 
-#include "View.h"
-#include "Model.h"
+#include "Config.h"
 #include <list>
 
 class Controller {
 public:
-	Controller(){};
+	Controller(Config* config) : fConfig(config){};
 	virtual ~Controller(){};
 protected:
+	Config* fConfig;
 };
 
 #endif /* CONTROLLER_H_ */

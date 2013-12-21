@@ -12,6 +12,7 @@
 #include "../libraries/Size.h"
 #include "../libraries/Utilities.h"
 #include "../libraries/Model.h"
+#include <iostream>
 
 /*
  * @brief The Gun model
@@ -24,14 +25,14 @@ public:
 	 * @param location A point containing info of the location of the gun
 	 * @param size A size
 	 */
-	Gun(sf::Vector2f location, int scale) : fLocation(location), fScale(scale) {};
+	Gun(sf::Vector2f location, int scale, Config* config) : fLocation(location), fScale(scale), Model(config) {fSize.set(3*scale, scale);};
 
 	/*
 	 * @brief updates the position of the Gun with an specified direction
 	 *
 	 * @param direction the direction to go to
 	 */
-	bool move(util::Direction direction);
+	void move(util::Direction direction);
 
 	/*
 	 * @brief Get the location of the gun
@@ -51,8 +52,8 @@ public:
 private:
 	sf::Vector2f fLocation;
 	int fScale;
-
-	int fMovePixels = 5; // Amount of pixels to move with move action
+	Size fSize;
+	int fMovePixels = 30; // Amount of pixels to move with move action
 };
 
 #endif /* GUN_H_ */

@@ -8,14 +8,11 @@
 #include "GunFactory.h"
 
 void GunFactory::createBlaster(sf::Vector2f location){
-	Gun* gunPtr = new Gun(location, 10);
+	Gun* gunPtr = new Gun(location, 10, this->fConfig);
 	this->fModels->push_back(gunPtr);
 
-	GunView* gunViewPtr = new GunView(this->fWindow, gunPtr);
+	GunView* gunViewPtr = new GunView(this->fConfig->window(), gunPtr);
 	this->fViews->push_back(gunViewPtr);
-
-	// append the view to the model
-	gunPtr->appendView(gunViewPtr);
 }
 
 GunFactory::~GunFactory() {

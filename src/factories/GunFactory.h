@@ -9,6 +9,7 @@
 #define GUNFACTORY_H_
 
 #include "../libraries/Factory.h"
+#include "../libraries/Config.h"
 #include "../models/Gun.h"
 #include "../views/GunView.h"
 #include <SFML/System/Vector2.hpp>
@@ -16,11 +17,11 @@
 
 class GunFactory : public Factory {
 public:
-	GunFactory(std::list<Model*>* guns, std::list<View*>* views, sf::RenderWindow* window) : Factory(guns, views), fWindow(window){};
+	GunFactory(std::list<Model*>* guns, std::list<View*>* views, Config* config) : Factory(guns, views), fConfig(config){};
 	void createBlaster(sf::Vector2f location);
 	virtual ~GunFactory();
 private:
-	sf::RenderWindow* fWindow;
+	Config* fConfig;
 };
 
 #endif /* GUNFACTORY_H_ */

@@ -19,6 +19,14 @@ void MotionController::moveGun(util::Direction direction){
 	this->fGuns->front()->move(direction);
 }
 
+void MotionController::moveAliens(){
+
+}
+
+void MotionController::shoot(){
+
+}
+
 MotionController::~MotionController() {
 	// TODO Auto-generated destructor stub
 }

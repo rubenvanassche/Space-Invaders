@@ -20,12 +20,14 @@
 #include "libraries/Controller.h"
 #include "libraries/View.h"
 #include "libraries/Factory.h"
+#include "libraries/Config.h"
 
 #include "controllers/EventController.h"
 #include "controllers/MotionCOntroller.h"
 #include "controllers/ScreenController.h"
 
 #include "factories/GunFactory.h"
+#include "factories/AlienFactory.h"
 
 #include "models/Gun.h"
 #include "views/GunView.h"
@@ -60,6 +62,7 @@ private:
 	std::shared_ptr<EventController> eventController;
 	std::shared_ptr<MotionController> motionController;
 	std::shared_ptr<ScreenController> screenController;
+	std::shared_ptr<Config> config;
 };
 
 #endif /* GAME_H_ */

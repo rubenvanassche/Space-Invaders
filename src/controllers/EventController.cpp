@@ -11,27 +11,27 @@
 void EventController::record(sf::Event event){
     // Close window : exit
     if (event.type == sf::Event::Closed) {
-        this->fScreenController->closeWindow();
+        this->fConfig->screenController()->closeWindow();
     }
 
     // Escape pressed : exit
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-        this->fScreenController->closeWindow();
+        this->fConfig->screenController()->closeWindow();
     }
 
     // Left key pressed : move Gun
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Left) {
-		this->fMotionController->moveGun(util::LEFT);
-		std::cout << "LEFT" << std::endl;
-		this->fScreenController->redraw();
+		this->fConfig->motionController()->moveGun(util::LEFT);
 	}
 
     // Right key pressed : move Gun
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Right) {
-    	this->fMotionController->moveGun(util::RIGHT);
-    	std::cout << "RIGHT" << std::endl;
-    	this->fScreenController->redraw();
+    	this->fConfig->motionController()->moveGun(util::RIGHT);
 	}
+
+    if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space){
+    	this->fConfig->motionController()->shoot();
+    }
 }
 
 EventController::~EventController() {

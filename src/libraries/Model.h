@@ -9,19 +9,14 @@
 #define MODEL_H_
 
 #include "../libraries/Utilities.h"
-#include "../libraries/View.h"
+#include "../controllers/ScreenController.h"
+
 
 class Model {
 public:
-	Model(){};
+	Model(Config* config) : fConfig(config){};
 
-	virtual bool move(util::Direction direction) =0;
-	/*
-	 * @brief Add the View corresponding to this model
-	 *
-	 * @param view A pointer to the View
-	 */
-	void appendView(View* view){this->fView = view;};
+	virtual void move(util::Direction direction) =0;
 
 	/*
 	 * @brief Get the location of the model object
@@ -33,13 +28,13 @@ public:
 	/*
 	 * @brief Get the scale of the model object
 	 *
-	 * @retunr An int
+	 * @return An int
 	 */
 	virtual int getScale() =0;
 
 	virtual ~Model(){};
 protected:
-	View* fView = nullptr;
+	Config* fConfig = nullptr;
 };
 
 #endif /* MODEL_H_ */
