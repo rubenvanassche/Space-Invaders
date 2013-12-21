@@ -38,7 +38,6 @@ public:
 private:
 	Alien* fAlien = nullptr;
 	sf::Color fColor;
-	int fTickTock = 0;
 };
 
 #endif /* ALIENVIEW_H_ */

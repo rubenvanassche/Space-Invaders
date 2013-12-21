@@ -24,7 +24,7 @@ public:
 	 *
 	 * @param location A point containing info of the location of the alien
 	 */
-	Alien(sf::Vector2f location, Config* config) : fLocation(location), Model(config) {dead = false;};
+	Alien(sf::Vector2f location, Config* config);
 
 	/*
 	 * @brief Check whether a bullet collides with this Alien
@@ -56,12 +56,17 @@ public:
 	 */
 	int getScale(){return 1;}
 
+	/*
+	 * @brief Get the ticktock of the alien, thsi represents which image should be used to draw
+	 *
+	 * @return int The ticktock
+	 */
+	int getTickTock(){return this->fTickTock;};
+
 	virtual ~Alien();
 private:
 	sf::Vector2f fLocation;
-	bool dead;
-
-	int fMovePixels = 2;
+	int fTickTock = 0; // Needed for drawing the right version
 };
 
 #endif /* ALIEN_H_ */

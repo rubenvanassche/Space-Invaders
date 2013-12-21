@@ -7,6 +7,11 @@
 
 #include "Gun.h"
 
+Gun::Gun(sf::Vector2f location, int scale, Config* config) : fLocation(location), fScale(scale), Model(config){
+	this->fSize.set(4*scale, 2*scale);
+	this->fMovePixels = 10;
+}
+
 void Gun::move(util::Direction direction){
 	if(direction == util::LEFT){
 		int x = this->fLocation.x;

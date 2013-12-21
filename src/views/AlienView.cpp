@@ -12,7 +12,7 @@ void AlienView::draw(){
 	sf::Vector2f alienLocation = this->fAlien->getLocation();
 
 	// Do we need the open or closed version(ticktock)
-	if(this->fTickTock == 0){
+	if(this->fAlien->getTickTock() == 0){
 		sf::Texture texture;
 		if (!texture.loadFromFile("Resources/Aliens/Russel/open.png")){
 		    std::runtime_error("Resource couldn't be found!");
@@ -22,8 +22,7 @@ void AlienView::draw(){
 		sprite.setPosition(alienLocation);
 
 		this->fWindow->draw(sprite);
-		this->fTickTock = 1;
-	}else if(this->fTickTock == 1){
+	}else if(this->fAlien->getTickTock() == 1){
 		sf::Texture texture;
 		if (!texture.loadFromFile("Resources/Aliens/Russel/closed.png")){
 			std::runtime_error("Resource couldn't be found!");
@@ -32,7 +31,6 @@ void AlienView::draw(){
 
 		sprite.setPosition(alienLocation);
 		this->fWindow->draw(sprite);
-		this->fTickTock = 0;
 	}
 }
 

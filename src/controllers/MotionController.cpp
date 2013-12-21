@@ -20,17 +20,64 @@ void MotionController::moveGun(util::Direction direction){
 }
 
 void MotionController::moveAliens(){
-	int counter = 0;
-	auto it = this->fAliens->begin();
-	while(it != this->fAliens->end()){
-		// determine in which row we are
-		int row = (counter/13)+1;
+	Model* mostLeft = *this->fAliens->begin();
+	Model* mostRight = *this->fAliens->begin();
 
-		// get the alien left of this one
+	for(auto it = this->fAliens->begin();it != this->fAliens->end();it++){
+		if((*it)->isDead() == true){
+			// We're not working with dead Aliens so skip this one
+			continue;
+		}
 
-		it++;
-		counter++;
+
+		if((*it)->getLocation().x < mostLeft->getLocation().x){
+			// If our current it's X is smaller then our temp most left, change it
+				mostLeft = *it;
+		}
+
+		if((*it)->getLocation().x > mostRight->getLocation().x){
+			// If our current it's X is bigger then our temp most right, change it
+			mostRight = *it;
+		}
 	}
+	// Now let's determine the movement of those Aliens
+	util::Direction direction = this->fAlienDirection;
+	bool goDown;
+
+	int Lx = mostLeft->move(mostLeft->getLocation().x, util::LEFT);
+	if(Lx < 5){
+		// The calculated new X value of the most Left Alien is smaller then 5 so do not turn to right but tpo left
+		direction = util::RIGHT;
+		this->fAlienDirection = util::RIGHT;
+		goDown = true;
+	}
+
+	int Lr = mostRight->move(mostRight->getLocation().x, util::RIGHT);
+	int maxWidth = this->fConfig->screenWidth() - mostRight->getSize().getWidth() - 5;
+	if(Lr > maxWidth){
+		direction = util::LEFT;
+		this->fAlienDirection = util::LEFT;
+		goDown = true;
+	}
+
+	// Now let's move those aliens
+	for(auto it = this->fAliens->begin();it != this->fAliens->end();it++){
+		if(this->fAlienGoDown == true){
+			(*it)->move(util::DOWN);
+		}else{
+			(*it)->move(direction);
+		}
+	}
+
+	if(this->fAlienGoDown == true){
+		this->fAlienGoDown = false;
+	}
+
+	if(goDown == true){
+		this->fAlienGoDown = true;
+	}
+
+	this->fConfig->screenController()->redraw();
 }
 
 void MotionController::shoot(){

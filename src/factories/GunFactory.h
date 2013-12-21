@@ -18,7 +18,7 @@
 class GunFactory : public Factory {
 public:
 	GunFactory(std::list<Model*>* guns, std::list<View*>* views, Config* config) : Factory(guns, views), fConfig(config){};
-	void createBlaster(sf::Vector2f location);
+	void createBlaster();
 	virtual ~GunFactory();
 private:
 	Config* fConfig;

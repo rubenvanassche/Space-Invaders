@@ -25,22 +25,25 @@ void GunView::draw(){
 	// 3 ------ 2
 	sf::VertexArray array(sf::Quads, 4);
 	array[0].position = sf::Vector2f(gunLocation.x, gunLocation.y);
-	array[1].position = sf::Vector2f(gunLocation.x + 3*scale, gunLocation.y);
-	array[2].position = sf::Vector2f(gunLocation.x + 3*scale, gunLocation.y + 1*scale);
+	array[1].position = sf::Vector2f(gunLocation.x + 4*scale, gunLocation.y);
+	array[2].position = sf::Vector2f(gunLocation.x + 4*scale, gunLocation.y + 1*scale);
 	array[3].position = sf::Vector2f(gunLocation.x, gunLocation.y + 1*scale);
 
-	/*
-	std::cout << "Drawing gun" <<std::endl;
-	std::cout << "location:" << gunLocation.x << "," << gunLocation.y <<std::endl;
-	std::cout << "scale:" << scale << std::endl;
+	sf::VertexArray array2(sf::Triangles, 3);
+	array2[0].position = sf::Vector2f(gunLocation.x + 1*scale, gunLocation.y);
+	array2[1].position = sf::Vector2f(gunLocation.x + 3*scale, gunLocation.y);
+	array2[2].position = sf::Vector2f(gunLocation.x + 2*scale, gunLocation.y - 1*scale);
+	array2[0].color =  this->fColor;
+	array2[1].color =  this->fColor;
+	array2[2].color =  this->fColor;
 
-	*/
 
 	for(unsigned int i = 0;i < 4;i++){
 		array[i].color = this->fColor;
 	}
 
 	this->fWindow->draw(array);
+	this->fWindow->draw(array2);
 }
 
 GunView::~GunView() {

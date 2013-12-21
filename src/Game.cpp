@@ -35,7 +35,7 @@ void Game::build(){
 
 	// Build the gun
 	GunFactory gunFactory(&this->guns, &this->views,this->config.get());
-	gunFactory.createBlaster(sf::Vector2f(120, 120));
+	gunFactory.createBlaster();
 
 	// Build Aliens
 	AlienFactory alienFactory(&this->aliens, &this->views, this->config.get());
@@ -79,12 +79,13 @@ void Game::run(){
 	this->build();
 	this->screenController->redraw();
 
+
 	sf::Clock clock;
-	sf::Time second = sf::seconds(1.0);
+	sf::Time second = sf::seconds(0.5);
 
 
 	while(this->window->isOpen()){
-		// Process events
+		//Process events
 		sf::Event event;
 		while (window->pollEvent(event)){
 			this->eventController->record(event);
@@ -94,7 +95,11 @@ void Game::run(){
 			this->motionController->moveAliens();
 			clock.restart();
 		}
+
+		// Sleep for a while so our while loop doesn't go crazy on the CPU
+		sf::sleep(sf::seconds(0.01));
 	}
+
 
 }
 
@@ -103,9 +108,12 @@ Game::~Game() {
 	for(auto it = this->views.begin();it != this->views.end();it++){
 		delete (*it);
 	}
-	for(auto it = this->models.begin();it != this->models.end();it++){
+	for(auto it = this->guns.begin();it != this->guns.end();it++){
 			delete (*it);
-		}
+	}
+	for(auto it = this->aliens.begin();it != this->aliens.end();it++){
+			delete (*it);
+	}
 	// TODO Auto-generated destructor stub
 }
 

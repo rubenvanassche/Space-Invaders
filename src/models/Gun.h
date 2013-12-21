@@ -25,7 +25,7 @@ public:
 	 * @param location A point containing info of the location of the gun
 	 * @param size A size
 	 */
-	Gun(sf::Vector2f location, int scale, Config* config) : fLocation(location), fScale(scale), Model(config) {fSize.set(3*scale, scale);};
+	Gun(sf::Vector2f location, int scale, Config* config);
 
 	/*
 	 * @brief updates the position of the Gun with an specified direction
@@ -33,6 +33,13 @@ public:
 	 * @param direction the direction to go to
 	 */
 	void move(util::Direction direction);
+
+	/*
+	 * @brief Change the location of the Alien by a given vector
+	 *
+	 * @param location The Vector to move to
+	 */
+	virtual void move(sf::Vector2f location){this->fLocation = location;};
 
 	/*
 	 * @brief Get the location of the gun
@@ -52,8 +59,6 @@ public:
 private:
 	sf::Vector2f fLocation;
 	int fScale;
-	Size fSize;
-	int fMovePixels = 30; // Amount of pixels to move with move action
 };
 
 #endif /* GUN_H_ */

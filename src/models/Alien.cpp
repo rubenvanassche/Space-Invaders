@@ -7,6 +7,10 @@
 
 #include "Alien.h"
 
+Alien::Alien(sf::Vector2f location, Config* config) : fLocation(location), Model(config){
+	this->fMovePixels = 10;
+	this->fSize.set(24, 17);
+}
 
 bool Alien::Collusion(Bullet bullet){
 
@@ -14,7 +18,11 @@ bool Alien::Collusion(Bullet bullet){
 
 void Alien::move(util::Direction direction){
 	bool success =  util::move(this->fLocation, direction, this->fMovePixels);
-	//this->fScreenController->redraw();
+	if(this->fTickTock == 0){
+		this->fTickTock = 1;
+	}else if(this->fTickTock == 1){
+		this->fTickTock = 0;
+	}
 }
 
 Alien::~Alien() {

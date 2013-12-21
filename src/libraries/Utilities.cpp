@@ -3,10 +3,10 @@
 
 bool util::move(sf::Vector2f& location, Direction direction, int movePixels){
 	if(direction == UP){
-		location.y += movePixels;
+		location.y -= movePixels;
 		return true;
 	}else if(direction == DOWN){
-		location.y -= movePixels;
+		location.y += movePixels;
 		return true;
 	}else if(direction == LEFT){
 		location.x -= movePixels;
