@@ -14,12 +14,12 @@
 #include "../libraries/Model.h"
 #include <iostream>
 
-/*
+
 class Wall : public Model {
 public:
-	Wall();
+	Wall(sf::Vector2f location, Config* config) : Model(location, config){this->fLifes = 3;};
 	virtual ~Wall();
 };
-*/
+
 
 #endif /* WALL_H_ */

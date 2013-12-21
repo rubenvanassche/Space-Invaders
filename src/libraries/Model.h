@@ -23,7 +23,7 @@ public:
 	 *
 	 * @param direction The direction to move to
 	 */
-	virtual void move(util::Direction direction) =0;
+	virtual void move(util::Direction direction){util::move(this->fLocation, direction, this->fMovePixels);};
 
 	/*
 	 * @brief Calculate the movement by giving an int
@@ -41,14 +41,14 @@ public:
 	 *
 	 * @return An vector2 containing the location
 	 */
-	virtual sf::Vector2f getLocation() =0;
+	virtual sf::Vector2f getLocation(){return this->fLocation;};
 
 	/*
 	 * @brief Get the scale of the model object
 	 *
 	 * @return An int
 	 */
-	virtual int getScale() =0;
+	virtual int getScale(){return 1;};
 
 	/*
 	 * @brief Get the size of this Model
@@ -62,7 +62,19 @@ public:
 	 *
 	 * #return bool representing if the Model is dead or not
 	 */
-	bool isDead(){if(lives == 0){return true;}else{return false;}};
+	bool isDead(){if(fLifes == 0){return true;}else{return false;}};
+
+	/*
+	 * @brief Get information about how many lives this Model has
+	 *
+	 * @return int The count of lives the model has
+	 */
+	int getLifes(){return this->fLifes;};
+
+	/*
+	 * TODO: Remove this
+	 */
+	virtual void shoot(){return;};
 
 	virtual ~Model(){};
 protected:
@@ -70,7 +82,7 @@ protected:
 	sf::Vector2f fLocation;
 	Size fSize;
 	int fMovePixels = 2;
-	int lives = 1;
+	int fLifes = 1;
 };
 
 #endif /* MODEL_H_ */

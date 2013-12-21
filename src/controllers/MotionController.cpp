@@ -52,15 +52,27 @@ void MotionController::moveAliens(){
 	int Lx = mostLeft->move(mostLeft->getLocation().x, util::LEFT);
 	if(Lx < 5){
 		// The calculated new X value of the most Left Alien is smaller then 5 so do not turn to right but turn left
-		direction = util::RIGHT;
-		this->fAlienDirection = util::RIGHT;
+		if(this->fAlienWentDown == false){
+			direction = util::DOWN;
+			this->fAlienWentDown = true;
+		}else{
+			direction = util::RIGHT;
+			this->fAlienDirection = util::RIGHT;
+			this->fAlienWentDown = false;
+		}
 	}
 
 	int Lr = mostRight->move(mostRight->getLocation().x, util::RIGHT);
 	int maxWidth = this->fConfig->screenWidth() - mostRight->getSize().getWidth() - 5;
 	if(Lr > maxWidth){
-		direction = util::LEFT;
-		this->fAlienDirection = util::LEFT;
+		if(this->fAlienWentDown == false){
+			direction = util::DOWN;
+			this->fAlienWentDown = true;
+		}else{
+			direction = util::LEFT;
+			this->fAlienDirection = util::LEFT;
+			this->fAlienWentDown = false;
+		}
 	}
 
 	// Now let's move those aliens
@@ -72,7 +84,11 @@ void MotionController::moveAliens(){
 }
 
 void MotionController::shoot(){
+	if(this->fGuns->size() == 0){
+		std::runtime_error("No gun avaible to move");
+	}
 
+	this->fGuns->front()->shoot();
 }
 
 MotionController::~MotionController() {

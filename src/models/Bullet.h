@@ -16,15 +16,14 @@
  */
 class Bullet : public Model {
 public:
-	// Use Model Constructor
-	using Model::Model;
+	Bullet(sf::Vector2f location, Config* config) : Model(location, config){};
 
 	/*
 	 * @brief updates the position of the Bullet with an specified direction
 	 *
 	 * @param direction the direction to go to
 	 */
-	void move(util::Direction direction);
+	//void move(util::Direction direction);
 
 	virtual ~Bullet();
 private:

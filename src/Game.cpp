@@ -16,6 +16,7 @@ void Game::build(){
 	// Set up the Config object
 	this->config = std::shared_ptr<Config>(new Config());
 	this->config->setScreenSize(&this->width, &this->height);
+	this->config->setBullets(&this->bullets);
 
 	// Set up the window
 	this->window = std::shared_ptr<sf::RenderWindow>(new sf::RenderWindow(sf::VideoMode(width, height), "Space Invaders"));
@@ -36,6 +37,14 @@ void Game::build(){
 	// Build the gun
 	GunFactory gunFactory(&this->guns, &this->views,this->config.get());
 	gunFactory.createBlaster();
+
+	// Build the wall's
+	WallFactory wallFactory(&this->walls, &this->views, this->config.get());
+	float wallSpace = (this->config->screenWidth() - 4*44)/5;
+	wallFactory.createWall(sf::Vector2f(wallSpace*1, 300));
+	wallFactory.createWall(sf::Vector2f(wallSpace*2 + 44, 300));
+	wallFactory.createWall(sf::Vector2f(wallSpace*3 + 44*2, 300));
+	wallFactory.createWall(sf::Vector2f(wallSpace*4 + 44*3, 300));
 
 	// Build Aliens
 	AlienFactory alienFactory(&this->aliens, &this->views, this->config.get());

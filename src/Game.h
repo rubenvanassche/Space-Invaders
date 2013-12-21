@@ -29,9 +29,7 @@
 
 #include "factories/GunFactory.h"
 #include "factories/AlienFactory.h"
-
-#include "models/Gun.h"
-#include "views/GunView.h"
+#include "factories/WallFactory.h"
 
 class Game {
 public:

@@ -20,6 +20,8 @@ void ScreenController::redraw(){
 		(*it)->draw();
 	}
 
+	std::cout << "Redraw of " << this->fViews->size() << " objects" << std::endl;
+
 	// Ok let's print everything
 	this->fConfig->window()->display();
 }

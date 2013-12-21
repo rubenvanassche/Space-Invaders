@@ -10,6 +10,7 @@
 Gun::Gun(sf::Vector2f location, int scale, Config* config) : fScale(scale), Model(location, config){
 	this->fSize.set(4*scale, 2*scale);
 	this->fMovePixels = 10;
+	this->fBulletFactory = new BulletFactory(this->fConfig->bullets(), this->fConfig->views(), this->fConfig);
 }
 
 void Gun::move(util::Direction direction){
@@ -37,7 +38,14 @@ void Gun::move(util::Direction direction){
 	this->fConfig->screenController()->redraw();
 }
 
+void Gun::shoot(){
+	sf::Vector2f bulletLocation(this->fLocation.x + (this->fSize.getWidth()/2), this->fLocation.y);
+	this->fBulletFactory->createBullet(bulletLocation);
+	this->fConfig->screenController()->redraw();
+}
+
 Gun::~Gun() {
 	// TODO Auto-generated destructor stub
+	delete this->fBulletFactory;
 }
 

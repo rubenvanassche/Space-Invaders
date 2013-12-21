@@ -12,6 +12,7 @@
 #include "../libraries/Size.h"
 #include "../libraries/Utilities.h"
 #include "../libraries/Model.h"
+#include "../factories/BulletFactory.h"
 #include <iostream>
 
 /*
@@ -55,9 +56,15 @@ public:
 	 */
 	int getScale(){return this->fScale;};
 
+	/*
+	 * @brief Shoot a bullet out of the gun
+	 */
+	void shoot();
+
 	virtual ~Gun();
 private:
 	sf::Vector2f fLocation;
+	BulletFactory* fBulletFactory;
 	int fScale;
 };
 
