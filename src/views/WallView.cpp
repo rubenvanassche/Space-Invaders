@@ -6,7 +6,7 @@
  */
 
 #include "WallView.h"
-
+/*
 WallView::WallView() {
 	// TODO Auto-generated constructor stub
 
@@ -16,3 +16,4 @@ WallView::~WallView() {
 	// TODO Auto-generated destructor stub
 }
 
+*/

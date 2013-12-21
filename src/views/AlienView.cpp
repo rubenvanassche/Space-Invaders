@@ -8,6 +8,11 @@
 #include "AlienView.h"
 
 void AlienView::draw(){
+	// If the Alien is dead, do not draw
+	if(this->fAlien->isDead()){
+		return;
+	}
+
 	// Get the starting point
 	sf::Vector2f alienLocation = this->fAlien->getLocation();
 

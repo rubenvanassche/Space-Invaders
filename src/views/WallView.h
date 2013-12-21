@@ -13,10 +13,11 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+/*
 class WallView : public View{
 public:
 	WallView();
 	virtual ~WallView();
 };
-
+*/
 #endif /* WALLVIEW_H_ */

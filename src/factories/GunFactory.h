@@ -17,11 +17,10 @@
 
 class GunFactory : public Factory {
 public:
-	GunFactory(std::list<Model*>* guns, std::list<View*>* views, Config* config) : Factory(guns, views), fConfig(config){};
+	// Use the Factory Constructor
+	using Factory::Factory;
 	void createBlaster();
 	virtual ~GunFactory();
-private:
-	Config* fConfig;
 };
 
 #endif /* GUNFACTORY_H_ */

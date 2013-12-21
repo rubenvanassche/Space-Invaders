@@ -17,11 +17,10 @@
 
 class AlienFactory : public Factory{
 public:
-	AlienFactory(std::list<Model*>* aliens, std::list<View*>* views, Config* config) : fConfig(config), Factory(aliens, views){};
+	// Use the Factory Constructor
+	using Factory::Factory;
 	void createRussel(sf::Vector2f location);
 	virtual ~AlienFactory();
-private:
-	Config* fConfig;
 };
 
 #endif /* ALIENFACTORY_H_ */

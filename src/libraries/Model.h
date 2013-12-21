@@ -11,11 +11,12 @@
 #include "../libraries/Utilities.h"
 #include "../controllers/ScreenController.h"
 #include "../libraries/Size.h"
+#include <SFML/System/Vector2.hpp>
 
 
 class Model {
 public:
-	Model(Config* config) : fConfig(config){};
+	Model(sf::Vector2f location, Config* config) : fConfig(config), fLocation(location){};
 
 	/*
 	 * @brief Move this model by giving a direction
@@ -66,6 +67,7 @@ public:
 	virtual ~Model(){};
 protected:
 	Config* fConfig = nullptr;
+	sf::Vector2f fLocation;
 	Size fSize;
 	int fMovePixels = 2;
 	int lives = 1;

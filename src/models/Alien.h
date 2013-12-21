@@ -21,8 +21,6 @@ class Alien : public Model{
 public:
 	/*
 	 * @brief Alien Constructor
-	 *
-	 * @param location A point containing info of the location of the alien
 	 */
 	Alien(sf::Vector2f location, Config* config);
 
@@ -33,7 +31,7 @@ public:
 	 *
 	 * @return bool telling if the bullet hit the alien
 	 */
-	bool Collusion(Bullet bullet);
+	bool Collusion(Bullet* bullet);
 
 	/*
 	 * @brief updates the position of the Alien with an specified direction
@@ -65,7 +63,6 @@ public:
 
 	virtual ~Alien();
 private:
-	sf::Vector2f fLocation;
 	int fTickTock = 0; // Needed for drawing the right version
 };
 

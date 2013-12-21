@@ -7,12 +7,12 @@
 
 #include "Alien.h"
 
-Alien::Alien(sf::Vector2f location, Config* config) : fLocation(location), Model(config){
+Alien::Alien(sf::Vector2f location, Config* config) :  Model(location, config){
 	this->fMovePixels = 10;
 	this->fSize.set(24, 17);
 }
 
-bool Alien::Collusion(Bullet bullet){
+bool Alien::Collusion(Bullet* bullet){
 
 }
 

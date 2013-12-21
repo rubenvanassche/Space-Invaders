@@ -39,7 +39,6 @@ private:
 	std::list<Model*>* fAliens;
 	std::list<Model*>* fBullets;
 	util::Direction fAlienDirection = util::LEFT;
-	bool fAlienGoDown = false;
 };
 
 #endif /* MOTIONCONTROLLER_H_ */

@@ -8,16 +8,16 @@
 #ifndef BULLET_H_
 #define BULLET_H_
 
-#include <SFML/System/Vector2.hpp>
-#include "../libraries/Size.h"
+#include "../libraries/Model.h"
 #include "../libraries/Utilities.h"
 
 /*
  * @brief The Bullet model
  */
-class Bullet {
+class Bullet : public Model {
 public:
-	Bullet();
+	// Use Model Constructor
+	using Model::Model;
 
 	/*
 	 * @brief updates the position of the Bullet with an specified direction
@@ -28,8 +28,6 @@ public:
 
 	virtual ~Bullet();
 private:
-	sf::Vector2f fPosition;
-	Size fSize;
 };
 
 #endif /* BULLET_H_ */

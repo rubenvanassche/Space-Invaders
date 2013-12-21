@@ -14,10 +14,12 @@
 #include "../libraries/Model.h"
 #include <iostream>
 
+/*
 class Wall : public Model {
 public:
 	Wall();
 	virtual ~Wall();
 };
+*/
 
 #endif /* WALL_H_ */

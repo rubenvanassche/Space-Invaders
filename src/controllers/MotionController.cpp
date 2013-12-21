@@ -40,16 +40,20 @@ void MotionController::moveAliens(){
 			mostRight = *it;
 		}
 	}
+
+	if(mostLeft->isDead() == true and mostRight->isDead() == true){
+		// All our Aliens are dead, so stop here
+		return;
+	}
+
 	// Now let's determine the movement of those Aliens
 	util::Direction direction = this->fAlienDirection;
-	bool goDown;
 
 	int Lx = mostLeft->move(mostLeft->getLocation().x, util::LEFT);
 	if(Lx < 5){
-		// The calculated new X value of the most Left Alien is smaller then 5 so do not turn to right but tpo left
+		// The calculated new X value of the most Left Alien is smaller then 5 so do not turn to right but turn left
 		direction = util::RIGHT;
 		this->fAlienDirection = util::RIGHT;
-		goDown = true;
 	}
 
 	int Lr = mostRight->move(mostRight->getLocation().x, util::RIGHT);
@@ -57,24 +61,11 @@ void MotionController::moveAliens(){
 	if(Lr > maxWidth){
 		direction = util::LEFT;
 		this->fAlienDirection = util::LEFT;
-		goDown = true;
 	}
 
 	// Now let's move those aliens
 	for(auto it = this->fAliens->begin();it != this->fAliens->end();it++){
-		if(this->fAlienGoDown == true){
-			(*it)->move(util::DOWN);
-		}else{
-			(*it)->move(direction);
-		}
-	}
-
-	if(this->fAlienGoDown == true){
-		this->fAlienGoDown = false;
-	}
-
-	if(goDown == true){
-		this->fAlienGoDown = true;
+		(*it)->move(direction);
 	}
 
 	this->fConfig->screenController()->redraw();
