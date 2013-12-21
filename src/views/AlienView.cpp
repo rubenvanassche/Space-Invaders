@@ -14,7 +14,7 @@ void AlienView::draw(){
 	// Do we need the open or closed version(ticktock)
 	if(this->fTickTock == 0){
 		sf::Texture texture;
-		if (!texture.loadFromFile("Resources/Russel/open.png")){
+		if (!texture.loadFromFile("Resources/Aliens/Russel/open.png")){
 		    std::runtime_error("Resource couldn't be found!");
 		}
 		sf::Sprite sprite(texture);
@@ -25,7 +25,7 @@ void AlienView::draw(){
 		this->fTickTock = 1;
 	}else if(this->fTickTock == 1){
 		sf::Texture texture;
-		if (!texture.loadFromFile("Resources/Russel/closed.png")){
+		if (!texture.loadFromFile("Resources/Aliens/Russel/closed.png")){
 			std::runtime_error("Resource couldn't be found!");
 		}
 		sf::Sprite sprite(texture);

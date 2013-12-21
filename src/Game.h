@@ -13,6 +13,7 @@
 #include <SFML/Graphics.hpp>
 
 #include <list>
+#include <vector>
 #include <memory>
 #include <iostream>
 
@@ -56,7 +57,7 @@ private:
 	int lives;
 
 	int width = 600;
-	int height = 800;
+	int height = 400;
 
 	std::shared_ptr<sf::RenderWindow> window;
 	std::shared_ptr<EventController> eventController;

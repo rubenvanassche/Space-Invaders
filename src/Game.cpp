@@ -39,10 +39,40 @@ void Game::build(){
 
 	// Build Aliens
 	AlienFactory alienFactory(&this->aliens, &this->views, this->config.get());
-	alienFactory.createRussel(sf::Vector2f(10, 100));
-	alienFactory.createRussel(sf::Vector2f(20, 20));
-	alienFactory.createRussel(sf::Vector2f(30, 300));
-	alienFactory.createRussel(sf::Vector2f(40, 404));
+	alienFactory.createRussel(sf::Vector2f(50, 20));
+	alienFactory.createRussel(sf::Vector2f(90, 20));
+	alienFactory.createRussel(sf::Vector2f(130, 20));
+	alienFactory.createRussel(sf::Vector2f(170, 20));
+	alienFactory.createRussel(sf::Vector2f(210, 20));
+	alienFactory.createRussel(sf::Vector2f(250, 20));
+	alienFactory.createRussel(sf::Vector2f(290, 20));
+	alienFactory.createRussel(sf::Vector2f(330, 20));
+	alienFactory.createRussel(sf::Vector2f(370, 20));
+	alienFactory.createRussel(sf::Vector2f(410, 20));
+	alienFactory.createRussel(sf::Vector2f(450, 20));
+	alienFactory.createRussel(sf::Vector2f(490, 20));
+	alienFactory.createRussel(sf::Vector2f(530, 20));
+
+	alienFactory.createRussel(sf::Vector2f(50, 60));
+	alienFactory.createRussel(sf::Vector2f(90, 60));
+	alienFactory.createRussel(sf::Vector2f(130, 60));
+	alienFactory.createRussel(sf::Vector2f(170, 60));
+	alienFactory.createRussel(sf::Vector2f(210, 60));
+	alienFactory.createRussel(sf::Vector2f(250, 60));
+	alienFactory.createRussel(sf::Vector2f(290, 60));
+	alienFactory.createRussel(sf::Vector2f(330, 60));
+	alienFactory.createRussel(sf::Vector2f(370, 60));
+	alienFactory.createRussel(sf::Vector2f(410, 60));
+	alienFactory.createRussel(sf::Vector2f(450, 60));
+	alienFactory.createRussel(sf::Vector2f(490, 60));
+	alienFactory.createRussel(sf::Vector2f(530, 60));
+
+	alienFactory.createRussel(sf::Vector2f(50, 100));
+	alienFactory.createRussel(sf::Vector2f(90, 100));
+	alienFactory.createRussel(sf::Vector2f(130, 100));
+
+	// 13 naast elkaar
+	// 5 roten onder elkaar
 }
 
 void Game::run(){

@@ -20,7 +20,17 @@ void MotionController::moveGun(util::Direction direction){
 }
 
 void MotionController::moveAliens(){
+	int counter = 0;
+	auto it = this->fAliens->begin();
+	while(it != this->fAliens->end()){
+		// determine in which row we are
+		int row = (counter/13)+1;
 
+		// get the alien left of this one
+
+		it++;
+		counter++;
+	}
 }
 
 void MotionController::shoot(){

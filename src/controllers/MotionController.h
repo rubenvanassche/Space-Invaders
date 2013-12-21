@@ -11,6 +11,7 @@
 #include "../libraries/Controller.h"
 #include "../libraries/Utilities.h"
 #include "../libraries/Model.h"
+#include <iostream>
 
 class MotionController : public Controller {
 public:
