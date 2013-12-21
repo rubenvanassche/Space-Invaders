@@ -23,9 +23,14 @@ public:
 	EventController(Config* config) : Controller(config){};
 
 	/*
-	 * @brief records an user defined event
+	 * @brief records an user defined event during the game
 	 */
 	void record(sf::Event event);
+
+	/*
+	 * @brief records an user defined event during the start screen
+	 */
+	int startScreen(sf::Event event);
 
 	virtual ~EventController();
 

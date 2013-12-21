@@ -13,13 +13,17 @@ void MotionController::moveGun(util::Direction direction){
 	}
 
 	if(this->fGuns->size() == 0){
-		std::runtime_error("No gun avaible to move");
+		return;
 	}
 
 	this->fGuns->front()->move(direction);
 }
 
 void MotionController::moveAliens(){
+	if(this->fAliens->size() == 0){
+		return;
+	}
+
 	Model* mostLeft = *this->fAliens->begin();
 	Model* mostRight = *this->fAliens->begin();
 
@@ -83,9 +87,30 @@ void MotionController::moveAliens(){
 	this->fConfig->screenController()->redraw();
 }
 
+void MotionController::moveBullets(){
+	if(this->fBullets->size() == 0){
+		return;
+	}
+
+	for(auto it = this->fBullets->begin();it != this->fBullets->end();it++){
+		if((*it)->getLocation().y < 0 or (*it)->getLocation().y > this->fConfig->screenHeight()){
+			// Bullet is of the screen so remove this one
+			this->fBullets->remove(*it);
+			/*
+			 * TODO: Add a function to remove the view, can't be done now because we don't have a pointer from model to view
+			 */
+			continue;
+		}
+
+		(*it)->move(util::UP);
+	}
+
+	this->fConfig->screenController()->redraw();
+}
+
 void MotionController::shoot(){
 	if(this->fGuns->size() == 0){
-		std::runtime_error("No gun avaible to move");
+		return;
 	}
 
 	this->fGuns->front()->shoot();

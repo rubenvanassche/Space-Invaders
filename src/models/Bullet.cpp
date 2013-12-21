@@ -7,6 +7,9 @@
 
 #include "Bullet.h"
 
+void Bullet::move(util::Direction direction){
+	util::move(this->fLocation, this->fDirection, this->fMovePixels);
+}
 
 Bullet::~Bullet() {
 	// TODO Auto-generated destructor stub

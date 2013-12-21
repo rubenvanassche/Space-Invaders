@@ -7,8 +7,8 @@
 
 #include "BulletFactory.h"
 
-void BulletFactory::createBullet(sf::Vector2f location){
-	Bullet* bulletPtr = new Bullet(location, this->fConfig);
+void BulletFactory::createBullet(sf::Vector2f location, util::Direction direction){
+	Bullet* bulletPtr = new Bullet(location, direction, this->fConfig);
 	this->fModels->push_back(bulletPtr);
 
 	BulletView* bulletViewPtr = new BulletView(this->fConfig->window(), bulletPtr);

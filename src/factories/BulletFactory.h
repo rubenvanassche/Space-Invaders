@@ -18,7 +18,7 @@
 class BulletFactory : public Factory {
 public:
 	using Factory::Factory;
-	void createBullet(sf::Vector2f location);
+	void createBullet(sf::Vector2f location, util::Direction direction);
 	virtual ~BulletFactory();
 };
 

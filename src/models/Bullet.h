@@ -16,17 +16,18 @@
  */
 class Bullet : public Model {
 public:
-	Bullet(sf::Vector2f location, Config* config) : Model(location, config){};
+	Bullet(sf::Vector2f location, util::Direction direction, Config* config) : fDirection(direction),  Model(location, config){this->fMovePixels = 20;};
 
 	/*
 	 * @brief updates the position of the Bullet with an specified direction
 	 *
 	 * @param direction the direction to go to
 	 */
-	//void move(util::Direction direction);
+	void move(util::Direction direction);
 
 	virtual ~Bullet();
 private:
+	util::Direction fDirection;
 };
 
 #endif /* BULLET_H_ */

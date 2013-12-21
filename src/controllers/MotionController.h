@@ -29,6 +29,11 @@ public:
 	void moveAliens();
 
 	/*
+	 * @brief Moves all the Bullets with one step
+	 */
+	void moveBullets();
+
+	/*
 	 * @brief Shoots a bullet out of the gun
 	 */
 	void shoot();

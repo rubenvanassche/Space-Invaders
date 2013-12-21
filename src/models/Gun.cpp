@@ -40,7 +40,7 @@ void Gun::move(util::Direction direction){
 
 void Gun::shoot(){
 	sf::Vector2f bulletLocation(this->fLocation.x + (this->fSize.getWidth()/2), this->fLocation.y);
-	this->fBulletFactory->createBullet(bulletLocation);
+	this->fBulletFactory->createBullet(bulletLocation, util::UP);
 	this->fConfig->screenController()->redraw();
 }
 

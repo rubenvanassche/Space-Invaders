@@ -31,6 +31,8 @@
 #include "factories/AlienFactory.h"
 #include "factories/WallFactory.h"
 
+#include "views/StartScreenView.h"
+
 class Game {
 public:
 	Game(int level);
@@ -42,6 +44,16 @@ public:
 
 	void run();
 
+	void startGame();
+
+	int getWidth(){return this->width;};
+
+	int getHeight(){return this->height;};
+
+	void setLevel(int flevel){this->level = flevel;};
+
+	int getLevel(){return this->level;};
+
 	virtual ~Game();
 private:
 	std::list<View*> views;
@@ -52,10 +64,12 @@ private:
 	std::list<Model*> bullets;
 
 	int level;
-	int lives;
+	int lifes;
 
 	int width = 600;
 	int height = 400;
+
+	bool startScreen = true;
 
 	std::shared_ptr<sf::RenderWindow> window;
 	std::shared_ptr<EventController> eventController;

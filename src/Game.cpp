@@ -9,14 +9,13 @@
 
 Game::Game(int level){
 	this->level = level;
-	this->lives = 3;
-}
+	this->lifes = 3;
 
-void Game::build(){
 	// Set up the Config object
 	this->config = std::shared_ptr<Config>(new Config());
 	this->config->setScreenSize(&this->width, &this->height);
 	this->config->setBullets(&this->bullets);
+	this->config->setViews(&this->views);
 
 	// Set up the window
 	this->window = std::shared_ptr<sf::RenderWindow>(new sf::RenderWindow(sf::VideoMode(width, height), "Space Invaders"));
@@ -33,7 +32,9 @@ void Game::build(){
 	// Set up the Event Controller
 	this->eventController = std::shared_ptr<EventController>(new EventController(this->config.get()));
 	this->config->setEventController(this->eventController.get());
+}
 
+void Game::build(){
 	// Build the gun
 	GunFactory gunFactory(&this->guns, &this->views,this->config.get());
 	gunFactory.createBlaster();
@@ -85,31 +86,64 @@ void Game::build(){
 }
 
 void Game::run(){
-	this->build();
-	this->screenController->redraw();
-
-
 	sf::Clock clock;
-	sf::Time second = sf::seconds(0.5);
+	sf::Clock clock2;
 
+	StartScreenView startScreenView(this->config->window(), this);
+	this->views.push_back(&startScreenView);
+
+	this->config->screenController()->redraw();
 
 	while(this->window->isOpen()){
-		//Process events
-		sf::Event event;
-		while (window->pollEvent(event)){
-			this->eventController->record(event);
-		}
+		if(startScreen == true){
+			//Process events
+			sf::Event event;
+			while (window->pollEvent(event)){
+				int eventCode = this->eventController->startScreen(event);
+				if(eventCode == 1){
+					// Start Game
+					this->startGame();
+				}else if(eventCode == 2){
+					if(level > 1){
+						this->level -= 1;
+						this->config->screenController()->redraw();
+					}
+				}else if(eventCode == 3){
+					this->level += 1;
+					this->config->screenController()->redraw();
+				}else{
 
-		if(clock.getElapsedTime() >= second){
-			this->motionController->moveAliens();
-			clock.restart();
+				}
+			}
+		}else{
+			//Process events
+			sf::Event event;
+			while (window->pollEvent(event)){
+				this->eventController->record(event);
+			}
+
+			if(clock.getElapsedTime() >= sf::seconds(0.5)){
+				this->motionController->moveAliens();
+				clock.restart();
+			}
+
+			if(clock2.getElapsedTime() >= sf::seconds(0.01)){
+				this->motionController->moveBullets();
+				clock2.restart();
+			}
 		}
 
 		// Sleep for a while so our while loop doesn't go crazy on the CPU
-		sf::sleep(sf::seconds(0.01));
+		sf::sleep(sf::seconds(0.1));
 	}
 
 
+}
+
+void Game::startGame(){
+	this->views.clear();
+	this->build();
+	this->startScreen = false;
 }
 
 

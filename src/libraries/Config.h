@@ -10,7 +10,6 @@
 
 #include <list>
 
-
 class ScreenController;
 class MotionController;
 class EventController;
