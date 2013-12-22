@@ -1,6 +1,6 @@
-#include "Model.h"
+#include "Entity.h"
 
-int Model::move(int value, util::Direction direction){
+int Entity::move(int value, util::Direction direction){
 	if(direction == util::UP){
 		return value - this->fMovePixels;
 	}else if(direction == util::DOWN){

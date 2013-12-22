@@ -8,7 +8,7 @@
 #ifndef GUNVIEW_H_
 #define GUNVIEW_H_
 
-#include "../models/Gun.h"
+#include "../entities/Gun.h"
 #include "../libraries/View.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>

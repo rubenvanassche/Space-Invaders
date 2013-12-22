@@ -7,9 +7,9 @@
 #include <string>
 #include <exception>
 #include <memory>
-#include "models/Gun.h"
+#include "entities/Gun.h"
 #include "views/GunView.h"
-#include "models/Alien.h"
+#include "entities/Alien.h"
 #include "views/AlienView.h"
 #include "Game.h"
 #include "libraries/Utilities.h"

@@ -10,7 +10,7 @@
 void GunFactory::createBlaster(){
 	sf::Vector2f location(0,0);
 	Gun* gunPtr = new Gun(location, 12, this->fConfig);
-	this->fModels->push_back(gunPtr);
+	this->fEntities->push_back(gunPtr);
 
 	GunView* gunViewPtr = new GunView(this->fConfig->window(), gunPtr);
 	this->fViews->push_back(gunViewPtr);

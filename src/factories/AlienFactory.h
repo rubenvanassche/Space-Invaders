@@ -10,7 +10,7 @@
 
 #include "../libraries/Factory.h"
 #include "../libraries/Config.h"
-#include "../models/Alien.h"
+#include "../entities/Alien.h"
 #include "../views/AlienView.h"
 #include <SFML/System/Vector2.hpp>
 #include <list>

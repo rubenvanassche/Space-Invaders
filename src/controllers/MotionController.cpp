@@ -24,8 +24,8 @@ void MotionController::moveAliens(){
 		return;
 	}
 
-	Model* mostLeft = *this->fAliens->begin();
-	Model* mostRight = *this->fAliens->begin();
+	Entity* mostLeft = *this->fAliens->begin();
+	Entity* mostRight = *this->fAliens->begin();
 
 	for(auto it = this->fAliens->begin();it != this->fAliens->end();it++){
 		if((*it)->isDead() == true){

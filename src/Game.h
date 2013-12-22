@@ -17,7 +17,7 @@
 #include <memory>
 #include <iostream>
 
-#include "libraries/Model.h"
+#include "libraries/Entity.h"
 #include "libraries/Controller.h"
 #include "libraries/View.h"
 #include "libraries/Factory.h"
@@ -57,11 +57,11 @@ public:
 	virtual ~Game();
 private:
 	std::list<View*> views;
-	std::list<Model*> models;
-	std::list<Model*> guns;
-	std::list<Model*> aliens;
-	std::list<Model*> walls;
-	std::list<Model*> bullets;
+	std::list<Entity*> models;
+	std::list<Entity*> guns;
+	std::list<Entity*> aliens;
+	std::list<Entity*> walls;
+	std::list<Entity*> bullets;
 
 	int level;
 	int lifes;

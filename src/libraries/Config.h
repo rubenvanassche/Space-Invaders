@@ -13,7 +13,7 @@
 class ScreenController;
 class MotionController;
 class EventController;
-class Model;
+class Entity;
 class View;
 namespace sf{
 	class RenderWindow;
@@ -28,13 +28,13 @@ public:
 	void setMotionController(MotionController* motionController){this->fMotionController = motionController;};
 	void setEventController(EventController* eventController){this->fEventController = eventController;};
 	void setScreenSize(int* width, int* height){this->fScreenWidth = width; this->fScreenHeight = height;};
-	void setBullets(std::list<Model*>* bullets){this->fBullets = bullets;};
+	void setBullets(std::list<Entity*>* bullets){this->fBullets = bullets;};
 	void setViews(std::list<View*>* views){this->fViews = views;};
 	sf::RenderWindow* window(){return this->fWindow;};
 	ScreenController* screenController(){return this->fScreenController;};
 	MotionController* motionController(){return this->fMotionController;};
 	EventController* eventController(){return this->fEventController;};
-	std::list<Model*>* bullets(){return this->fBullets;};
+	std::list<Entity*>* bullets(){return this->fBullets;};
 	std::list<View*>* views(){return this->fViews;};
 	int screenWidth(){return *(this->fScreenWidth);};
 	int screenHeight(){return *(this->fScreenHeight);};
@@ -46,7 +46,7 @@ private:
 	EventController* fEventController = nullptr;
 	int* fScreenWidth = nullptr;
 	int* fScreenHeight = nullptr;
-	std::list<Model*>* fBullets;
+	std::list<Entity*>* fBullets;
 	std::list<View*>* fViews;
 };
 

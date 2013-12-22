@@ -9,7 +9,7 @@
 
 void WallFactory::createWall(sf::Vector2f location){
 	Wall* wallPtr = new Wall(location, this->fConfig);
-	this->fModels->push_back(wallPtr);
+	this->fEntities->push_back(wallPtr);
 
 	WallView* wallViewPtr = new WallView(this->fConfig->window(), wallPtr);
 	this->fViews->push_back(wallViewPtr);

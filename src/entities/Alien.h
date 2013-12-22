@@ -11,13 +11,13 @@
 #include "Bullet.h"
 #include "../libraries/Size.h"
 #include "../libraries/Utilities.h"
-#include "../libraries/Model.h"
+#include "../libraries/Entity.h"
 #include <SFML/System/Vector2.hpp>
 
 /*
  * @brief The Alien model
  */
-class Alien : public Model{
+class Alien : public Entity{
 public:
 	/*
 	 * @brief Alien Constructor

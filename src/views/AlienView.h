@@ -8,7 +8,7 @@
 #ifndef ALIENVIEW_H_
 #define ALIENVIEW_H_
 
-#include "../models/Alien.h"
+#include "../entities/Alien.h"
 #include "../libraries/View.h"
 #include <SFML/Graphics.hpp>
 

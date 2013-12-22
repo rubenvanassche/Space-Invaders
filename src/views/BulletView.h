@@ -8,7 +8,7 @@
 #ifndef BULLETVIEW_H_
 #define BULLETVIEW_H_
 
-#include "../models/Bullet.h"
+#include "../entities/Bullet.h"
 #include "../libraries/View.h"
 #include <SFML/Graphics.hpp>
 

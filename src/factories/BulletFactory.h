@@ -10,7 +10,7 @@
 
 #include "../libraries/Factory.h"
 #include "../libraries/Config.h"
-#include "../models/Bullet.h"
+#include "../entities/Bullet.h"
 #include "../views/BulletView.h"
 #include <SFML/System/Vector2.hpp>
 #include <list>

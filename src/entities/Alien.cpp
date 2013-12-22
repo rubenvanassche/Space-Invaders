@@ -7,7 +7,7 @@
 
 #include "Alien.h"
 
-Alien::Alien(sf::Vector2f location, Config* config) :  Model(location, config){
+Alien::Alien(sf::Vector2f location, Config* config) :  Entity(location, config){
 	this->fMovePixels = 10;
 	this->fSize.set(24, 17);
 }

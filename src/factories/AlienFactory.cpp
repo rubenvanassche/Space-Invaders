@@ -9,7 +9,7 @@
 
 void AlienFactory::createRussel(sf::Vector2f location){
 	Alien* alienPtr = new Alien(location, this->fConfig);
-	this->fModels->push_back(alienPtr);
+	this->fEntities->push_back(alienPtr);
 
 	AlienView* alienViewPtr = new AlienView(this->fConfig->window(), alienPtr);
 	this->fViews->push_back(alienViewPtr);

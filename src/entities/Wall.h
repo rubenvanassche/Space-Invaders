@@ -11,13 +11,13 @@
 #include <SFML/System/Vector2.hpp>
 #include "../libraries/Size.h"
 #include "../libraries/Utilities.h"
-#include "../libraries/Model.h"
+#include "../libraries/Entity.h"
 #include <iostream>
 
 
-class Wall : public Model {
+class Wall : public Entity {
 public:
-	Wall(sf::Vector2f location, Config* config) : Model(location, config){this->fLifes = 3;};
+	Wall(sf::Vector2f location, Config* config) : Entity(location, config){this->fLifes = 3;};
 	virtual ~Wall();
 };
 

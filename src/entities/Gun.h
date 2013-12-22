@@ -11,14 +11,14 @@
 #include <SFML/System/Vector2.hpp>
 #include "../libraries/Size.h"
 #include "../libraries/Utilities.h"
-#include "../libraries/Model.h"
+#include "../libraries/Entity.h"
 #include "../factories/BulletFactory.h"
 #include <iostream>
 
 /*
  * @brief The Gun model
  */
-class Gun : public Model {
+class Gun : public Entity {
 public:
 	/*
 	 * @brief Gun Constructor

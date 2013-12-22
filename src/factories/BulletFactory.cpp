@@ -9,7 +9,7 @@
 
 void BulletFactory::createBullet(sf::Vector2f location, util::Direction direction){
 	Bullet* bulletPtr = new Bullet(location, direction, this->fConfig);
-	this->fModels->push_back(bulletPtr);
+	this->fEntities->push_back(bulletPtr);
 
 	BulletView* bulletViewPtr = new BulletView(this->fConfig->window(), bulletPtr);
 	this->fViews->push_back(bulletViewPtr);

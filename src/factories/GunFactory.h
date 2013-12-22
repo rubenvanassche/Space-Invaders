@@ -10,7 +10,7 @@
 
 #include "../libraries/Factory.h"
 #include "../libraries/Config.h"
-#include "../models/Gun.h"
+#include "../entities/Gun.h"
 #include "../views/GunView.h"
 #include <SFML/System/Vector2.hpp>
 #include <list>

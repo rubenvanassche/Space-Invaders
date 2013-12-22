@@ -7,7 +7,7 @@
 
 #include "Gun.h"
 
-Gun::Gun(sf::Vector2f location, int scale, Config* config) : fScale(scale), Model(location, config){
+Gun::Gun(sf::Vector2f location, int scale, Config* config) : fScale(scale), Entity(location, config){
 	this->fSize.set(4*scale, 2*scale);
 	this->fMovePixels = 10;
 	this->fBulletFactory = new BulletFactory(this->fConfig->bullets(), this->fConfig->views(), this->fConfig);

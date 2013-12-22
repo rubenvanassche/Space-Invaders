@@ -8,7 +8,7 @@
 #ifndef WALLVIEW_H_
 #define WALLVIEW_H_
 
-#include "../models/Wall.h"
+#include "../entities/Wall.h"
 #include "../libraries/View.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>

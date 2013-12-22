@@ -10,12 +10,12 @@
 
 #include "../libraries/Controller.h"
 #include "../libraries/Utilities.h"
-#include "../libraries/Model.h"
+#include "../libraries/Entity.h"
 #include <iostream>
 
 class MotionController : public Controller {
 public:
-	MotionController(std::list<Model*>* guns, std::list<Model*>* aliens, std::list<Model*>* bullets, Config* config) : fGuns(guns), fAliens(aliens), fBullets(bullets), Controller(config) {};
+	MotionController(std::list<Entity*>* guns, std::list<Entity*>* aliens, std::list<Entity*>* bullets, Config* config) : fGuns(guns), fAliens(aliens), fBullets(bullets), Controller(config) {};
 	/*
 	 * @brief Moves the gun to a certain direction
 	 *
@@ -40,9 +40,9 @@ public:
 
 	virtual ~MotionController();
 private:
-	std::list<Model*>* fGuns;
-	std::list<Model*>* fAliens;
-	std::list<Model*>* fBullets;
+	std::list<Entity*>* fGuns;
+	std::list<Entity*>* fAliens;
+	std::list<Entity*>* fBullets;
 	util::Direction fAlienDirection = util::LEFT;
 	bool fAlienWentDown = false;
 };

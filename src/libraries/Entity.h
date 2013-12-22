@@ -5,8 +5,8 @@
  *      Author: Ruben
  */
 
-#ifndef MODEL_H_
-#define MODEL_H_
+#ifndef ENTITY_H_
+#define ENTITY_H_
 
 #include "../libraries/Utilities.h"
 #include "../controllers/ScreenController.h"
@@ -14,9 +14,9 @@
 #include <SFML/System/Vector2.hpp>
 
 
-class Model {
+class Entity {
 public:
-	Model(sf::Vector2f location, Config* config) : fConfig(config), fLocation(location){};
+	Entity(sf::Vector2f location, Config* config) : fConfig(config), fLocation(location){};
 
 	/*
 	 * @brief Move this model by giving a direction
@@ -76,7 +76,7 @@ public:
 	 */
 	virtual void shoot(){return;};
 
-	virtual ~Model(){};
+	virtual ~Entity(){};
 protected:
 	Config* fConfig = nullptr;
 	sf::Vector2f fLocation;
@@ -85,4 +85,4 @@ protected:
 	int fLifes = 1;
 };
 
-#endif /* MODEL_H_ */
+#endif /* ENTITY_H_ */
