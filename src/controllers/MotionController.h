@@ -8,14 +8,14 @@
 #ifndef MOTIONCONTROLLER_H_
 #define MOTIONCONTROLLER_H_
 
+
 #include "../libraries/Controller.h"
-#include "../libraries/Utilities.h"
 #include "../libraries/Entity.h"
-#include <iostream>
+#include "../controllers/GameController.h"
 
 class MotionController : public Controller {
 public:
-	MotionController(std::list<Entity*>* guns, std::list<Entity*>* aliens, std::list<Entity*>* bullets, Config* config) : fGuns(guns), fAliens(aliens), fBullets(bullets), Controller(config) {};
+	MotionController(std::list<Entity*>* guns, std::list<Entity*>* aliens, std::list<Entity*>* bullets, SI* si) : fGuns(guns), fAliens(aliens), fBullets(bullets), Controller(si) {};
 	/*
 	 * @brief Moves the gun to a certain direction
 	 *

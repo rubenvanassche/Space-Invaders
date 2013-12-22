@@ -12,11 +12,13 @@
 #include "../controllers/ScreenController.h"
 #include "../libraries/Size.h"
 #include <SFML/System/Vector2.hpp>
+#include "Size.h"
+#include "../libraries/SI.h"
 
 
 class Entity {
 public:
-	Entity(sf::Vector2f location, Config* config) : fConfig(config), fLocation(location){};
+	Entity(sf::Vector2f location, SI* si) : fSI(si), fLocation(location){};
 
 	/*
 	 * @brief Move this model by giving a direction
@@ -78,7 +80,7 @@ public:
 
 	virtual ~Entity(){};
 protected:
-	Config* fConfig = nullptr;
+	SI* fSI = nullptr;
 	sf::Vector2f fLocation;
 	Size fSize;
 	int fMovePixels = 2;

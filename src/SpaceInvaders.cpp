@@ -1,6 +1,6 @@
 #include <vector>
 #include <iostream>
-
+/*
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
@@ -12,7 +12,10 @@
 #include "entities/Alien.h"
 #include "views/AlienView.h"
 #include "Game.h"
-#include "libraries/Utilities.h"
+#include "libraries/Utilities.h"¬
+*/
+#include "includes.h"
+#include "libraries/SI.h"
 
 std::string resourcePath(){
 	return "/media/psf/Home/documents/school/Gevorderd Programmeren/space-invaders/Resources";
@@ -79,9 +82,26 @@ int main(int argc, char * argv[])
         // Update the window
         window.display();
     }
-    */
-	Game g(1);
-	g.run();
+	*/
+
+	SI si;
+	si.controller = new SI_Controller(&si);
+	si.model = new SI_Model(&si);
+	si.view = new SI_View(&si);
+	si.factory  = new SI_Factory(&si);
+	si.window = new sf::RenderWindow(sf::VideoMode(600, 400), "Space Invaders");
+
+	si.controller->screen = new ScreenController(si.view->views, &si);
+	si.controller->event = new EventController(&si);
+	si.controller->motion = new MotionController(si.model->guns, si.model->aliens, si.model->bullets, &si);
+	si.controller->game = new GameController(&si);
+
+	si.factory->alien = new AlienFactory(si.model->aliens, si.view->views, &si);
+	si.factory->bullet = new BulletFactory(si.model->bullets, si.view->views, &si);
+	si.factory->gun = new GunFactory(si.model->guns, si.view->views, &si);
+	si.factory->wall = new WallFactory(si.model->walls, si.view->views, &si);
+
+	si.controller->game->start();
 
     return EXIT_SUCCESS;
 }

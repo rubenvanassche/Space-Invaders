@@ -15,6 +15,7 @@
 #include <SFML/System/Vector2.hpp>
 #include <list>
 
+
 class AlienFactory : public Factory{
 public:
 	// Use the Factory Constructor

@@ -8,18 +8,18 @@
 #ifndef STARTSCREENVIEW_H_
 #define STARTSCREENVIEW_H_
 
-#include "../Game.h"
+#include "../controllers/GameController.h"
 #include "../libraries/View.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <iostream>
 #include <string>
 
-class Game;
+class GameController;
 
 class StartScreenView : public View {
 public:
-	StartScreenView(sf::RenderWindow* window, Game* game) : View(window), fGame(game){};
+	StartScreenView(sf::RenderWindow* window, GameController* game) : View(window), fGame(game){};
 
 	/*
 	 * @brief Draw the Gun by returning a VertexArray
@@ -27,7 +27,7 @@ public:
 	void draw();
 	virtual ~StartScreenView();
 private:
-	Game* fGame;
+	GameController* fGame;
 };
 
 #endif /* STARTSCREENVIEW_H_ */

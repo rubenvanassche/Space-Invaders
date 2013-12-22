@@ -7,7 +7,7 @@
 
 #ifndef GAME_H_
 #define GAME_H_
-
+/*
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
@@ -37,9 +37,6 @@ class Game {
 public:
 	Game(int level);
 
-	/*
-	 * @brief generate all the needed stuff
-	 */
 	void build();
 
 	void run();
@@ -77,5 +74,6 @@ private:
 	std::shared_ptr<ScreenController> screenController;
 	std::shared_ptr<Config> config;
 };
-
+*/
 #endif /* GAME_H_ */
+

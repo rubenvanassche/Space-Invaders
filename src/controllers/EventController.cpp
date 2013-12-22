@@ -11,39 +11,39 @@
 void EventController::record(sf::Event event){
     // Close window : exit
     if (event.type == sf::Event::Closed) {
-        this->fConfig->screenController()->closeWindow();
+        this->fSI->controller->screen->closeWindow();
     }
 
     // Escape pressed : exit
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-        this->fConfig->screenController()->closeWindow();
+        this->fSI->controller->screen->closeWindow();
     }
 
     // Left key pressed : move Gun
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Left) {
-		this->fConfig->motionController()->moveGun(util::LEFT);
+		this->fSI->controller->motion->moveGun(util::LEFT);
 	}
 
     // Right key pressed : move Gun
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Right) {
-    	this->fConfig->motionController()->moveGun(util::RIGHT);
+    	this->fSI->controller->motion->moveGun(util::RIGHT);
 	}
 
     if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space){
-    	this->fConfig->motionController()->shoot();
+    	this->fSI->controller->motion->shoot();
     }
 }
 
 int EventController::startScreen(sf::Event event){
     // Close window : exit
     if (event.type == sf::Event::Closed) {
-        this->fConfig->screenController()->closeWindow();
+        this->fSI->controller->screen->closeWindow();
         return 0;
     }
 
     // Escape pressed : exit
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-        this->fConfig->screenController()->closeWindow();
+        this->fSI->controller->screen->closeWindow();
         return 0;
     }
 

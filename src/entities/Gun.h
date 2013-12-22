@@ -13,7 +13,9 @@
 #include "../libraries/Utilities.h"
 #include "../libraries/Entity.h"
 #include "../factories/BulletFactory.h"
+#include "../controllers/GameController.h"
 #include <iostream>
+
 
 /*
  * @brief The Gun model
@@ -26,7 +28,7 @@ public:
 	 * @param location A point containing info of the location of the gun
 	 * @param size A size
 	 */
-	Gun(sf::Vector2f location, int scale, Config* config);
+	Gun(sf::Vector2f location, int scale, SI* si);
 
 	/*
 	 * @brief updates the position of the Gun with an specified direction

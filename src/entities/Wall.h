@@ -17,7 +17,7 @@
 
 class Wall : public Entity {
 public:
-	Wall(sf::Vector2f location, Config* config) : Entity(location, config){this->fLifes = 3;};
+	Wall(sf::Vector2f location, SI* si) : Entity(location, si){this->fLifes = 3;};
 	virtual ~Wall();
 };
 

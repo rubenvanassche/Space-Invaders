@@ -8,8 +8,8 @@
 #ifndef GUNVIEW_H_
 #define GUNVIEW_H_
 
-#include "../entities/Gun.h"
 #include "../libraries/View.h"
+#include "../entities/Gun.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 /*
@@ -17,6 +17,9 @@
  *    ||
  * ||||||||
  */
+
+class Gun;
+
 class GunView : public View {
 public:
 	/*

@@ -4,7 +4,7 @@
  *  Created on: 16 dec. 2013
  *      Author: Ruben
  */
-
+/*
 #include "Game.h"
 
 Game::Game(int level){
@@ -159,4 +159,5 @@ Game::~Game() {
 	}
 	// TODO Auto-generated destructor stub
 }
+*/
 

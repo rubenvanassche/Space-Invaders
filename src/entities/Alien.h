@@ -14,6 +14,7 @@
 #include "../libraries/Entity.h"
 #include <SFML/System/Vector2.hpp>
 
+
 /*
  * @brief The Alien model
  */
@@ -22,7 +23,7 @@ public:
 	/*
 	 * @brief Alien Constructor
 	 */
-	Alien(sf::Vector2f location, Config* config);
+	Alien(sf::Vector2f location, SI* si);
 
 	/*
 	 * @brief Check whether a bullet collides with this Alien

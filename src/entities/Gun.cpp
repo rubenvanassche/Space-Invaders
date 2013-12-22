@@ -7,10 +7,10 @@
 
 #include "Gun.h"
 
-Gun::Gun(sf::Vector2f location, int scale, Config* config) : fScale(scale), Entity(location, config){
+Gun::Gun(sf::Vector2f location, int scale, SI* si) : fScale(scale), Entity(location, si){
 	this->fSize.set(4*scale, 2*scale);
 	this->fMovePixels = 10;
-	this->fBulletFactory = new BulletFactory(this->fConfig->bullets(), this->fConfig->views(), this->fConfig);
+	this->fBulletFactory = new BulletFactory(this->fSI->model->bullets, this->fSI->view->views, this->fSI);
 }
 
 void Gun::move(util::Direction direction){
@@ -26,7 +26,7 @@ void Gun::move(util::Direction direction){
 	}else if(direction == util::RIGHT){
 		int x = this->fLocation.x;
 		x += this->fMovePixels;
-		int maxWidth = this->fConfig->screenWidth() - this->fSize.getWidth();
+		int maxWidth = this->fSI->controller->game->srceenWidth() - this->fSize.getWidth();
 		if(x > maxWidth){
 			// Gun get's to close to border so do not change the value
 			return;
@@ -35,13 +35,13 @@ void Gun::move(util::Direction direction){
 		}
 	}
 
-	this->fConfig->screenController()->redraw();
+	this->fSI->controller->screen->redraw();
 }
 
 void Gun::shoot(){
 	sf::Vector2f bulletLocation(this->fLocation.x + (this->fSize.getWidth()/2), this->fLocation.y);
 	this->fBulletFactory->createBullet(bulletLocation, util::UP);
-	this->fConfig->screenController()->redraw();
+	this->fSI->controller->screen->redraw();
 }
 
 Gun::~Gun() {

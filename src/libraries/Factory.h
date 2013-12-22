@@ -10,19 +10,19 @@
 
 #include "Entity.h"
 #include "View.h"
-#include "Config.h"
+#include "SI.h"
 #include <list>
 #include <memory>
 
 class Factory {
 public:
-	Factory(std::list<Entity*>* entities, std::list<View*>* views, Config* config) : fEntities(entities), fViews(views), fConfig(config){};
+	Factory(std::list<Entity*>* entities, std::list<View*>* views, SI* si) : fEntities(entities), fViews(views), fSI(si){};
 
 	virtual ~Factory(){};
 protected:
 	std::list<Entity*>* fEntities;
 	std::list<View*>* fViews;
-	Config* fConfig;
+	SI* fSI;
 };
 
 #endif /* FACTORY_H_ */

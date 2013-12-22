@@ -9,16 +9,12 @@
 #define SCREENCONTROLLER_H_
 
 #include "../libraries/Controller.h"
-#include "../libraries/Utilities.h"
-#include "../libraries/Config.h"
+#include "../libraries/View.h"
 #include <SFML/Window.hpp>
-#include <iostream>
-#include <memory>
-#include "../libraries/view.h"
 
 class ScreenController : public Controller {
 public:
-	ScreenController(std::list<View*>* views, Config* config) : fViews(views), Controller(config){};
+	ScreenController(std::list<View*>* views, SI* si) : fViews(views), Controller(si){};
 
 	/*
 	 * @brief closes the window

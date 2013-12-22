@@ -8,12 +8,14 @@
 #ifndef BULLETFACTORY_H_
 #define BULLETFACTORY_H_
 
+
 #include "../libraries/Factory.h"
 #include "../libraries/Config.h"
 #include "../entities/Bullet.h"
 #include "../views/BulletView.h"
 #include <SFML/System/Vector2.hpp>
 #include <list>
+
 
 class BulletFactory : public Factory {
 public:

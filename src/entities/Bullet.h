@@ -11,12 +11,13 @@
 #include "../libraries/Entity.h"
 #include "../libraries/Utilities.h"
 
+
 /*
  * @brief The Bullet model
  */
 class Bullet : public Entity {
 public:
-	Bullet(sf::Vector2f location, util::Direction direction, Config* config) : fDirection(direction),  Entity(location, config){this->fMovePixels = 20;};
+	Bullet(sf::Vector2f location, util::Direction direction, SI* si) : fDirection(direction),  Entity(location, si){this->fMovePixels = 20;};
 
 	/*
 	 * @brief updates the position of the Bullet with an specified direction
