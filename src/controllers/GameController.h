@@ -11,6 +11,7 @@
 
 #include "../libraries/Controller.h"
 #include <SFML/Window.hpp>
+#include <iostream>
 #include "../views/StartScreenView.h"
 #include "../controllers/ScreenController.h"
 #include "../controllers/EventController.h"
@@ -19,35 +20,17 @@
 #include "../factories/BulletFactory.h"
 #include "../factories/WallFactory.h"
 #include "../factories/AlienFactory.h"
+#include "../entities/Game.h"
 
 class StartScreenView;
 
 class GameController : public Controller {
 public:
 	GameController(SI* si) : Controller(si){};
-	int srceenWidth(){return this->width;};
-	int screenHeight(){return this->height;};
 	void start();
 	void startGame();
 	void buildGame();
-
-	int getWidth(){return this->width;};
-
-	int getHeight(){return this->height;};
-
-	void setLevel(int flevel){this->level = flevel;};
-
-	int getLevel(){return this->level;};
-
 	virtual ~GameController();
-
-	int level = 1;
-	int lifes = 3;
-
-	int width = 600;
-	int height = 400;
-
-	bool startScreen = true;
 };
 
 #endif /* GAMECONTROLLER_H_ */

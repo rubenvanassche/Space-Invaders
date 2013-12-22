@@ -24,8 +24,8 @@ void MotionController::moveAliens(){
 		return;
 	}
 
-	Entity* mostLeft = *this->fAliens->begin();
-	Entity* mostRight = *this->fAliens->begin();
+	ScreenEntity* mostLeft = *this->fAliens->begin();
+	ScreenEntity* mostRight = *this->fAliens->begin();
 
 	for(auto it = this->fAliens->begin();it != this->fAliens->end();it++){
 		if((*it)->isDead() == true){
@@ -67,7 +67,7 @@ void MotionController::moveAliens(){
 	}
 
 	int Lr = mostRight->move(mostRight->getLocation().x, util::RIGHT);
-	int maxWidth = this->fSI->controller->game->srceenWidth() - mostRight->getSize().getWidth() - 5;
+	int maxWidth = this->fSI->model->game->getWidth() - mostRight->getSize().getWidth() - 5;
 	if(Lr > maxWidth){
 		if(this->fAlienWentDown == false){
 			direction = util::DOWN;
@@ -93,7 +93,7 @@ void MotionController::moveBullets(){
 	}
 
 	for(auto it = this->fBullets->begin();it != this->fBullets->end();it++){
-		if((*it)->getLocation().y < 0 or (*it)->getLocation().y > this->fSI->controller->game->screenHeight()){
+		if((*it)->getLocation().y < 0 or (*it)->getLocation().y > this->fSI->model->game->getHeight()){
 			// Bullet is of the screen so remove this one
 			this->fBullets->remove(*it);
 			/*

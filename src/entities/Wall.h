@@ -11,13 +11,13 @@
 #include <SFML/System/Vector2.hpp>
 #include "../libraries/Size.h"
 #include "../libraries/Utilities.h"
-#include "../libraries/Entity.h"
+#include "../libraries/ScreenEntity.h"
 #include <iostream>
 
 
-class Wall : public Entity {
+class Wall : public ScreenEntity {
 public:
-	Wall(sf::Vector2f location, SI* si) : Entity(location, si){this->fLifes = 3;};
+	Wall(sf::Vector2f location, SI* si) : ScreenEntity(location, si){this->fLifes = 3;};
 	virtual ~Wall();
 };
 

@@ -15,6 +15,7 @@ class SI;
 
 
 class Entity;
+class ScreenEntity;
 class View;
 class Factory;
 class Controller;
@@ -33,6 +34,7 @@ class Bullet;
 class Wall;
 class Alien;
 class Gun;
+class Game;
 
 
 namespace sf{
@@ -57,16 +59,17 @@ private:
 class SI_Model{
 public:
 	SI_Model(SI* fsi);
-	std::list<Entity*>* guns;
-	std::list<Entity*>* aliens;
-	std::list<Entity*>* walls;
-	std::list<Entity*>* bullets;
+	std::list<ScreenEntity*>* guns;
+	std::list<ScreenEntity*>* aliens;
+	std::list<ScreenEntity*>* walls;
+	std::list<ScreenEntity*>* bullets;
+	Game* game;
 	virtual ~SI_Model();
 private:
-	std::list<Entity*> fGuns;
-	std::list<Entity*> fAliens;
-	std::list<Entity*> fWalls;
-	std::list<Entity*> fBullets;
+	std::list<ScreenEntity*> fGuns;
+	std::list<ScreenEntity*> fAliens;
+	std::list<ScreenEntity*> fWalls;
+	std::list<ScreenEntity*> fBullets;
 	SI* si;
 };
 

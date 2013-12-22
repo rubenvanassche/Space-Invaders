@@ -8,16 +8,16 @@
 #ifndef BULLET_H_
 #define BULLET_H_
 
-#include "../libraries/Entity.h"
+#include "../libraries/ScreenEntity.h"
 #include "../libraries/Utilities.h"
 
 
 /*
  * @brief The Bullet model
  */
-class Bullet : public Entity {
+class Bullet : public ScreenEntity {
 public:
-	Bullet(sf::Vector2f location, util::Direction direction, SI* si) : fDirection(direction),  Entity(location, si){this->fMovePixels = 20;};
+	Bullet(sf::Vector2f location, util::Direction direction, SI* si) : fDirection(direction),  ScreenEntity(location, si){this->fMovePixels = 20;};
 
 	/*
 	 * @brief updates the position of the Bullet with an specified direction

@@ -34,35 +34,35 @@ void EventController::record(sf::Event event){
     }
 }
 
-int EventController::startScreen(sf::Event event){
+void EventController::startScreen(sf::Event event){
     // Close window : exit
     if (event.type == sf::Event::Closed) {
         this->fSI->controller->screen->closeWindow();
-        return 0;
     }
 
     // Escape pressed : exit
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
         this->fSI->controller->screen->closeWindow();
-        return 0;
     }
 
     // Space key pressed : start Game
     if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space){
-    	return 1;
+    	this->fSI->controller->game->startGame();
     }
 
     // Space key pressed : lower level
     if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Left){
-    	return 2;
+    	this->fSI->model->game->lowerLevel();
     }
 
     // Space key pressed : raise level
     if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Right){
-    	return 3;
+    	this->fSI->model->game->raiseLevel();
     }
+}
 
-    return 0;
+void EventController::die(){
+
 }
 
 EventController::~EventController() {

@@ -11,7 +11,7 @@
 #include <SFML/System/Vector2.hpp>
 #include "../libraries/Size.h"
 #include "../libraries/Utilities.h"
-#include "../libraries/Entity.h"
+#include "../libraries/ScreenEntity.h"
 #include "../factories/BulletFactory.h"
 #include "../controllers/GameController.h"
 #include <iostream>
@@ -20,7 +20,7 @@
 /*
  * @brief The Gun model
  */
-class Gun : public Entity {
+class Gun : public ScreenEntity {
 public:
 	/*
 	 * @brief Gun Constructor
@@ -65,7 +65,6 @@ public:
 
 	virtual ~Gun();
 private:
-	sf::Vector2f fLocation;
 	BulletFactory* fBulletFactory;
 	int fScale;
 };

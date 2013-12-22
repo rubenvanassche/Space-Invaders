@@ -11,14 +11,14 @@
 #include "Bullet.h"
 #include "../libraries/Size.h"
 #include "../libraries/Utilities.h"
-#include "../libraries/Entity.h"
+#include "../libraries/ScreenEntity.h"
 #include <SFML/System/Vector2.hpp>
 
 
 /*
  * @brief The Alien model
  */
-class Alien : public Entity{
+class Alien : public ScreenEntity{
 public:
 	/*
 	 * @brief Alien Constructor

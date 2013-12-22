@@ -8,51 +8,16 @@
 #include "GameController.h"
 
 void GameController::start(){
-	sf::Clock clock;
-	sf::Clock clock2;
-
-	StartScreenView startScreenView(this->fSI->window, this);
+	StartScreenView startScreenView(this->fSI->window, this->fSI->model->game);
 	this->fSI->view->views->push_back(&startScreenView);
 
 	this->fSI->controller->screen->redraw();
 
 	while(this->fSI->window->isOpen()){
-		if(startScreen == true){
-			//Process events
-			sf::Event event;
-			while (this->fSI->window->pollEvent(event)){
-				int eventCode = this->fSI->controller->event->startScreen(event);
-				if(eventCode == 1){
-					// Start Game
-					this->startGame();
-				}else if(eventCode == 2){
-					if(level > 1){
-						this->level -= 1;
-						this->fSI->controller->screen->redraw();
-					}
-				}else if(eventCode == 3){
-					this->level += 1;
-					this->fSI->controller->screen->redraw();
-				}else{
-
-				}
-			}
-		}else{
-			//Process events
-			sf::Event event;
-			while (this->fSI->window->pollEvent(event)){
-				this->fSI->controller->event->record(event);
-			}
-
-			if(clock.getElapsedTime() >= sf::seconds(0.5)){
-				this->fSI->controller->motion->moveAliens();
-				clock.restart();
-			}
-
-			if(clock2.getElapsedTime() >= sf::seconds(0.01)){
-				this->fSI->controller->motion->moveBullets();
-				clock2.restart();
-			}
+		//Process events
+		sf::Event event;
+		while (this->fSI->window->pollEvent(event)){
+			this->fSI->controller->event->startScreen(event);
 		}
 
 		// Sleep for a while so our while loop doesn't go crazy on the CPU
@@ -61,9 +26,35 @@ void GameController::start(){
 }
 
 void GameController::startGame(){
+	// Remove the startscreen View
 	this->fSI->view->views->clear();
+
+	// Build the game
 	this->buildGame();
-	this->startScreen = false;
+
+	sf::Clock clock;
+	sf::Clock clock2;
+
+	while(this->fSI->window->isOpen()){
+		//Process events
+		sf::Event event;
+		while (this->fSI->window->pollEvent(event)){
+			this->fSI->controller->event->record(event);
+		}
+
+		if(clock.getElapsedTime() >= sf::seconds(0.5)){
+			this->fSI->controller->motion->moveAliens();
+			clock.restart();
+		}
+
+		if(clock2.getElapsedTime() >= sf::seconds(0.01)){
+			this->fSI->controller->motion->moveBullets();
+			clock2.restart();
+		}
+
+		// Sleep for a while so our while loop doesn't go crazy on the CPU
+		sf::sleep(sf::seconds(0.1));
+	}
 }
 
 void GameController::buildGame(){
@@ -71,7 +62,7 @@ void GameController::buildGame(){
 	this->fSI->factory->gun->createBlaster();
 
 	// Build the wall's
-	float wallSpace = (this->fSI->controller->game->srceenWidth() - 4*44)/5;
+	float wallSpace = (this->fSI->model->game->getWidth() - 4*44)/5;
 	this->fSI->factory->wall->createWall(sf::Vector2f(wallSpace*1, 300));
 	this->fSI->factory->wall->createWall(sf::Vector2f(wallSpace*2 + 44, 300));
 	this->fSI->factory->wall->createWall(sf::Vector2f(wallSpace*3 + 44*2, 300));
@@ -112,6 +103,7 @@ void GameController::buildGame(){
 	this->fSI->factory->alien->createRussel(sf::Vector2f(130, 100));
 
 }
+
 
 GameController::~GameController() {
 	// TODO Auto-generated destructor stub

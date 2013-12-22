@@ -7,7 +7,7 @@
 
 #include "Alien.h"
 
-Alien::Alien(sf::Vector2f location, SI* si) :  Entity(location, si){
+Alien::Alien(sf::Vector2f location, SI* si) :  ScreenEntity(location, si){
 	this->fMovePixels = 10;
 	this->fSize.set(24, 17);
 }

@@ -8,7 +8,7 @@
 #ifndef FACTORY_H_
 #define FACTORY_H_
 
-#include "Entity.h"
+#include "ScreenEntity.h"
 #include "View.h"
 #include "SI.h"
 #include <list>
@@ -16,11 +16,11 @@
 
 class Factory {
 public:
-	Factory(std::list<Entity*>* entities, std::list<View*>* views, SI* si) : fEntities(entities), fViews(views), fSI(si){};
+	Factory(std::list<ScreenEntity*>* entities, std::list<View*>* views, SI* si) : fEntities(entities), fViews(views), fSI(si){};
 
 	virtual ~Factory(){};
 protected:
-	std::list<Entity*>* fEntities;
+	std::list<ScreenEntity*>* fEntities;
 	std::list<View*>* fViews;
 	SI* fSI;
 };

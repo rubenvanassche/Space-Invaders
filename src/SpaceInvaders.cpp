@@ -1,89 +1,32 @@
-#include <vector>
-#include <iostream>
-/*
-#include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
-#include <SFML/Graphics.hpp>
-#include <string>
-#include <exception>
-#include <memory>
-#include "entities/Gun.h"
-#include "views/GunView.h"
-#include "entities/Alien.h"
-#include "views/AlienView.h"
-#include "Game.h"
-#include "libraries/Utilities.h"¬
-*/
-#include "includes.h"
+#include "libraries/Controller.h"
+#include "libraries/Utilities.h"
+#include "libraries/Entity.h"
+#include "libraries/Factory.h"
 #include "libraries/SI.h"
 
-std::string resourcePath(){
-	return "/media/psf/Home/documents/school/Gevorderd Programmeren/space-invaders/Resources";
-}
+#include "controllers/ScreenController.h"
+#include "controllers/MotionController.h"
+#include "controllers/EventController.h"
+#include "controllers/GameController.h"
 
-int main(int argc, char * argv[])
-{
-	/*
-	std::cout << "the address is: " << argv [0] << std::endl;
+#include "factories/Gunfactory.h"
+#include "factories/BulletFactory.h"
+#include "factories/WallFactory.h"
+#include "factories/AlienFactory.h"
 
-    // Create the main window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Space Invaders");
-    std::shared_ptr<sf::RenderWindow> windowPtr(&window);
+#include "views/StartScreenView.h"
+#include "views/AlienView.h"
+#include "views/BulletView.h"
+#include "views/GunView.h"
+#include "views/WallView.h"
 
-    Gun g(sf::Vector2f(100,10), 10);
-    GunView gV(windowPtr.get(), &g);
-    g.appendView(&gV);
+#include "entities/Game.h"
 
-    Alien a(sf::Vector2f(100,100));
-    AlienView aV(windowPtr.get(), &a);
-    a.appendView(&aV);
+#include <vector>
+#include <iostream>
 
-    sf::Clock clock;
-    sf::Time second = sf::seconds(1.0);
 
-    // Start the game loop
-    while (window.isOpen())
-    {
-        // Process events
-        sf::Event event;
-
-        while (window.pollEvent(event))
-        {
-            // Close window : exit
-            if (event.type == sf::Event::Closed) {
-                window.close();
-            }
-
-            // Escape pressed : exit
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-                window.close();
-            }
-            // Escape pressed : exit
-			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Left) {
-				g.move(util::LEFT);
-			}
-
-			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Right) {
-				g.move(util::RIGHT);
-			}
-
-        }
-
-        //std::cout << clock.getElapsedTime().asSeconds() <<std::endl;
-
-        if(clock.getElapsedTime() >= second){
-        	clock.restart();
-        	a.move(util::LEFT);
-        }
-
-        // Clear screen
-        //window.clear();
-
-        // Update the window
-        window.display();
-    }
-	*/
-
+int main(int argc, char * argv[]){
 	SI si;
 	si.controller = new SI_Controller(&si);
 	si.model = new SI_Model(&si);
@@ -100,6 +43,8 @@ int main(int argc, char * argv[])
 	si.factory->bullet = new BulletFactory(si.model->bullets, si.view->views, &si);
 	si.factory->gun = new GunFactory(si.model->guns, si.view->views, &si);
 	si.factory->wall = new WallFactory(si.model->walls, si.view->views, &si);
+
+	si.model->game = new Game(&si);
 
 	si.controller->game->start();
 

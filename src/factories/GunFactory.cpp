@@ -16,8 +16,8 @@ void GunFactory::createBlaster(){
 	this->fViews->push_back(gunViewPtr);
 
 	// Now let's center this Gun
-	location.x = (this->fSI->controller->game->srceenWidth() - gunPtr->getSize().getWidth())/2;
-	location.y = this->fSI->controller->game->screenHeight() - gunPtr->getSize().getHeight();
+	location.x = (this->fSI->model->game->getWidth() - gunPtr->getSize().getWidth())/2;
+	location.y = this->fSI->model->game->getHeight() - gunPtr->getSize().getHeight();
 	gunPtr->move(location);
 }
 
