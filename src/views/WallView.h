@@ -8,7 +8,7 @@
 #ifndef WALLVIEW_H_
 #define WALLVIEW_H_
 
-#include "../models/Wall.h"
+#include "../entities/Wall.h"
 #include "../libraries/View.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -21,6 +21,8 @@ public:
 	 * @brief Draw the Gun by returning a VertexArray
 	 */
 	void draw();
+
+	ScreenEntity* getEntity(){return dynamic_cast<ScreenEntity*>(this->fWall);};
 
 	virtual ~WallView();
 private:

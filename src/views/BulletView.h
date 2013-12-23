@@ -8,7 +8,7 @@
 #ifndef BULLETVIEW_H_
 #define BULLETVIEW_H_
 
-#include "../models/Bullet.h"
+#include "../entities/Bullet.h"
 #include "../libraries/View.h"
 #include <SFML/Graphics.hpp>
 
@@ -16,6 +16,7 @@ class BulletView : public View{
 public:
 	BulletView(sf::RenderWindow* window, Bullet* bullet) : View(window), fBullet(bullet){};
 	void draw();
+	ScreenEntity* getEntity(){return dynamic_cast<ScreenEntity*>(this->fBullet);};
 	virtual ~BulletView();
 private:
 	Bullet* fBullet;

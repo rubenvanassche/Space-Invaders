@@ -8,7 +8,7 @@
 #ifndef ALIENVIEW_H_
 #define ALIENVIEW_H_
 
-#include "../models/Alien.h"
+#include "../entities/Alien.h"
 #include "../libraries/View.h"
 #include <SFML/Graphics.hpp>
 
@@ -33,6 +33,8 @@ public:
 	 * @brief Draw the Alien by returning a VertexArray
 	 */
 	void draw();
+
+	ScreenEntity* getEntity(){return dynamic_cast<ScreenEntity*>(this->fAlien);};
 
 	virtual ~AlienView();
 private:

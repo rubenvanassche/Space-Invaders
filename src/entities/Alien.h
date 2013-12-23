@@ -8,30 +8,22 @@
 #ifndef ALIEN_H_
 #define ALIEN_H_
 
-#include "Bullet.h"
 #include "../libraries/Size.h"
 #include "../libraries/Utilities.h"
-#include "../libraries/Model.h"
+#include "../libraries/ScreenEntity.h"
+#include "../factories/BulletFactory.h"
 #include <SFML/System/Vector2.hpp>
+
 
 /*
  * @brief The Alien model
  */
-class Alien : public Model{
+class Alien : public ScreenEntity{
 public:
 	/*
 	 * @brief Alien Constructor
 	 */
-	Alien(sf::Vector2f location, Config* config);
-
-	/*
-	 * @brief Check whether a bullet collides with this Alien
-	 *
-	 * @param bullet The bullet fired at the alien
-	 *
-	 * @return bool telling if the bullet hit the alien
-	 */
-	bool Collusion(Bullet* bullet);
+	Alien(sf::Vector2f location, SI* si);
 
 	/*
 	 * @brief updates the position of the Alien with an specified direction
@@ -40,19 +32,6 @@ public:
 	 */
 	void move(util::Direction direction);
 
-	/*
-	 * @brief Get the location of the Alien
-	 *
-	 * @return An vector2 containing the location
-	 */
-	sf::Vector2f getLocation(){return this->fLocation;};
-
-	/*
-	 * @brief Get's the scale of the alien
-	 *
-	 * @retun Integer = 1
-	 */
-	int getScale(){return 1;}
 
 	/*
 	 * @brief Get the ticktock of the alien, thsi represents which image should be used to draw
@@ -61,9 +40,15 @@ public:
 	 */
 	int getTickTock(){return this->fTickTock;};
 
+	/*
+	 * @brief shoot a bullet out of the gun of this alien
+	 */
+	void shoot();
+
 	virtual ~Alien();
 private:
 	int fTickTock = 0; // Needed for drawing the right version
+	BulletFactory* fBulletFactory;
 };
 
 #endif /* ALIEN_H_ */
