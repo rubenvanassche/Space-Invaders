@@ -33,13 +33,6 @@ SI_View::~SI_View(){
 
 }
 
-SI_Factory::SI_Factory(SI* fsi) : si(fsi){
-
-}
-
-SI_Factory::~SI_Factory(){
-
-}
 
 SI::SI() {
 

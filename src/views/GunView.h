@@ -41,7 +41,7 @@ public:
 	void draw();
 
 	// TODO: cast fGun
-	ScreenEntity* getEntity(){nullptr;};
+	//ScreenEntity* getEntity(){nullptr;};
 
 	int getScale(){return this->fScale;};
 

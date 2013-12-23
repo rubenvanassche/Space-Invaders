@@ -19,7 +19,9 @@
 class BulletFactory : public Factory {
 public:
 	using Factory::Factory;
-	void createBullet(sf::Vector2f location, util::Direction direction, ScreenEntity* from);
+	void createBullet(sf::Vector2f location, util::Direction direction, bulletType bt, ScreenEntity* from);
+	void createHumanBullet(sf::Vector2f location, ScreenEntity* from);
+	void createAlienBullet(sf::Vector2f location, ScreenEntity* from);
 	virtual ~BulletFactory();
 };
 

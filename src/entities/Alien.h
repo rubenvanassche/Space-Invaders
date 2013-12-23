@@ -11,6 +11,7 @@
 #include "../libraries/Size.h"
 #include "../libraries/Utilities.h"
 #include "../libraries/ScreenEntity.h"
+#include "../factories/BulletFactory.h"
 #include <SFML/System/Vector2.hpp>
 
 
@@ -39,9 +40,15 @@ public:
 	 */
 	int getTickTock(){return this->fTickTock;};
 
+	/*
+	 * @brief shoot a bullet out of the gun of this alien
+	 */
+	void shoot();
+
 	virtual ~Alien();
 private:
 	int fTickTock = 0; // Needed for drawing the right version
+	BulletFactory* fBulletFactory;
 };
 
 #endif /* ALIEN_H_ */

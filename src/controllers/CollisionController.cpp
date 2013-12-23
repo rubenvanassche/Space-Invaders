@@ -11,56 +11,72 @@ void CollisionController::check(){
 	// Bullets with Walls, Guns, Aliens
 	for(auto it = this->fSI->model->bullets->begin();it != this->fSI->model->bullets->end();it++){
 		// Cast *Bullet to *ScreenEntity
-		ScreenEntity* bullet = dynamic_cast<ScreenEntity*>(*it);
-		Size x = bullet->getSize();
-		std::cout << x << std::endl;
+		//ScreenEntity* bullet = dynamic_cast<ScreenEntity*>(*it);
 		// Check for each bullet if it collides with an object
-		this->withAlien(bullet);
-		//this->withGun(bullet);
-		this->withWall(bullet);
+
+		this->bulletWithAlien(*it);
+		this->bulletWithGun(*it);
+		this->bulletWithWall(*it);
 	}
 }
 
-void CollisionController::withGun(ScreenEntity* entity){
-	if(entity->isDead()){
+void CollisionController::bulletWithGun(Bullet* bullet){
+	if(bullet->isDead()){
+		return;
+	}
+
+	if(bullet->getType() == HUMAN){
 		return;
 	}
 
 	for(auto it = this->fSI->model->guns->begin();it != this->fSI->model->guns->end();it++){
-		if((*it)->collides(entity) == true){
-			std::cout << "Collide with Gun" << std::endl;
+		if((*it)->collides(bullet) == true){
+			// raise the score from the shooter
+			bullet->getFiredfrom()->raiseScore(10);
+			// kill the gun
 			(*it)->kill();
-			entity->kill();
+			// kill the bullet
+			bullet->kill();
 			break;
 		}
 	}
 }
 
-void CollisionController::withAlien(ScreenEntity* entity){
-	if(entity->isDead()){
+void CollisionController::bulletWithAlien(Bullet* bullet){
+	if(bullet->isDead()){
+		return;
+	}
+
+	if(bullet->getType() == ALIEN){
 		return;
 	}
 
 	for(auto it = this->fSI->model->aliens->begin();it != this->fSI->model->aliens->end();it++){
-		if((*it)->collides(entity) == true){
-			std::cout << "Collide with Alien x:" << (*it)->getLocation().x << " y:" << (*it)->getLocation().y << std::endl;
+		if((*it)->collides(bullet) == true){
+			// raise the score from the shooter
+			bullet->getFiredfrom()->raiseScore(10);
+			// kill the alien
 			(*it)->kill();
-			entity->kill();
+			// kill the bullet
+			bullet->kill();
 			break;
 		}
 	}
 }
 
-void CollisionController::withWall(ScreenEntity* entity){
-	if(entity->isDead()){
+void CollisionController::bulletWithWall(Bullet* bullet){
+	if(bullet->isDead()){
 		return;
 	}
 
 	for(auto it = this->fSI->model->walls->begin();it != this->fSI->model->walls->end();it++){
-		if((*it)->collides(entity) == true){
-			std::cout << "Collide with Wall" << std::endl;
+		if((*it)->collides(bullet) == true){
+			// raise the score from the shooter
+			bullet->getFiredfrom()->raiseScore(5);
+			// kill the wall
 			(*it)->kill();
-			entity->kill();
+			// kill the alien
+			bullet->kill();
 			break;
 		}
 	}

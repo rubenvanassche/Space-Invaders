@@ -9,7 +9,8 @@
 
 Gun::Gun(sf::Vector2f location, int scale, SI* si) : fScale(scale), ScreenEntity(Size(), si){
 	this->fSize = Size(4*scale, 2*scale, location);
-	this->fMovePixels = 10;
+	this->fMovePixels = 20;
+	this->fLifes = 3;
 	this->fBulletFactory = new BulletFactory(this->fSI);
 }
 
@@ -39,8 +40,8 @@ void Gun::move(util::Direction direction){
 }
 
 void Gun::shoot(){
-	sf::Vector2f bulletLocation(this->fSize.getGrabPoint().x + (this->fSize.getWidth()/2), this->fSize.getGrabPoint().y);
-	this->fBulletFactory->createBullet(bulletLocation, util::UP, this);
+	sf::Vector2f bulletLocation(this->fSize.getGrabPoint().x + (this->fSize.getWidth()/2), this->fSize.getGrabPoint().y - this->fSize.getHeight());
+	this->fBulletFactory->createHumanBullet(bulletLocation, this);
 	this->fSI->controller->screen->redraw();
 }
 

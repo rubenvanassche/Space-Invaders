@@ -7,9 +7,10 @@
 
 #include "Bullet.h"
 
-Bullet::Bullet(sf::Vector2f location, util::Direction direction, ScreenEntity* from, SI* si) : fDirection(direction), fFrom(from) ,  ScreenEntity(Size(), si){
-	this->fMovePixels = 20;
+Bullet::Bullet(sf::Vector2f location, util::Direction direction, ScreenEntity* from, bulletType bullettype, SI* si) : fDirection(direction), fFrom(from) ,  ScreenEntity(Size(), si){
+	this->fMovePixels = 10;
 	this->fSize = Size(6, 12, location);
+	this->fType = bullettype;
 }
 
 void Bullet::move(util::Direction direction){

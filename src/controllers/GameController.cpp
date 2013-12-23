@@ -34,12 +34,16 @@ void GameController::startGame(){
 
 	sf::Clock clock;
 	sf::Clock clock2;
+	sf::Clock clock3;
+
 
 	while(this->fSI->window->isOpen()){
 		//Process events
 		sf::Event event;
 		while (this->fSI->window->pollEvent(event)){
 			this->fSI->controller->event->record(event);
+			// to fix bug on linux where the aliens would stop moving because the keyboard was still busy
+			break;
 		}
 
 		if(clock.getElapsedTime() >= sf::seconds(0.5)){
@@ -52,56 +56,51 @@ void GameController::startGame(){
 			clock2.restart();
 		}
 
+		if(clock3.getElapsedTime() >= sf::seconds(3.0)){
+			this->fSI->controller->motion->shootAlien();
+			clock3.restart();
+		}
+
 		// Sleep for a while so our while loop doesn't go crazy on the CPU
-		sf::sleep(sf::seconds(0.1));
+		sf::sleep(sf::seconds(0.001));
 	}
+
 }
 
 void GameController::buildGame(){
 	// Build the gun
-	this->fSI->factory->gun->createBlaster();
+	GunFactory gunFactory(this->fSI);
+	gunFactory.createBlaster();
 
 	// Build the wall's
+	WallFactory wallFactory(this->fSI);
 	float wallSpace = (this->fSI->model->game->getWidth() - 4*44)/5;
-	this->fSI->factory->wall->createWall(sf::Vector2f(wallSpace*1, 300));
-	this->fSI->factory->wall->createWall(sf::Vector2f(wallSpace*2 + 44, 300));
-	this->fSI->factory->wall->createWall(sf::Vector2f(wallSpace*3 + 44*2, 300));
-	this->fSI->factory->wall->createWall(sf::Vector2f(wallSpace*4 + 44*3, 300));
+	wallFactory.createWall(sf::Vector2f(wallSpace*1, 300));
+	wallFactory.createWall(sf::Vector2f(wallSpace*2 + 44, 300));
+	wallFactory.createWall(sf::Vector2f(wallSpace*3 + 44*2, 300));
+	wallFactory.createWall(sf::Vector2f(wallSpace*4 + 44*3, 300));
 
 
 	// Build Aliens
-	this->fSI->factory->alien->createRussel(sf::Vector2f(50, 20));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(90, 20));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(130, 20));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(170, 20));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(210, 20));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(250, 20));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(290, 20));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(330, 20));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(370, 20));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(410, 20));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(450, 20));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(490, 20));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(530, 20));
+	AlienFactory alienFactory(this->fSI);
+	std::vector<int> alienXLocations = {50, 90, 130, 170, 210, 250, 290, 330, 370, 410, 450, 490, 530};
 
-	this->fSI->factory->alien->createRussel(sf::Vector2f(50, 60));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(90, 60));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(130, 60));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(170, 60));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(210, 60));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(250, 60));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(290, 60));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(330, 60));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(370, 60));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(410, 60));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(450, 60));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(490, 60));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(530, 60));
+	for(int i = 0;i < alienXLocations.size();i++){
+		alienFactory.createRussel(sf::Vector2f(alienXLocations.at(i), 40));
+	}
+	for(int i = 0;i < alienXLocations.size();i++){
+		alienFactory.createRussel(sf::Vector2f(alienXLocations.at(i), 80));
+	}
+	for(int i = 0;i < alienXLocations.size();i++){
+		alienFactory.createRussel(sf::Vector2f(alienXLocations.at(i), 120));
+	}
+	for(int i = 0;i < alienXLocations.size();i++){
+		alienFactory.createRussel(sf::Vector2f(alienXLocations.at(i), 160));
+	}
 
-	this->fSI->factory->alien->createRussel(sf::Vector2f(50, 100));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(90, 100));
-	this->fSI->factory->alien->createRussel(sf::Vector2f(130, 100));
-
+	// Create the infoview on top of the game
+	InfoView* info = new InfoView(this->fSI->window, this->fSI->model->guns->front());
+	this->fSI->view->views->push_back(info);
 }
 
 

@@ -30,7 +30,7 @@ void EventController::record(sf::Event event){
 	}
 
     if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space){
-    	this->fSI->controller->motion->shoot();
+    	this->fSI->controller->motion->shootGun();
     }
 }
 

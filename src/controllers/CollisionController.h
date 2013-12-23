@@ -23,9 +23,9 @@ public:
 	void check();
 	virtual ~CollisionController();
 private:
-	void withGun(ScreenEntity* entity);
-	void withAlien(ScreenEntity* entity);
-	void withWall(ScreenEntity* entity);
+	void bulletWithGun(Bullet* entity);
+	void bulletWithAlien(Bullet* entity);
+	void bulletWithWall(Bullet* entity);
 };
 
 #endif /* COLLISIONCONTROLLER_H_ */

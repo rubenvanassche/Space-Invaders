@@ -10,11 +10,6 @@
 #include "controllers/GameController.h"
 #include "controllers/CollisionController.h"
 
-#include "factories/Gunfactory.h"
-#include "factories/BulletFactory.h"
-#include "factories/WallFactory.h"
-#include "factories/AlienFactory.h"
-
 #include "views/StartScreenView.h"
 #include "views/AlienView.h"
 #include "views/BulletView.h"
@@ -32,7 +27,6 @@ int main(int argc, char * argv[]){
 	si.controller = new SI_Controller(&si);
 	si.model = new SI_Model(&si);
 	si.view = new SI_View(&si);
-	si.factory  = new SI_Factory(&si);
 	si.window = new sf::RenderWindow(sf::VideoMode(600, 400), "Space Invaders");
 
 	si.controller->screen = new ScreenController(&si);
@@ -40,11 +34,6 @@ int main(int argc, char * argv[]){
 	si.controller->motion = new MotionController(&si);
 	si.controller->game = new GameController(&si);
 	si.controller->collision = new CollisionController(&si);
-
-	si.factory->alien = new AlienFactory(&si);
-	si.factory->bullet = new BulletFactory(&si);
-	si.factory->gun = new GunFactory(&si);
-	si.factory->wall = new WallFactory(&si);
 
 	si.model->game = new Game(&si);
 

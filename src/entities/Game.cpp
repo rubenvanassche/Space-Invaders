@@ -7,24 +7,6 @@
 
 #include "Game.h"
 
-void Game::kill(){
-	if(this->isDead()){
-		// We're death so tell the EventCOntroller
-
-		return;
-	}
-
-	// We've got still some lifes so continue killing
-	this->fLifes -= 1;
-}
-
-bool Game::isDead(){
-	if(this->fLifes == 0){
-		return true;
-	}else{
-		return false;
-	}
-}
 
 void Game::raiseLevel(){
 	if(this->fLevel < 50){

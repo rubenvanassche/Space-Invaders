@@ -26,11 +26,6 @@ class MotionController;
 class GameController;
 class CollisionController;
 
-class AlienFactory;
-class BulletFactory;
-class GunFactory;
-class WallFactory;
-
 class Bullet;
 class Wall;
 class Alien;
@@ -85,23 +80,11 @@ private:
 	SI* si;
 };
 
-class SI_Factory{
-public:
-	SI_Factory(SI* fsi);
-	AlienFactory* alien;
-	BulletFactory* bullet;
-	GunFactory* gun;
-	WallFactory* wall;
-	virtual ~SI_Factory();
-private:
-	SI* si;
-};
 
 class SI {
 public:
 	SI();
 	SI_Controller* controller;
-	SI_Factory* factory;
 	SI_Model* model;
 	SI_View* view;
 	sf::RenderWindow* window;

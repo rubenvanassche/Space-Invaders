@@ -11,8 +11,11 @@
 
 #include "../libraries/Controller.h"
 #include <SFML/Window.hpp>
+#include <SFML/System.hpp>
+#include <thread>
 #include <iostream>
 #include "../views/StartScreenView.h"
+#include "../views/InfoView.h"
 #include "../controllers/ScreenController.h"
 #include "../controllers/EventController.h"
 #include "../controllers/MotionController.h"
@@ -26,7 +29,7 @@ class StartScreenView;
 
 class GameController : public Controller {
 public:
-	GameController(SI* si) : Controller(si){};
+	GameController(SI* si) :  Controller(si){};
 	void start();
 	void startGame();
 	void buildGame();

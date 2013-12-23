@@ -37,7 +37,7 @@ public:
 	virtual void move(sf::Vector2f location){this->fSize.set(location);};
 
 	/*
-	 * @brief Calculate the movement by giving an int representing the x axis
+	 * @brief Calculate the movement by giving an int representing the x axis, this doesn't change the entity
 	 *
 	 * @param value The value on which the calculation should be performed
 	 * @param direction The direction to move to
@@ -95,11 +95,27 @@ public:
 	 */
 	void appendView(View* view){this->fEntityView = view;};
 
+	/*
+	 * @brief set the speed of an Screen Entity
+	 */
+	virtual void setSpeed(int speed){this->fMovePixels = speed;};
+
+	/*
+	 * @brief raises the score from an Screen Entity
+	 */
+	virtual void raiseScore(int score){this->fScore += score;};
+
+	/*
+	 * @brief Return the Score of an Entity
+	 */
+	virtual int getScore(){return this->fScore;};
+
 	virtual ~ScreenEntity(){};
 protected:
 	Size fSize;
 	int fMovePixels = 2;
 	int fLifes = 1;
+	int fScore = 0;
 	View* fEntityView = nullptr;
 };
 

@@ -10,6 +10,7 @@
 
 #include "../libraries/Controller.h"
 #include <SFML/Window.hpp>
+#include <thread>
 #include "../controllers/ScreenController.h"
 #include "../controllers/MotionController.h"
 #include "../entities/Game.h"

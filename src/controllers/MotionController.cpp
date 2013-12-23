@@ -36,7 +36,7 @@ void MotionController::moveAliens(){
 
 		if((*it)->getLocation().x < mostLeft->getLocation().x){
 			// If our current it's X is smaller then our temp most left, change it
-				mostLeft = *it;
+			mostLeft = *it;
 		}
 
 		if((*it)->getLocation().x > mostRight->getLocation().x){
@@ -49,10 +49,6 @@ void MotionController::moveAliens(){
 		// All our Aliens are dead, so stop here
 		return;
 	}
-	Size l = mostLeft->getSize();
-	Size r = mostLeft->getSize();
-	std::cout << "mostleft: "<< l;
-	std::cout << "mostright:" << r;
 
 	// Now let's determine the movement of those Aliens
 	util::Direction direction = this->fAlienDirection;
@@ -117,12 +113,30 @@ void MotionController::moveBullets(){
 	this->fSI->controller->screen->redraw();
 }
 
-void MotionController::shoot(){
+void MotionController::shootGun(){
 	if(this->fSI->model->guns->size() == 0){
 		return;
 	}
 
 	this->fSI->model->guns->front()->shoot();
+}
+
+void MotionController::shootAlien(){
+	std::random_device rd;
+	std::default_random_engine re(rd());
+	std::uniform_int_distribution<int> uniform_dist(1, 10);
+	for(auto it = this->fSI->model->aliens->begin();it != this->fSI->model->aliens->end();it++){
+		if((*it)->isDead()){
+			continue;
+		}
+
+		int random = uniform_dist(re);
+		if(random == 1){
+			// Shoot!!!
+			(*it)->shoot();
+			break;
+		}
+	}
 }
 
 MotionController::~MotionController() {

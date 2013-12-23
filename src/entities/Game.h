@@ -20,20 +20,15 @@ public:
 
 	int getHeight(){return this->fScreenHeight;};
 
+	int getLevel(){return this->fLevel;};
+
 	void raiseLevel();
 
 	void lowerLevel();
 
-	void kill();
-
-	bool isDead();
-
-	int getLevel(){return this->fLevel;};
-
 	virtual ~Game();
 private:
 	int fLevel = 1;
-	int fLifes = 3;
 
 	int fScreenWidth = 600;
 	int fScreenHeight = 400;

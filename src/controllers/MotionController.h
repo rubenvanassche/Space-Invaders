@@ -8,7 +8,7 @@
 #ifndef MOTIONCONTROLLER_H_
 #define MOTIONCONTROLLER_H_
 
-
+#include <random>
 #include "../libraries/Controller.h"
 #include "../libraries/ScreenEntity.h"
 #include "../controllers/GameController.h"
@@ -37,7 +37,12 @@ public:
 	/*
 	 * @brief Shoots a bullet out of the gun
 	 */
-	void shoot();
+	void shootGun();
+
+	/*
+	 * @brief shoots a bullet out of a random alien
+	 */
+	void shootAlien();
 
 	virtual ~MotionController();
 private:
