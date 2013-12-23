@@ -9,12 +9,14 @@
 #define VIEW_H_
 
 #include <SFML/Graphics.hpp>
+#include "ScreenEntity.h"
 #include <memory>
 
 class View {
 public:
 	View(sf::RenderWindow* window) : fWindow(window){};
 	virtual void draw() =0;
+	virtual ScreenEntity* getEntity(){return nullptr;};
 	virtual ~View(){};
 protected:
 	sf::RenderWindow* fWindow;

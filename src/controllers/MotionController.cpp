@@ -12,31 +12,31 @@ void MotionController::moveGun(util::Direction direction){
 		std::runtime_error("Can't move the Gun up or Down only left and right");
 	}
 
-	if(this->fGuns->size() == 0){
+
+	if(this->fSI->model->guns->size() == 0){
 		return;
 	}
 
-	this->fGuns->front()->move(direction);
+	this->fSI->model->guns->front()->move(direction);
 }
 
 void MotionController::moveAliens(){
-	if(this->fAliens->size() == 0){
+	if(this->fSI->model->aliens->size() == 0){
 		return;
 	}
 
-	Model* mostLeft = *this->fAliens->begin();
-	Model* mostRight = *this->fAliens->begin();
+	ScreenEntity* mostLeft = *this->fSI->model->aliens->begin();
+	ScreenEntity* mostRight = *this->fSI->model->aliens->begin();
 
-	for(auto it = this->fAliens->begin();it != this->fAliens->end();it++){
+	for(auto it =  this->fSI->model->aliens->begin();it != this->fSI->model->aliens->end();it++){
 		if((*it)->isDead() == true){
 			// We're not working with dead Aliens so skip this one
 			continue;
 		}
 
-
 		if((*it)->getLocation().x < mostLeft->getLocation().x){
 			// If our current it's X is smaller then our temp most left, change it
-				mostLeft = *it;
+			mostLeft = *it;
 		}
 
 		if((*it)->getLocation().x > mostRight->getLocation().x){
@@ -67,7 +67,7 @@ void MotionController::moveAliens(){
 	}
 
 	int Lr = mostRight->move(mostRight->getLocation().x, util::RIGHT);
-	int maxWidth = this->fConfig->screenWidth() - mostRight->getSize().getWidth() - 5;
+	int maxWidth = this->fSI->model->game->getWidth() - mostRight->getSize().getWidth() - 5;
 	if(Lr > maxWidth){
 		if(this->fAlienWentDown == false){
 			direction = util::DOWN;
@@ -80,22 +80,25 @@ void MotionController::moveAliens(){
 	}
 
 	// Now let's move those aliens
-	for(auto it = this->fAliens->begin();it != this->fAliens->end();it++){
+	for(auto it =  this->fSI->model->aliens->begin();it != this->fSI->model->aliens->end();it++){
 		(*it)->move(direction);
 	}
 
-	this->fConfig->screenController()->redraw();
+	this->fSI->controller->screen->redraw();
 }
 
 void MotionController::moveBullets(){
-	if(this->fBullets->size() == 0){
+	if(this->fSI->model->bullets->size() == 0){
 		return;
 	}
 
-	for(auto it = this->fBullets->begin();it != this->fBullets->end();it++){
-		if((*it)->getLocation().y < 0 or (*it)->getLocation().y > this->fConfig->screenHeight()){
+	for(auto it =  this->fSI->model->bullets->begin();it != this->fSI->model->bullets->end();it++){
+		if((*it)->getLocation().y < 0 or (*it)->getLocation().y > this->fSI->model->game->getHeight()){
 			// Bullet is of the screen so remove this one
-			this->fBullets->remove(*it);
+			(*it)->kill();
+			it++;
+			this->fSI->model->bullets->erase(--it);
+			it--;
 			/*
 			 * TODO: Add a function to remove the view, can't be done now because we don't have a pointer from model to view
 			 */
@@ -105,15 +108,35 @@ void MotionController::moveBullets(){
 		(*it)->move(util::UP);
 	}
 
-	this->fConfig->screenController()->redraw();
+	this->fSI->controller->collision->check();
+
+	this->fSI->controller->screen->redraw();
 }
 
-void MotionController::shoot(){
-	if(this->fGuns->size() == 0){
+void MotionController::shootGun(){
+	if(this->fSI->model->guns->size() == 0){
 		return;
 	}
 
-	this->fGuns->front()->shoot();
+	this->fSI->model->guns->front()->shoot();
+}
+
+void MotionController::shootAlien(){
+	std::random_device rd;
+	std::default_random_engine re(rd());
+	std::uniform_int_distribution<int> uniform_dist(1, 10);
+	for(auto it = this->fSI->model->aliens->begin();it != this->fSI->model->aliens->end();it++){
+		if((*it)->isDead()){
+			continue;
+		}
+
+		int random = uniform_dist(re);
+		if(random == 1){
+			// Shoot!!!
+			(*it)->shoot();
+			break;
+		}
+	}
 }
 
 MotionController::~MotionController() {

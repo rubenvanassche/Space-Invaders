@@ -8,21 +8,19 @@
 #ifndef FACTORY_H_
 #define FACTORY_H_
 
-#include "Model.h"
+#include "ScreenEntity.h"
 #include "View.h"
-#include "Config.h"
+#include "SI.h"
 #include <list>
 #include <memory>
 
 class Factory {
 public:
-	Factory(std::list<Model*>* models, std::list<View*>* views, Config* config) : fModels(models), fViews(views), fConfig(config){};
+	Factory(SI* si) : fSI(si){};
 
 	virtual ~Factory(){};
 protected:
-	std::list<Model*>* fModels;
-	std::list<View*>* fViews;
-	Config* fConfig;
+	SI* fSI;
 };
 
 #endif /* FACTORY_H_ */

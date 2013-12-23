@@ -8,15 +8,18 @@
 #ifndef CONTROLLER_H_
 #define CONTROLLER_H_
 
-#include "Config.h"
 #include <list>
+#include "SI.h"
+//#include "Utilities.h"
+
+class SI;
 
 class Controller {
 public:
-	Controller(Config* config) : fConfig(config){};
+	Controller(SI* si) : fSI(si){};
 	virtual ~Controller(){};
 protected:
-	Config* fConfig;
+	SI* fSI;
 };
 
 #endif /* CONTROLLER_H_ */

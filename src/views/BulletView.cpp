@@ -8,6 +8,10 @@
 #include "BulletView.h"
 
 void BulletView::draw() {
+	if(this->fBullet->isDead()){
+		return;
+	}
+
 	// Get the starting point
 	sf::Vector2f bulletLocation = this->fBullet->getLocation();
 

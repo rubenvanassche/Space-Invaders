@@ -11,58 +11,58 @@
 void EventController::record(sf::Event event){
     // Close window : exit
     if (event.type == sf::Event::Closed) {
-        this->fConfig->screenController()->closeWindow();
+        this->fSI->controller->screen->closeWindow();
     }
 
     // Escape pressed : exit
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-        this->fConfig->screenController()->closeWindow();
+        this->fSI->controller->screen->closeWindow();
     }
 
     // Left key pressed : move Gun
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Left) {
-		this->fConfig->motionController()->moveGun(util::LEFT);
+		this->fSI->controller->motion->moveGun(util::LEFT);
 	}
 
     // Right key pressed : move Gun
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Right) {
-    	this->fConfig->motionController()->moveGun(util::RIGHT);
+    	this->fSI->controller->motion->moveGun(util::RIGHT);
 	}
 
     if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space){
-    	this->fConfig->motionController()->shoot();
+    	this->fSI->controller->motion->shootGun();
     }
 }
 
-int EventController::startScreen(sf::Event event){
+void EventController::startScreen(sf::Event event){
     // Close window : exit
     if (event.type == sf::Event::Closed) {
-        this->fConfig->screenController()->closeWindow();
-        return 0;
+        this->fSI->controller->screen->closeWindow();
     }
 
     // Escape pressed : exit
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
-        this->fConfig->screenController()->closeWindow();
-        return 0;
+        this->fSI->controller->screen->closeWindow();
     }
 
     // Space key pressed : start Game
     if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space){
-    	return 1;
+    	this->fSI->controller->game->startGame();
     }
 
     // Space key pressed : lower level
     if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Left){
-    	return 2;
+    	this->fSI->model->game->lowerLevel();
     }
 
     // Space key pressed : raise level
     if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Right){
-    	return 3;
+    	this->fSI->model->game->raiseLevel();
     }
+}
 
-    return 0;
+void EventController::die(){
+
 }
 
 EventController::~EventController() {

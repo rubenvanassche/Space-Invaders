@@ -8,14 +8,15 @@
 #ifndef MOTIONCONTROLLER_H_
 #define MOTIONCONTROLLER_H_
 
+#include <random>
 #include "../libraries/Controller.h"
-#include "../libraries/Utilities.h"
-#include "../libraries/Model.h"
-#include <iostream>
+#include "../libraries/ScreenEntity.h"
+#include "../controllers/GameController.h"
+#include "../controllers/CollisionController.h"
 
 class MotionController : public Controller {
 public:
-	MotionController(std::list<Model*>* guns, std::list<Model*>* aliens, std::list<Model*>* bullets, Config* config) : fGuns(guns), fAliens(aliens), fBullets(bullets), Controller(config) {};
+	MotionController(SI* si) : Controller(si) {};
 	/*
 	 * @brief Moves the gun to a certain direction
 	 *
@@ -36,13 +37,15 @@ public:
 	/*
 	 * @brief Shoots a bullet out of the gun
 	 */
-	void shoot();
+	void shootGun();
+
+	/*
+	 * @brief shoots a bullet out of a random alien
+	 */
+	void shootAlien();
 
 	virtual ~MotionController();
 private:
-	std::list<Model*>* fGuns;
-	std::list<Model*>* fAliens;
-	std::list<Model*>* fBullets;
 	util::Direction fAlienDirection = util::LEFT;
 	bool fAlienWentDown = false;
 };

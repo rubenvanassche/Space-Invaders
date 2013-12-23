@@ -7,21 +7,21 @@
 
 #include "ScreenController.h"
 void ScreenController::closeWindow(){
-	this->fConfig->window()->close();
+	this->fSI->window->close();
 }
 
 void ScreenController::redraw(){
 	// Clean the Window
-	this->fConfig->window()->clear();
+	this->fSI->window->clear();
 
 	// Redraw all our views
 
-	for(auto it = this->fViews->begin();it != this->fViews->end();it++){
+	for(auto it =  this->fSI->view->views->begin();it != this->fSI->view->views->end();it++){
 		(*it)->draw();
 	}
 
 	// Ok let's print everything
-	this->fConfig->window()->display();
+	this->fSI->window->display();
 }
 
 

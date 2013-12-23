@@ -8,14 +8,14 @@
 #ifndef STARTSCREENVIEW_H_
 #define STARTSCREENVIEW_H_
 
-#include "../Game.h"
+#include "../entities/Game.h"
 #include "../libraries/View.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <iostream>
 #include <string>
 
-class Game;
+class GameController;
 
 class StartScreenView : public View {
 public:

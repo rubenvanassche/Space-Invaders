@@ -35,7 +35,9 @@ void AlienView::draw(){
 		sf::Sprite sprite(texture);
 
 		sprite.setPosition(alienLocation);
+
 		this->fWindow->draw(sprite);
+
 	}
 }
 
