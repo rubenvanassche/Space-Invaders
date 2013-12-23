@@ -34,6 +34,8 @@ public:
 	 */
 	void draw();
 
+	ScreenEntity* getEntity(){return dynamic_cast<ScreenEntity*>(this->fAlien);};
+
 	virtual ~AlienView();
 private:
 	Alien* fAlien = nullptr;

@@ -16,7 +16,7 @@ void ScreenController::redraw(){
 
 	// Redraw all our views
 
-	for(auto it = this->fViews->begin();it != this->fViews->end();it++){
+	for(auto it =  this->fSI->view->views->begin();it != this->fSI->view->views->end();it++){
 		(*it)->draw();
 	}
 

@@ -22,6 +22,8 @@ public:
 	 */
 	void draw();
 
+	ScreenEntity* getEntity(){return dynamic_cast<ScreenEntity*>(this->fWall);};
+
 	virtual ~WallView();
 private:
 	Wall* fWall = nullptr;

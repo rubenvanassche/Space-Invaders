@@ -17,7 +17,7 @@
 
 class Wall : public ScreenEntity {
 public:
-	Wall(sf::Vector2f location, SI* si) : ScreenEntity(location, si){this->fLifes = 3;};
+	Wall(sf::Vector2f location, SI* si);
 	virtual ~Wall();
 };
 

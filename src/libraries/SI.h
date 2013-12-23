@@ -24,6 +24,7 @@ class ScreenController;
 class EventController;
 class MotionController;
 class GameController;
+class CollisionController;
 
 class AlienFactory;
 class BulletFactory;
@@ -51,6 +52,7 @@ public:
 	EventController* event;
 	GameController* game;
 	MotionController* motion;
+	CollisionController* collision;
 	virtual ~SI_Controller();
 private:
 	SI* si;
@@ -59,17 +61,17 @@ private:
 class SI_Model{
 public:
 	SI_Model(SI* fsi);
-	std::list<ScreenEntity*>* guns;
-	std::list<ScreenEntity*>* aliens;
-	std::list<ScreenEntity*>* walls;
-	std::list<ScreenEntity*>* bullets;
+	std::list<Gun*>* guns;
+	std::list<Alien*>* aliens;
+	std::list<Wall*>* walls;
+	std::list<Bullet*>* bullets;
 	Game* game;
 	virtual ~SI_Model();
 private:
-	std::list<ScreenEntity*> fGuns;
-	std::list<ScreenEntity*> fAliens;
-	std::list<ScreenEntity*> fWalls;
-	std::list<ScreenEntity*> fBullets;
+	std::list<Gun*> fGuns;
+	std::list<Alien*> fAliens;
+	std::list<Wall*> fWalls;
+	std::list<Bullet*> fBullets;
 	SI* si;
 };
 

@@ -16,6 +16,7 @@ class BulletView : public View{
 public:
 	BulletView(sf::RenderWindow* window, Bullet* bullet) : View(window), fBullet(bullet){};
 	void draw();
+	ScreenEntity* getEntity(){return dynamic_cast<ScreenEntity*>(this->fBullet);};
 	virtual ~BulletView();
 private:
 	Bullet* fBullet;

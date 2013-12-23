@@ -14,7 +14,7 @@
 
 class ScreenController : public Controller {
 public:
-	ScreenController(std::list<View*>* views, SI* si) : fViews(views), Controller(si){};
+	ScreenController(SI* si) : Controller(si){};
 
 	/*
 	 * @brief closes the window
@@ -26,8 +26,6 @@ public:
 	 */
 	void redraw();
 	virtual ~ScreenController();
-private:
-	std::list<View*>* fViews;
 };
 
 #endif /* SCREENCONTROLLER_H_ */

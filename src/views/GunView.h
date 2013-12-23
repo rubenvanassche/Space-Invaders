@@ -8,8 +8,8 @@
 #ifndef GUNVIEW_H_
 #define GUNVIEW_H_
 
-#include "../libraries/View.h"
 #include "../entities/Gun.h"
+#include "../libraries/View.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 /*
@@ -17,8 +17,6 @@
  *    ||
  * ||||||||
  */
-
-class Gun;
 
 class GunView : public View {
 public:
@@ -41,6 +39,9 @@ public:
 	 * @brief Draw the Gun by returning a VertexArray
 	 */
 	void draw();
+
+	// TODO: cast fGun
+	ScreenEntity* getEntity(){nullptr;};
 
 	int getScale(){return this->fScale;};
 

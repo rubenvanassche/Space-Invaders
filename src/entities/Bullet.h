@@ -17,7 +17,7 @@
  */
 class Bullet : public ScreenEntity {
 public:
-	Bullet(sf::Vector2f location, util::Direction direction, SI* si) : fDirection(direction),  ScreenEntity(location, si){this->fMovePixels = 20;};
+	Bullet(sf::Vector2f location, util::Direction direction, ScreenEntity* from, SI* si);
 
 	/*
 	 * @brief updates the position of the Bullet with an specified direction
@@ -26,9 +26,15 @@ public:
 	 */
 	void move(util::Direction direction);
 
+	/*
+	 * @brief check if the bullet is dead if so it also removes the View corresponding with this bullet
+	 */
+	bool isDead();
+
 	virtual ~Bullet();
 private:
 	util::Direction fDirection;
+	ScreenEntity* fFrom;
 };
 
 #endif /* BULLET_H_ */

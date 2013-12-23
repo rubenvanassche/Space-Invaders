@@ -12,10 +12,11 @@
 #include "../libraries/Controller.h"
 #include "../libraries/ScreenEntity.h"
 #include "../controllers/GameController.h"
+#include "../controllers/CollisionController.h"
 
 class MotionController : public Controller {
 public:
-	MotionController(std::list<ScreenEntity*>* guns, std::list<ScreenEntity*>* aliens, std::list<ScreenEntity*>* bullets, SI* si) : fGuns(guns), fAliens(aliens), fBullets(bullets), Controller(si) {};
+	MotionController(SI* si) : Controller(si) {};
 	/*
 	 * @brief Moves the gun to a certain direction
 	 *
@@ -40,9 +41,6 @@ public:
 
 	virtual ~MotionController();
 private:
-	std::list<ScreenEntity*>* fGuns;
-	std::list<ScreenEntity*>* fAliens;
-	std::list<ScreenEntity*>* fBullets;
 	util::Direction fAlienDirection = util::LEFT;
 	bool fAlienWentDown = false;
 };

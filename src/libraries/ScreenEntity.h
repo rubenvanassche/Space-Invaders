@@ -12,6 +12,7 @@
 #include "../controllers/ScreenController.h"
 #include "../libraries/Size.h"
 #include "../libraries/Entity.h"
+#include "../libraries/View.h"
 #include <SFML/System/Vector2.hpp>
 #include "Size.h"
 #include "../libraries/SI.h"
@@ -19,17 +20,24 @@
 
 class ScreenEntity : public Entity {
 public:
-	ScreenEntity(sf::Vector2f location, SI* si) : fLocation(location), Entity(si){};
+	ScreenEntity(Size size, SI* si) : fSize(size), Entity(si){};
 
 	/*
 	 * @brief Move this model by giving a direction
 	 *
 	 * @param direction The direction to move to
 	 */
-	virtual void move(util::Direction direction){util::move(this->fLocation, direction, this->fMovePixels);};
+	virtual void move(util::Direction direction);
 
 	/*
-	 * @brief Calculate the movement by giving an int
+	 * @brief Change the location of the Entity by a given vector
+	 *
+	 * @param location The Vector to move to
+	 */
+	virtual void move(sf::Vector2f location){this->fSize.set(location);};
+
+	/*
+	 * @brief Calculate the movement by giving an int representing the x axis
 	 *
 	 * @param value The value on which the calculation should be performed
 	 * @param direction The direction to move to
@@ -38,20 +46,21 @@ public:
 	 */
 	virtual int move(int value, util::Direction direction);
 
+	/*
+	 * @brief Collision support for Screen Entity's, check if this entity collides with another Screen Entity
+	 *
+	 * @param otherEntity the other Entity to check with
+	 *
+	 * @param bool Returns true of the entities collide
+	 */
+	virtual bool collides(ScreenEntity* otherEntity);
 
 	/*
 	 * @brief Get the location of the model object
 	 *
 	 * @return An vector2 containing the location
 	 */
-	virtual sf::Vector2f getLocation(){return this->fLocation;};
-
-	/*
-	 * @brief Get the scale of the model object
-	 *
-	 * @return An int
-	 */
-	virtual int getScale(){return 1;};
+	virtual sf::Vector2f getLocation(){return this->fSize.getGrabPoint();};
 
 	/*
 	 * @brief Get the size of this Model
@@ -65,7 +74,12 @@ public:
 	 *
 	 * #return bool representing if the Model is dead or not
 	 */
-	bool isDead(){if(fLifes == 0){return true;}else{return false;}};
+	bool isDead();
+
+	/*
+	 * @brief Kills an Entity(remove one life)
+	 */
+	virtual void kill();
 
 	/*
 	 * @brief Get information about how many lives this Model has
@@ -75,16 +89,18 @@ public:
 	int getLifes(){return this->fLifes;};
 
 	/*
-	 * TODO: Remove this
+	 * @brief Set yhe view corresponding with the screen entity
+	 *
+	 * @param view A pointer to the view object corresponding with this entity
 	 */
-	virtual void shoot(){return;};
+	void appendView(View* view){this->fEntityView = view;};
 
 	virtual ~ScreenEntity(){};
 protected:
-	sf::Vector2f fLocation;
 	Size fSize;
 	int fMovePixels = 2;
 	int fLifes = 1;
+	View* fEntityView = nullptr;
 };
 
 #endif /* SCREENENTITY_H_ */

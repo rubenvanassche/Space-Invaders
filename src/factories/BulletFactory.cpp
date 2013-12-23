@@ -7,12 +7,12 @@
 
 #include "BulletFactory.h"
 
-void BulletFactory::createBullet(sf::Vector2f location, util::Direction direction){
-	Bullet* bulletPtr = new Bullet(location, direction, this->fSI);
-	this->fEntities->push_back(bulletPtr);
+void BulletFactory::createBullet(sf::Vector2f location, util::Direction direction, ScreenEntity* from){
+	Bullet* bulletPtr = new Bullet(location, direction, from, this->fSI);
+	this->fSI->model->bullets->push_back(bulletPtr);
 
 	BulletView* bulletViewPtr = new BulletView(this->fSI->window, bulletPtr);
-	this->fViews->push_back(bulletViewPtr);
+	this->fSI->view->views->push_back(bulletViewPtr);
 }
 
 

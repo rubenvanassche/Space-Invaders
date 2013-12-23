@@ -19,7 +19,7 @@
 class BulletFactory : public Factory {
 public:
 	using Factory::Factory;
-	void createBullet(sf::Vector2f location, util::Direction direction);
+	void createBullet(sf::Vector2f location, util::Direction direction, ScreenEntity* from);
 	virtual ~BulletFactory();
 };
 

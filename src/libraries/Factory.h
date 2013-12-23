@@ -16,12 +16,10 @@
 
 class Factory {
 public:
-	Factory(std::list<ScreenEntity*>* entities, std::list<View*>* views, SI* si) : fEntities(entities), fViews(views), fSI(si){};
+	Factory(SI* si) : fSI(si){};
 
 	virtual ~Factory(){};
 protected:
-	std::list<ScreenEntity*>* fEntities;
-	std::list<View*>* fViews;
 	SI* fSI;
 };
 

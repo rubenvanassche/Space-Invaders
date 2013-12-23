@@ -7,17 +7,14 @@
 
 #include "Alien.h"
 
-Alien::Alien(sf::Vector2f location, SI* si) :  ScreenEntity(location, si){
+Alien::Alien(sf::Vector2f location, SI* si) :  ScreenEntity(Size(), si){
 	this->fMovePixels = 10;
-	this->fSize.set(24, 17);
+	this->fSize = Size(24, 17, location);
 }
 
-bool Alien::Collusion(Bullet* bullet){
-
-}
 
 void Alien::move(util::Direction direction){
-	bool success =  util::move(this->fLocation, direction, this->fMovePixels);
+	bool success =  util::move(this->fSize, direction, this->fMovePixels);
 	if(this->fTickTock == 0){
 		this->fTickTock = 1;
 	}else if(this->fTickTock == 1){

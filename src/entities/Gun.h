@@ -38,23 +38,16 @@ public:
 	void move(util::Direction direction);
 
 	/*
-	 * @brief Change the location of the Alien by a given vector
+	 * @brief Change the location of the Entity by a given vector
 	 *
 	 * @param location The Vector to move to
 	 */
-	virtual void move(sf::Vector2f location){this->fLocation = location;};
-
-	/*
-	 * @brief Get the location of the gun
-	 *
-	 * @return An vector2 containing the location
-	 */
-	sf::Vector2f getLocation(){return this->fLocation;};
+	virtual void move(sf::Vector2f location){this->fSize.set(location);};
 
 	/*
 	 * @brief Get the scale of the gun
 	 *
-	 * @retunr An int
+	 * @return An int
 	 */
 	int getScale(){return this->fScale;};
 

@@ -10,10 +10,10 @@
 void GunFactory::createBlaster(){
 	sf::Vector2f location(0,0);
 	Gun* gunPtr = new Gun(location, 12, this->fSI);
-	this->fEntities->push_back(gunPtr);
+	this->fSI->model->guns->push_back(gunPtr);
 
 	GunView* gunViewPtr = new GunView(this->fSI->window, gunPtr);
-	this->fViews->push_back(gunViewPtr);
+	this->fSI->view->views->push_back(gunViewPtr);
 
 	// Now let's center this Gun
 	location.x = (this->fSI->model->game->getWidth() - gunPtr->getSize().getWidth())/2;

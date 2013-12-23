@@ -7,31 +7,31 @@
 
 #include "Gun.h"
 
-Gun::Gun(sf::Vector2f location, int scale, SI* si) : fScale(scale), ScreenEntity(location, si){
-	this->fSize.set(4*scale, 2*scale);
+Gun::Gun(sf::Vector2f location, int scale, SI* si) : fScale(scale), ScreenEntity(Size(), si){
+	this->fSize = Size(4*scale, 2*scale, location);
 	this->fMovePixels = 10;
-	this->fBulletFactory = new BulletFactory(this->fSI->model->bullets, this->fSI->view->views, this->fSI);
+	this->fBulletFactory = new BulletFactory(this->fSI);
 }
 
 void Gun::move(util::Direction direction){
 	if(direction == util::LEFT){
-		int x = this->fLocation.x;
-		x -= this->fMovePixels;
-		if(x < 0){
+		sf::Vector2f vector = this->fSize.getGrabPoint();
+		vector.x -= this->fMovePixels;
+		if(vector.x < 0){
 			// Gun get's to close to border so do not change the value
 			return;
 		}else{
-			this->fLocation.x = x;
+			this->fSize.set(vector);
 		}
 	}else if(direction == util::RIGHT){
-		int x = this->fLocation.x;
-		x += this->fMovePixels;
+		sf::Vector2f vector = this->fSize.getGrabPoint();
+		vector.x += this->fMovePixels;
 		int maxWidth = this->fSI->model->game->getWidth() - this->fSize.getWidth();
-		if(x > maxWidth){
+		if(vector.x > maxWidth){
 			// Gun get's to close to border so do not change the value
 			return;
 		}else{
-			this->fLocation.x = x;
+			this->fSize.set(vector);
 		}
 	}
 
@@ -39,8 +39,8 @@ void Gun::move(util::Direction direction){
 }
 
 void Gun::shoot(){
-	sf::Vector2f bulletLocation(this->fLocation.x + (this->fSize.getWidth()/2), this->fLocation.y);
-	this->fBulletFactory->createBullet(bulletLocation, util::UP);
+	sf::Vector2f bulletLocation(this->fSize.getGrabPoint().x + (this->fSize.getWidth()/2), this->fSize.getGrabPoint().y);
+	this->fBulletFactory->createBullet(bulletLocation, util::UP, this);
 	this->fSI->controller->screen->redraw();
 }
 
