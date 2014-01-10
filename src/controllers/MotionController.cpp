@@ -47,6 +47,7 @@ void MotionController::moveAliens(){
 
 	if(mostLeft->isDead() == true and mostRight->isDead() == true){
 		// All our Aliens are dead, so stop here
+		this->fSI->controller->game->gameWon();
 		return;
 	}
 

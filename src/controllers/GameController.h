@@ -16,6 +16,7 @@
 #include <iostream>
 #include "../views/StartScreenView.h"
 #include "../views/InfoView.h"
+#include "../views/GameOverView.h"
 #include "../controllers/ScreenController.h"
 #include "../controllers/EventController.h"
 #include "../controllers/MotionController.h"
@@ -32,7 +33,9 @@ public:
 	GameController(SI* si) :  Controller(si){};
 	void start();
 	void startGame();
-	void buildGame();
+	void buildGame(int level);
+	void gameOver();
+	void gameWon();
 	virtual ~GameController();
 };
 

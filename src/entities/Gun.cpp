@@ -45,6 +45,7 @@ void Gun::shoot(){
 	this->fSI->controller->screen->redraw();
 }
 
+
 Gun::~Gun() {
 	// TODO Auto-generated destructor stub
 	delete this->fBulletFactory;

@@ -30,7 +30,7 @@ void GameController::startGame(){
 	this->fSI->view->views->clear();
 
 	// Build the game
-	this->buildGame();
+	this->buildGame(this->fSI->model->game->getLevel());
 
 	sf::Clock clock;
 	sf::Clock clock2;
@@ -61,13 +61,18 @@ void GameController::startGame(){
 			clock3.restart();
 		}
 
+		// Check for if dead
+		if(this->fSI->model->guns->front()->isDead()){
+			this->gameOver();
+		}
+
 		// Sleep for a while so our while loop doesn't go crazy on the CPU
 		sf::sleep(sf::seconds(0.001));
 	}
 
 }
 
-void GameController::buildGame(){
+void GameController::buildGame(int level){
 	// Build the gun
 	GunFactory gunFactory(this->fSI);
 	gunFactory.createBlaster();
@@ -101,6 +106,39 @@ void GameController::buildGame(){
 	// Create the infoview on top of the game
 	InfoView* info = new InfoView(this->fSI->window, this->fSI->model->guns->front());
 	this->fSI->view->views->push_back(info);
+}
+
+void GameController::gameOver(){
+	while(this->fSI->window->isOpen()){
+		//Process events
+		sf::Event event;
+		while (this->fSI->window->pollEvent(event)){
+			this->fSI->controller->event->startScreen(event);
+		}
+
+		GameOverView gameOver(this->fSI->window, this->fSI->model->game);
+		this->fSI->view->views->push_back(&gameOver);
+		this->fSI->controller->screen->redraw();
+
+
+		// Sleep for a while so our while loop doesn't go crazy on the CPU
+		sf::sleep(sf::seconds(0.1));
+	}
+}
+
+void GameController::gameWon(){
+	while(this->fSI->window->isOpen()){
+		//Process events
+		sf::Event event;
+		while (this->fSI->window->pollEvent(event)){
+			this->fSI->controller->event->startScreen(event);
+		}
+
+		std::cout << "Game Won" << std::endl;
+
+		// Sleep for a while so our while loop doesn't go crazy on the CPU
+		sf::sleep(sf::seconds(0.1));
+	}
 }
 
 
