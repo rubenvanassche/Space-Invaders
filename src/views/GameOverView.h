@@ -8,7 +8,7 @@
 #ifndef GAMEOVERVIEW_H_
 #define GAMEOVERVIEW_H_
 
-#include "../libraries/view.h"
+#include "../libraries/View.h"
 #include "../entities/Game.h"
 #include <SFML/Graphics.hpp>
 

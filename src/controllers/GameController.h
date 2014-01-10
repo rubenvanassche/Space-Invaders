@@ -20,7 +20,7 @@
 #include "../controllers/ScreenController.h"
 #include "../controllers/EventController.h"
 #include "../controllers/MotionController.h"
-#include "../factories/Gunfactory.h"
+#include "../factories/GunFactory.h"
 #include "../factories/BulletFactory.h"
 #include "../factories/WallFactory.h"
 #include "../factories/AlienFactory.h"
