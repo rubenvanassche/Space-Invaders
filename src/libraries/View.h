@@ -1,4 +1,4 @@
-/*
+/**
  * View.h
  *
  *  Created on: 16 dec. 2013
@@ -13,12 +13,12 @@
 #include "Assets.h"
 #include <memory>
 
-/*
+/**
  * @brief The Library for views
  */
 class View {
 public:
-	/*
+	/**
 	 * @brief The constructor for View
 	 *
 	 * @param window The window the view should be drawn on
@@ -26,12 +26,12 @@ public:
 	 */
 	View(sf::RenderWindow* window, Assets* assets) : fAssets(assets), fWindow(window){};
 
-	/*
+	/**
 	 * @brief Draw this view to the window
 	 */
 	virtual void draw() =0;
 
-	/*
+	/**
 	 * @brief Returns the entity this view is connected to
 	 *
 	 * @return A pointer to the ScreenEntity
@@ -44,4 +44,4 @@ protected:
 	Assets* fAssets;
 };
 
-#endif /* VIEW_H_ */
+#endif /** VIEW_H_ */

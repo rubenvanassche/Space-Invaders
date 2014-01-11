@@ -1,4 +1,4 @@
-/*
+/**
  * Gun.h
  *
  *  Created on: 16 dec. 2013
@@ -17,12 +17,12 @@
 #include <iostream>
 
 
-/*
+/**
  * @brief The Gun Entity
  */
 class Gun : public ScreenEntity {
 public:
-	/*
+	/**
 	 * @brief Gun Constructor
 	 *
 	 * @param location A point containing info of the location of the gun
@@ -31,28 +31,28 @@ public:
 	 */
 	Gun(sf::Vector2f location, int scale, SI* si);
 
-	/*
+	/**
 	 * @brief updates the position of the Gun with an specified direction
 	 *
 	 * @param direction the direction to go to
 	 */
 	void move(util::Direction direction);
 
-	/*
+	/**
 	 * @brief Change the location of the Entity by a given vector
 	 *
 	 * @param location The Vector to move to
 	 */
 	virtual void move(sf::Vector2f location){this->fSize.set(location);};
 
-	/*
+	/**
 	 * @brief Get the scale of the gun
 	 *
 	 * @return An int
 	 */
 	int getScale(){return this->fScale;};
 
-	/*
+	/**
 	 * @brief Shoot a bullet out of the gun
 	 */
 	void shoot();
@@ -63,4 +63,4 @@ private:
 	int fScale;
 };
 
-#endif /* GUN_H_ */
+#endif /** GUN_H_ */

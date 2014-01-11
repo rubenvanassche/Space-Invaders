@@ -1,4 +1,4 @@
-/*
+/**
  * GunView.cpp
  *
  *  Created on: 16 dec. 2013

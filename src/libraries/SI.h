@@ -1,4 +1,4 @@
-/*
+/**
  * SI.h
  *
  *  Created on: 22 dec. 2013
@@ -81,7 +81,7 @@ private:
 	SI* si;
 };
 
-/*
+/**
  * @brief The Space Invaders Elements, the connection through the whole system
  */
 class SI {
@@ -96,4 +96,4 @@ public:
 };
 
 
-#endif /* SI_H_ */
+#endif /*** SI_H_ */

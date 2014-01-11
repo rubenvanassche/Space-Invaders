@@ -1,4 +1,4 @@
-/*
+/**
  * GunView.h
  *
  *  Created on: 16 dec. 2013
@@ -13,12 +13,12 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-/*
+/**
  * @brief View representing a Gun
  */
 class GunView : public View {
 public:
-	/*
+	/**
 	 * @brief Constructor for the Gun View
 	 *
 	 * @param window A pointer to the window instance
@@ -27,7 +27,7 @@ public:
 	 */
 	GunView(sf::RenderWindow* window, Assets* assets, Gun* gun) : fGun(gun), View(window, assets){this->fColor = sf::Color(255, 0, 0);};
 
-	/*
+	/**
 	 * @brief Constructor for the Alien View
 	 *
 	 * @param window A pointer to the window instance
@@ -37,7 +37,7 @@ public:
 	 */
 	GunView(sf::RenderWindow* window, Assets* assets, Gun* gun, sf::Color color) : fGun(gun), fColor(color), View(window, assets){};
 
-	/*
+	/**
 	 * @brief Draw the Gun
 	 */
 	void draw();
@@ -45,7 +45,7 @@ public:
 	// TODO: cast fGun
 	//ScreenEntity* getEntity(){nullptr;};
 
-	/*
+	/**
 	 * @brief Get the scale of the gun
 	 *
 	 * @return an int representing the scale
@@ -59,4 +59,4 @@ private:
 	int fScale = 1;
 };
 
-#endif /* GUNVIEW_H_ */
+#endif /** GUNVIEW_H_ */

@@ -5,13 +5,13 @@
 #include "Size.h"
 #include <SFML/System/Vector2.hpp>
 
-/*
+/**
  * @brief A namespace with usefull utilities
  */
 namespace util{
 	enum Direction{UP, DOWN, LEFT, RIGHT};
 
-	/*
+	/**
 	 * @brief Move an object's size
 	 *
 	 * @param size The size object to work on
@@ -21,4 +21,4 @@ namespace util{
 	bool move(Size& size, Direction direction, int movePixels);
 };
 
-#endif /* POINT_H_ */
+#endif /*** POINT_H_ */

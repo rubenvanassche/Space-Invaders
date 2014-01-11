@@ -1,4 +1,4 @@
-/*
+/**
  * ScreenController.h
  *
  *  Created on: 20 dec. 2013
@@ -12,29 +12,29 @@
 #include "../libraries/View.h"
 #include <SFML/Window.hpp>
 
-/*
+/**
  * @brief The Controller who handles the screen
  */
 class ScreenController : public Controller {
 public:
-	/*
+	/**
 	 * @brief Constructor
 	 *
 	 * @param si The Space Invaders Element
 	 */
 	ScreenController(SI* si) : Controller(si){};
 
-	/*
+	/**
 	 * @brief closes the window
 	 */
 	void closeWindow();
 
-	/*
+	/**
 	 * @brief redraws the whole window
 	 */
 	void redraw();
 
-	/*
+	/**
 	 * @brief Draws a view, just one
 	 *
 	 * @param view The view to draw
@@ -44,4 +44,4 @@ public:
 	virtual ~ScreenController();
 };
 
-#endif /* SCREENCONTROLLER_H_ */
+#endif /** SCREENCONTROLLER_H_ */

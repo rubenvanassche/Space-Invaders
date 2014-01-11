@@ -1,4 +1,4 @@
-/*
+/**
  * Bullet.h
  *
  *  Created on: 7 dec. 2013
@@ -13,12 +13,12 @@
 
 enum bulletType {ALIEN, HUMAN};
 
-/*
+/**
  * @brief The Bullet Entity
  */
 class Bullet : public ScreenEntity {
 public:
-	/*
+	/**
 	 * @brief Bullet Constructor
 	 *
 	 * @param location The location of the Bullet
@@ -29,28 +29,28 @@ public:
 	 */
 	Bullet(sf::Vector2f location, util::Direction direction, ScreenEntity* from, bulletType bullettype, SI* si);
 
-	/*
+	/**
 	 * @brief updates the position of the Bullet with an specified direction
 	 *
 	 * @param direction the direction to go to
 	 */
 	void move(util::Direction direction);
 
-	/*
+	/**
 	 * @brief get a pointer to the screen entity from where this bullet was fired
 	 *
 	 * @return A ScreenEntity pointer to the entity from where this bullet was shot
 	 */
 	ScreenEntity* getFiredfrom(){return this->fFrom;};
 
-	/*
+	/**
 	 * @brief get the type of bullet(ALIEN, HUMAN)
 	 *
 	 * @return A bulletType
 	 */
 	bulletType getType(){return this->fType;};
 
-	/*
+	/**
 	 * @brief Kills an Entity(remove one life)
 	 *
 	 * @param forced Default false, when true it will not reduce one life but kill the whole bullet
@@ -64,4 +64,4 @@ private:
 	bulletType fType;
 };
 
-#endif /* BULLET_H_ */
+#endif /** BULLET_H_ */

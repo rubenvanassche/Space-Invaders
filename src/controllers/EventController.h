@@ -1,4 +1,4 @@
-/*
+/**
  * EventController.h
  *
  *  Created on: 20 dec. 2013
@@ -15,29 +15,29 @@
 #include "../controllers/MotionController.h"
 #include "../entities/Game.h"
 
-/*
+/**
  * @brief Controller which handles the events within the game
  */
 class EventController : public Controller{
 public:
-	/*
+	/**
 	 * @brief Constructor
 	 *
 	 * @param si The Space Invaders Element
 	 */
 	EventController(SI* si) : Controller(si){};
 
-	/*
+	/**
 	 * @brief records an user defined event during the game
 	 */
 	void record(sf::Event event);
 
-	/*
+	/**
 	 * @brief records an user defined event during the start screen
 	 */
 	void startScreen(sf::Event event);
 
-	/*
+	/**
 	 * @brief records an user defined event during the gameover or gamewon screen
 	 */
 	void gameEndScreen(sf::Event event);
@@ -46,4 +46,4 @@ public:
 
 };
 
-#endif /* EVENTCONTROLLER_H_ */
+#endif /** EVENTCONTROLLER_H_ */

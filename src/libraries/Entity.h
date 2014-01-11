@@ -1,4 +1,4 @@
-/*
+/**
  * Model.h
  *
  *  Created on: 16 dec. 2013
@@ -10,12 +10,12 @@
 
 #include "../libraries/SI.h"
 
-/*
+/**
  * @brief The library for Entities
  */
 class Entity {
 public:
-	/*
+	/**
 	 * @brief The Entity Constructor
 	 *
 	 * @param si The Space Invaders Element
@@ -27,4 +27,4 @@ protected:
 	SI* fSI = nullptr;
 };
 
-#endif /* ENTITY_H_ */
+#endif /*** ENTITY_H_ */

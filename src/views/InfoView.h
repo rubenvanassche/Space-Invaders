@@ -1,4 +1,4 @@
-/*
+/**
  * InfoView.h
  *
  *  Created on: 23 dec. 2013
@@ -15,12 +15,12 @@
 #include <iostream>
 #include <string>
 
-/*
+/**
  * @brief View representing the bar with lives and score on top of the screen
  */
 class InfoView : public View {
 public:
-	/*
+	/**
 	 * @brief Constructor for the Info View
 	 *
 	 * @param window A pointer to the window instance
@@ -29,7 +29,7 @@ public:
 	 */
 	InfoView(sf::RenderWindow* window, Assets* assets, Gun* gun) : View(window, assets), fGun(gun){};
 
-	/*
+	/**
 	 * @brief Draw the Info View
 	 */
 	void draw();
@@ -39,4 +39,4 @@ private:
 	Gun* fGun;
 };
 
-#endif /* INFOVIEW_H_ */
+#endif /** INFOVIEW_H_ */

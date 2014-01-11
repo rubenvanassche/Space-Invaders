@@ -1,4 +1,4 @@
-/*
+/**
  * GameOverView.cpp
  *
  *  Created on: 25 dec. 2013

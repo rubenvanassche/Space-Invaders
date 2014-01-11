@@ -1,4 +1,4 @@
-/*
+/**
  * StartScreenView.h
  *
  *  Created on: 21 dec. 2013
@@ -17,12 +17,12 @@
 
 class GameController;
 
-/*
+/**
  * @brief View representing the start screen at the bgeiining of the game
  */
 class StartScreenView : public View {
 public:
-	/*
+	/**
 	 * @brief Constructor for the Start Screen View
 	 *
 	 * @param window A pointer to the window instance
@@ -31,7 +31,7 @@ public:
 	 */
 	StartScreenView(sf::RenderWindow* window, Assets* assets, Game* game) : View(window, assets), fGame(game){};
 
-	/*
+	/**
 	 * @brief Draw the Start Screen
 	 */
 	void draw();
@@ -40,4 +40,4 @@ private:
 	Game* fGame;
 };
 
-#endif /* STARTSCREENVIEW_H_ */
+#endif /** STARTSCREENVIEW_H_ */

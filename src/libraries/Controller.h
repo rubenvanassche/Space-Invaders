@@ -1,4 +1,4 @@
-/*
+/**
  * Controller.h
  *
  *  Created on: 16 dec. 2013
@@ -14,12 +14,12 @@
 
 class SI;
 
-/*
+/**
  * @brief The library for Controllers
  */
 class Controller {
 public:
-	/*
+	/**
 	 * @brief The Controller Constructor
 	 *
 	 * @param si The Space Invaders Element
@@ -31,4 +31,4 @@ protected:
 	SI* fSI;
 };
 
-#endif /* CONTROLLER_H_ */
+#endif /*** CONTROLLER_H_ */

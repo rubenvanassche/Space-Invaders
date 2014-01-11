@@ -1,4 +1,4 @@
-/*
+/**
  * EventController.cpp
  *
  *  Created on: 20 dec. 2013

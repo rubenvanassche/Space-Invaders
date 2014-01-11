@@ -1,4 +1,4 @@
-/*
+/***
  * WallView.h
  *
  *  Created on: 21 dec. 2013
@@ -13,12 +13,12 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-/*
+/**
  * @brief View representing a Wall
  */
 class WallView : public View{
 public:
-	/*
+	/**
 	 * @brief Constructor for the Wall View
 	 *
 	 * @param window A pointer to the window instance
@@ -27,12 +27,12 @@ public:
 	 */
 	WallView(sf::RenderWindow* window, Assets* assets, Wall* wall) : View(window, assets), fWall(wall){};
 
-	/*
+	/**
 	 * @brief Draw the Wall
 	 */
 	void draw();
 
-	/*
+	/**
 	 * @brief Returns the entity this view is connected to
 	 *
 	 * @return A pointer to the ScreenEntity
@@ -44,4 +44,4 @@ private:
 	Wall* fWall = nullptr;
 };
 
-#endif /* WALLVIEW_H_ */
+#endif /** WALLVIEW_H_ */

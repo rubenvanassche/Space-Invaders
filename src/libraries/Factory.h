@@ -1,4 +1,4 @@
-/*
+/**
  * Factory.h
  *
  *  Created on: 16 dec. 2013
@@ -14,12 +14,12 @@
 #include <list>
 #include <memory>
 
-/*
+/**
  * @brief The library for Factories
  */
 class Factory {
 public:
-	/*
+	/**
 	 * @brief The Factory Constructor
 	 *
 	 * @param si The Space Invaders Element
@@ -31,4 +31,4 @@ protected:
 	SI* fSI;
 };
 
-#endif /* FACTORY_H_ */
+#endif /*** FACTORY_H_ */

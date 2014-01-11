@@ -1,4 +1,4 @@
-/*
+/**
  * GameOverView.h
  *
  *  Created on: 25 dec. 2013
@@ -12,12 +12,12 @@
 #include "../entities/Game.h"
 #include <SFML/Graphics.hpp>
 
-/*
+/**
  * @brief View representing a GameEnded Screen
  */
 class GameEndedView : public View {
 public:
-	/*
+	/**
 	 * @brief Constructor for the GameEnded View
 	 *
 	 * @param window A pointer to the window instance
@@ -27,7 +27,7 @@ public:
 	 */
 	GameEndedView(sf::RenderWindow* window, Assets* assets, Game* game, bool won) : fGame(game), fWon(won), View(window, assets){};
 
-	/*
+	/**
 	 * @brief Draw the GameEnded Screen
 	 */
 	void draw();
@@ -38,4 +38,4 @@ private:
 	bool fWon;
 };
 
-#endif /* GAMEOVERVIEW_H_ */
+#endif /** GAMEOVERVIEW_H_ */

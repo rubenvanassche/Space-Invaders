@@ -1,4 +1,4 @@
-/*
+/**
  * Assets.h
  *
  *  Created on: 11 jan. 2014
@@ -12,17 +12,17 @@
 #include <string>
 #include <map>
 
-/*
+/**
  * @brief Class for storing assets and getting them without making endless copies
  */
 class Assets {
 public:
-	/*
+	/**
 	 * @brief Constructor
 	 */
 	Assets();
 
-	/*
+	/**
 	 * @brief get a texture
 	 *
 	 * @param file The path to the texture file
@@ -31,7 +31,7 @@ public:
 	 */
 	sf::Texture* getTexture(std::string file);
 
-	/*
+	/**
 	 * @brief get a font
 	 *
 	 * @param file The path to the font file
@@ -46,4 +46,4 @@ private:
 	std::map<std::string, sf::Font*> fFonts;
 };
 
-#endif /* ASSETS_H_ */
+#endif /*** ASSETS_H_ */

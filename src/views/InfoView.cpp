@@ -1,4 +1,4 @@
-/*
+/**
  * InfoView.cpp
  *
  *  Created on: 23 dec. 2013

@@ -1,4 +1,4 @@
-/*
+/**
  * AlienView.h
  *
  *  Created on: 16 dec. 2013
@@ -12,12 +12,12 @@
 #include "../libraries/View.h"
 #include <SFML/Graphics.hpp>
 
-/*
+/**
  * @brief View representing an Alien
  */
 class AlienView : public View {
 public:
-	/*
+	/**
 	 * @brief Constructor for the Alien View
 	 *
 	 * @param window A pointer to the window instance
@@ -26,7 +26,7 @@ public:
 	 */
 	AlienView(sf::RenderWindow* window, Assets* assets, Alien* alien) : fAlien(alien), View(window, assets){this->fColor = sf::Color(255, 255, 0);};
 
-	/*
+	/**
 	 * @brief Constructor for the Alien View
 	 *
 	 * @param alien A pointer to the Alien instance
@@ -34,12 +34,12 @@ public:
 	 */
 	AlienView(sf::RenderWindow* window, Assets* assets, Alien* alien, sf::Color color) : fAlien(alien), fColor(color), View(window, assets){};
 
-	/*
+	/**
 	 * @brief Draw the Alien
 	 */
 	void draw();
 
-	/*
+	/**
 	 * @brief Returns the entity this view is connected to
 	 *
 	 * @return A pointer to the ScreenEntity
@@ -48,7 +48,7 @@ public:
 
 	virtual ~AlienView();
 private:
-	/*
+	/**
 	 * @brief Draws an alternative alien for some reason
 	 */
 	void drawAlternative();
@@ -57,4 +57,4 @@ private:
 	sf::Color fColor;
 };
 
-#endif /* ALIENVIEW_H_ */
+#endif /** ALIENVIEW_H_ */

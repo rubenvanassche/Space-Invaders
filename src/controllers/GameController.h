@@ -1,4 +1,4 @@
-/*
+/**
  * GameController.h
  *
  *  Created on: 22 dec. 2013
@@ -27,29 +27,29 @@
 #include "../entities/Game.h"
 
 class StartScreenView;
-/*
+/**
  * @brief The (main) Controller handling the game
  */
 class GameController : public Controller {
 public:
-	/*
+	/**
 	 * @brief Constructor
 	 *
 	 * @param si The Space Invaders Element
 	 */
 	GameController(SI* si) :  Controller(si){};
 
-	/*
+	/**
 	 * @brief Show the startscreen
 	 */
 	void start();
 
-	/*
+	/**
 	 * @brief Starts the game and builds it up
 	 */
 	void startGame();
 
-	/*
+	/**
 	 * @brief Show the GameOver or GameWon screen
 	 *
 	 * @param won Bool to decide if the GameOver(false) or GameWon(true) screen needs to showed
@@ -58,12 +58,12 @@ public:
 
 	virtual ~GameController();
 private:
-	/*
+	/**
 	 * @brief Build the game, starts with storing entities in the models and views
 	 */
 	void buildGame(int level);
 
-	/*
+	/**
 	 * @brief Clears the game, it will erase everything that was stored in the models and views
 	 */
 	void clear();
@@ -71,4 +71,4 @@ private:
 	double aliensBulletShootFrequency = 3.0;
 };
 
-#endif /* GAMECONTROLLER_H_ */
+#endif /** GAMECONTROLLER_H_ */

@@ -1,4 +1,4 @@
-/*
+/**
  * StartScreenView.cpp
  *
  *  Created on: 21 dec. 2013

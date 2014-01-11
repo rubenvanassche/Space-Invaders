@@ -1,4 +1,4 @@
-/*
+/**
  * Assets.cpp
  *
  *  Created on: 11 jan. 2014

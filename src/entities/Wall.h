@@ -1,4 +1,4 @@
-/*
+/**
  * Wall.h
  *
  *  Created on: 21 dec. 2013
@@ -14,12 +14,12 @@
 #include "../libraries/ScreenEntity.h"
 #include <iostream>
 
-/*
+/**
  * @brief Class representing the Wall Entity
  */
 class Wall : public ScreenEntity {
 public:
-	/*
+	/**
 	 * @brief Wall Constructor
 	 *
 	 * @param location A point containing info of the location of the gun
@@ -30,4 +30,4 @@ public:
 };
 
 
-#endif /* WALL_H_ */
+#endif /** WALL_H_ */

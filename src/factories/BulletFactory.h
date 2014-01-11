@@ -1,4 +1,4 @@
-/*
+/**
  * BulletFactory.h
  *
  *  Created on: 21 dec. 2013
@@ -15,14 +15,14 @@
 #include <SFML/System/Vector2.hpp>
 #include <list>
 
-/*
+/**
  * @brief A factory for building Bullets
  */
 class BulletFactory : public Factory {
 public:
 	using Factory::Factory;
 
-	/*
+	/**
 	 * @brief Creates a base bullet
 	 *
 	 * @param location The location of the bullet to start
@@ -32,7 +32,7 @@ public:
 	 */
 	void createBullet(sf::Vector2f location, util::Direction direction, bulletType bt, ScreenEntity* from);
 
-	/*
+	/**
 	 * @brief Creates a Human bullet
 	 *
 	 * @param location The location of the bullet to start
@@ -40,7 +40,7 @@ public:
 	 */
 	void createHumanBullet(sf::Vector2f location, ScreenEntity* from);
 
-	/*
+	/**
 	 * @brief Creates a Human bullet
 	 *
 	 * @param location The location of the bullet to start
@@ -51,4 +51,4 @@ public:
 	virtual ~BulletFactory();
 };
 
-#endif /* BULLETFACTORY_H_ */
+#endif /** BULLETFACTORY_H_ */
