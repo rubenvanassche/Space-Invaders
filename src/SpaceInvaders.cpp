@@ -24,6 +24,7 @@
 
 
 int main(int argc, char * argv[]){
+	// Create The Space Invaders Element
 	SI si;
 	si.controller = new SI_Controller(&si);
 	si.model = new SI_Model(&si);
@@ -31,25 +32,18 @@ int main(int argc, char * argv[]){
 	si.window = new sf::RenderWindow(sf::VideoMode(600, 400), "Space Invaders");
 	si.assets = new Assets();
 
+	// Add the controllers to screen
 	si.controller->screen = new ScreenController(&si);
 	si.controller->event = new EventController(&si);
 	si.controller->motion = new MotionController(&si);
 	si.controller->game = new GameController(&si);
 	si.controller->collision = new CollisionController(&si);
 
+	// Add the game entity as a start
 	si.model->game = new Game(&si);
 
+	// And here we go
 	si.controller->game->start();
-
-
-	sf::Vector2f point1(260, 60);
-	sf::Vector2f point2(306, 88);
-	Size size(24, 17, point1);
-	if(size.in(point2)){
-		std::cout << "TRUE" << std::endl;
-	}else{
-		std::cout << "False" << std::endl;
-	}
 
     return EXIT_SUCCESS;
 }

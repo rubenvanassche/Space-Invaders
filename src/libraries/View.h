@@ -40,7 +40,14 @@ public:
 
 	virtual ~View(){};
 protected:
+	/**
+	 * @brief The renderwindow each View should draw to
+	 */
 	sf::RenderWindow* fWindow;
+
+	/**
+	 * @brief The Assets container
+	 */
 	Assets* fAssets;
 };
 

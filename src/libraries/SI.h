@@ -39,7 +39,7 @@ namespace sf{
 	class Event;
 }
 
-
+#ifndef DOXYGEN_SHOULD_SKIP_THIS
 
 class SI_Controller {
 public:
@@ -81,17 +81,46 @@ private:
 	SI* si;
 };
 
+#endif /* DOXYGEN_SHOULD_SKIP_THIS */
+
 /**
  * @brief The Space Invaders Elements, the connection through the whole system
  */
 class SI {
 public:
+	/**
+	 * @brief Constructor for SI
+	 */
 	SI();
+
+	/**
+	 * @brief The Controllers in SI
+	 */
 	SI_Controller* controller;
+
+	/**
+	 * @brief The Models in SI, these are a set of lists containing entities
+	 */
 	SI_Model* model;
+
+	/**
+	 * @brief The Views in SI
+	 */
 	SI_View* view;
+
+	/**
+	 * @brief The Window where the game is rendered
+	 */
 	sf::RenderWindow* window;
+
+	/**
+	 * @brief The Assets Storage
+	 */
 	Assets* assets;
+
+	/**
+	 * @brief Destructor
+	 */
 	virtual ~SI();
 };
 
