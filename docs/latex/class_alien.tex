@@ -1,0 +1,141 @@
+\section{Alien Class Reference}
+\label{class_alien}\index{Alien@{Alien}}
+
+
+The \doxyref{Alien}{p.}{class_alien} \doxyref{Entity}{p.}{class_entity}.  
+
+
+
+
+{\ttfamily \#include $<$Alien.\-h$>$}
+
+
+
+Inheritance diagram for Alien\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_alien__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Alien} (sf\-::\-Vector2f location, {\bf S\-I} $\ast$si, {\bf Alien\-Type} type)
+\begin{DoxyCompactList}\small\item\em \doxyref{Alien}{p.}{class_alien} Constructor. \end{DoxyCompactList}\item 
+void {\bf move} ({\bf util\-::\-Direction} direction)
+\begin{DoxyCompactList}\small\item\em updates the position of the \doxyref{Alien}{p.}{class_alien} with an specified direction \end{DoxyCompactList}\item 
+int {\bf get\-Tick\-Tock} () const 
+\begin{DoxyCompactList}\small\item\em Get the ticktock of the alien, this represents which image should be used to draw. \end{DoxyCompactList}\item 
+void {\bf shoot} ()
+\begin{DoxyCompactList}\small\item\em shoot a bullet out of the gun of this alien \end{DoxyCompactList}\item 
+{\bf Alien\-Type} {\bf get\-Type} () const 
+\begin{DoxyCompactList}\small\item\em get the type of this \doxyref{Alien}{p.}{class_alien} \end{DoxyCompactList}\item 
+virtual {\bf $\sim$\-Alien} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The \doxyref{Alien}{p.}{class_alien} \doxyref{Entity}{p.}{class_entity}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Alien@{Alien}!Alien@{Alien}}
+\index{Alien@{Alien}!Alien@{Alien}}
+\subsubsection[{Alien}]{\setlength{\rightskip}{0pt plus 5cm}Alien\-::\-Alien (
+\begin{DoxyParamCaption}
+\item[{sf\-::\-Vector2f}]{location, }
+\item[{{\bf S\-I} $\ast$}]{si, }
+\item[{{\bf Alien\-Type}}]{type}
+\end{DoxyParamCaption}
+)}\label{class_alien_a8870ba8d6f18dd73e802bb685ebd8d55}
+
+
+\doxyref{Alien}{p.}{class_alien} Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & The location of the \doxyref{Alien}{p.}{class_alien} \\
+\hline
+{\em si} & The Space Invaders Element \\
+\hline
+{\em type} & the Type of \doxyref{Alien}{p.}{class_alien}, it can be R\-U\-S\-S\-E\-L, D\-O\-U\-G, M\-U\-N\-T\-Z or C\-A\-R\-L\\
+\hline
+\end{DoxyParams}
+\doxyref{Alien.\-cpp}{p.}{_alien_8cpp}
+
+Created on\-: 7 dec. 2013 Author\-: Ruben \index{Alien@{Alien}!$\sim$\-Alien@{$\sim$\-Alien}}
+\index{$\sim$\-Alien@{$\sim$\-Alien}!Alien@{Alien}}
+\subsubsection[{$\sim$\-Alien}]{\setlength{\rightskip}{0pt plus 5cm}Alien\-::$\sim$\-Alien (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_alien_a7cdfd79d84b51a18003bf41585aedd43}
+
+
+\subsection{Member Function Documentation}
+\index{Alien@{Alien}!get\-Tick\-Tock@{get\-Tick\-Tock}}
+\index{get\-Tick\-Tock@{get\-Tick\-Tock}!Alien@{Alien}}
+\subsubsection[{get\-Tick\-Tock}]{\setlength{\rightskip}{0pt plus 5cm}int Alien\-::get\-Tick\-Tock (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_alien_a379853e9edf0734fb5b112ec05243794}
+
+
+Get the ticktock of the alien, this represents which image should be used to draw. 
+
+\begin{DoxyReturn}{Returns}
+int The ticktock 
+\end{DoxyReturn}
+\index{Alien@{Alien}!get\-Type@{get\-Type}}
+\index{get\-Type@{get\-Type}!Alien@{Alien}}
+\subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Alien\-Type} Alien\-::get\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_alien_ac41cf50141937b0de4da8090ddfb8da7}
+
+
+get the type of this \doxyref{Alien}{p.}{class_alien} 
+
+\begin{DoxyReturn}{Returns}
+enumeration with Russel, Carl, Doug or Muntz 
+\end{DoxyReturn}
+\index{Alien@{Alien}!move@{move}}
+\index{move@{move}!Alien@{Alien}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}void Alien\-::move (
+\begin{DoxyParamCaption}
+\item[{{\bf util\-::\-Direction}}]{direction}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_alien_aacc427c0dd4cf0570968c2ad2b78838e}
+
+
+updates the position of the \doxyref{Alien}{p.}{class_alien} with an specified direction 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & the direction to go to \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from {\bf Screen\-Entity} \doxyref{}{p.}{class_screen_entity_a51e835ae019dbb5a56b0e980a0125f85}.
+
+\index{Alien@{Alien}!shoot@{shoot}}
+\index{shoot@{shoot}!Alien@{Alien}}
+\subsubsection[{shoot}]{\setlength{\rightskip}{0pt plus 5cm}void Alien\-::shoot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_alien_ad38168e2cd96e67efdfde002e79cd31f}
+
+
+shoot a bullet out of the gun of this alien 
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/entities/{\bf Alien.\-h}\item 
+src/entities/{\bf Alien.\-cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,7 @@
+<map id="ScreenEntity" name="ScreenEntity">
+<area shape="rect" id="node3" href="$class_alien.html" title="The Alien Entity. " alt="" coords="5,582,120,733"/>
+<area shape="rect" id="node4" href="$class_bullet.html" title="The Bullet Entity. " alt="" coords="144,582,261,733"/>
+<area shape="rect" id="node5" href="$class_gun.html" title="The Gun Entity. " alt="" coords="286,582,380,733"/>
+<area shape="rect" id="node6" href="$class_wall.html" title="Class representing the Wall Entity. " alt="" coords="405,611,480,703"/>
+<area shape="rect" id="node2" href="$class_entity.html" title="The library for Entities. " alt="" coords="226,6,309,98"/>
+</map>

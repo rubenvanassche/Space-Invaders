@@ -1,0 +1,156 @@
+\section{Bullet Class Reference}
+\label{class_bullet}\index{Bullet@{Bullet}}
+
+
+The \doxyref{Bullet}{p.}{class_bullet} \doxyref{Entity}{p.}{class_entity}.  
+
+
+
+
+{\ttfamily \#include $<$Bullet.\-h$>$}
+
+
+
+Inheritance diagram for Bullet\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_bullet__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Bullet} (sf\-::\-Vector2f location, {\bf util\-::\-Direction} direction, {\bf Screen\-Entity} $\ast$from, {\bf bullet\-Type} bullettype, {\bf S\-I} $\ast$si)
+\begin{DoxyCompactList}\small\item\em \doxyref{Bullet}{p.}{class_bullet} Constructor. \end{DoxyCompactList}\item 
+void {\bf move} ({\bf util\-::\-Direction} direction)
+\begin{DoxyCompactList}\small\item\em updates the position of the \doxyref{Bullet}{p.}{class_bullet} with an specified direction \end{DoxyCompactList}\item 
+{\bf Screen\-Entity} $\ast$ {\bf get\-Firedfrom} ()
+\begin{DoxyCompactList}\small\item\em get a pointer to the screen entity from where this bullet was fired \end{DoxyCompactList}\item 
+{\bf bullet\-Type} {\bf get\-Type} ()
+\begin{DoxyCompactList}\small\item\em get the type of bullet(\-A\-L\-I\-E\-N, H\-U\-M\-A\-N) \end{DoxyCompactList}\item 
+void {\bf kill} (bool forced=false)
+\begin{DoxyCompactList}\small\item\em Kills an Entity(remove one life) \end{DoxyCompactList}\item 
+virtual {\bf $\sim$\-Bullet} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The \doxyref{Bullet}{p.}{class_bullet} \doxyref{Entity}{p.}{class_entity}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Bullet@{Bullet}!Bullet@{Bullet}}
+\index{Bullet@{Bullet}!Bullet@{Bullet}}
+\subsubsection[{Bullet}]{\setlength{\rightskip}{0pt plus 5cm}Bullet\-::\-Bullet (
+\begin{DoxyParamCaption}
+\item[{sf\-::\-Vector2f}]{location, }
+\item[{{\bf util\-::\-Direction}}]{direction, }
+\item[{{\bf Screen\-Entity} $\ast$}]{from, }
+\item[{{\bf bullet\-Type}}]{bullettype, }
+\item[{{\bf S\-I} $\ast$}]{si}
+\end{DoxyParamCaption}
+)}\label{class_bullet_ab42d38d72317d1295219bd0ce5fc1441}
+
+
+\doxyref{Bullet}{p.}{class_bullet} Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & The location of the \doxyref{Bullet}{p.}{class_bullet} \\
+\hline
+{\em direction} & The Direction(\-U\-P, D\-O\-W\-N) the bullet need to go \\
+\hline
+{\em from} & The \doxyref{Entity}{p.}{class_entity} from where this bullet was fired \\
+\hline
+{\em bullet\-Type} & The type of creature(\-H\-U\-M\-A\-N, A\-L\-I\-E\-N) this bullet was fired from \\
+\hline
+{\em si} & The Space Invaders Element\\
+\hline
+\end{DoxyParams}
+\doxyref{Bullet.\-cpp}{p.}{_bullet_8cpp}
+
+Created on\-: 7 dec. 2013 Author\-: Ruben \index{Bullet@{Bullet}!$\sim$\-Bullet@{$\sim$\-Bullet}}
+\index{$\sim$\-Bullet@{$\sim$\-Bullet}!Bullet@{Bullet}}
+\subsubsection[{$\sim$\-Bullet}]{\setlength{\rightskip}{0pt plus 5cm}Bullet\-::$\sim$\-Bullet (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_bullet_aaeb5cb41d7db89f49007b08b41f1bfcf}
+
+
+\subsection{Member Function Documentation}
+\index{Bullet@{Bullet}!get\-Firedfrom@{get\-Firedfrom}}
+\index{get\-Firedfrom@{get\-Firedfrom}!Bullet@{Bullet}}
+\subsubsection[{get\-Firedfrom}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Screen\-Entity}$\ast$ Bullet\-::get\-Firedfrom (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_bullet_aeb2fa2f1a31ee5ba0589d559e471f549}
+
+
+get a pointer to the screen entity from where this bullet was fired 
+
+\begin{DoxyReturn}{Returns}
+A \doxyref{Screen\-Entity}{p.}{class_screen_entity} pointer to the entity from where this bullet was shot 
+\end{DoxyReturn}
+\index{Bullet@{Bullet}!get\-Type@{get\-Type}}
+\index{get\-Type@{get\-Type}!Bullet@{Bullet}}
+\subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bullet\-Type} Bullet\-::get\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_bullet_a4c5951cab712ceb627ac8bb4784dc091}
+
+
+get the type of bullet(\-A\-L\-I\-E\-N, H\-U\-M\-A\-N) 
+
+\begin{DoxyReturn}{Returns}
+A bullet\-Type 
+\end{DoxyReturn}
+\index{Bullet@{Bullet}!kill@{kill}}
+\index{kill@{kill}!Bullet@{Bullet}}
+\subsubsection[{kill}]{\setlength{\rightskip}{0pt plus 5cm}void Bullet\-::kill (
+\begin{DoxyParamCaption}
+\item[{bool}]{forced = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_bullet_a2e62ec635fb3c90584a34f2a6b67eaeb}
+
+
+Kills an Entity(remove one life) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em forced} & Default false, when true it will not reduce one life but kill the whole bullet \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from {\bf Screen\-Entity} \doxyref{}{p.}{class_screen_entity_aa9866cec362d41b85c3d82251cc36035}.
+
+\index{Bullet@{Bullet}!move@{move}}
+\index{move@{move}!Bullet@{Bullet}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}void Bullet\-::move (
+\begin{DoxyParamCaption}
+\item[{{\bf util\-::\-Direction}}]{direction}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_bullet_a7c93c4d95132721c852737644fd25504}
+
+
+updates the position of the \doxyref{Bullet}{p.}{class_bullet} with an specified direction 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & the direction to go to \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from {\bf Screen\-Entity} \doxyref{}{p.}{class_screen_entity_a51e835ae019dbb5a56b0e980a0125f85}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/entities/{\bf Bullet.\-h}\item 
+src/entities/{\bf Bullet.\-cpp}\end{DoxyCompactItemize}

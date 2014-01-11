@@ -1,0 +1,9 @@
+<map id="View" name="View">
+<area shape="rect" id="node2" href="$class_alien_view.html" title="View representing an Alien. " alt="" coords="5,189,115,325"/>
+<area shape="rect" id="node3" href="$class_bullet_view.html" title="View representing a Bullet. " alt="" coords="139,197,251,318"/>
+<area shape="rect" id="node4" href="$class_game_ended_view.html" title="View representing a GameEnded Screen. " alt="" coords="275,204,428,311"/>
+<area shape="rect" id="node5" href="$class_gun_view.html" title="View representing a Gun. " alt="" coords="453,189,557,325"/>
+<area shape="rect" id="node6" href="$class_info_view.html" title="View representing the bar with lives and score on top of the screen. " alt="" coords="581,204,683,311"/>
+<area shape="rect" id="node7" href="$class_start_screen_view.html" title="View representing the start screen at the bgeiining of the game. " alt="" coords="707,204,856,311"/>
+<area shape="rect" id="node8" href="$class_wall_view.html" title="View representing a Wall. " alt="" coords="881,197,985,318"/>
+</map>

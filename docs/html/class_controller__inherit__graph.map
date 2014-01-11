@@ -1,0 +1,7 @@
+<map id="Controller" name="Controller">
+<area shape="rect" id="node2" href="$class_collision_controller.html" title="The controller for handling collisions. " alt="" coords="5,176,163,283"/>
+<area shape="rect" id="node3" href="$class_event_controller.html" title="Controller which handles the events within the game. " alt="" coords="187,161,329,297"/>
+<area shape="rect" id="node4" href="$class_game_controller.html" title="The (main) Controller handling the game. " alt="" coords="355,161,499,297"/>
+<area shape="rect" id="node5" href="$class_motion_controller.html" title="The Controller who is in control of the motion during the game. " alt="" coords="523,147,671,312"/>
+<area shape="rect" id="node6" href="$class_screen_controller.html" title="The Controller who handles the screen. " alt="" coords="695,161,845,297"/>
+</map>

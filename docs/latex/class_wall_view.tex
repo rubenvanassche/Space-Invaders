@@ -1,0 +1,111 @@
+\section{Wall\-View Class Reference}
+\label{class_wall_view}\index{Wall\-View@{Wall\-View}}
+
+
+\doxyref{View}{p.}{class_view} representing a \doxyref{Wall}{p.}{class_wall}.  
+
+
+
+
+{\ttfamily \#include $<$Wall\-View.\-h$>$}
+
+
+
+Inheritance diagram for Wall\-View\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=158pt]{class_wall_view__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Wall\-View} (sf\-::\-Render\-Window $\ast$window, {\bf Assets} $\ast$assets, {\bf Wall} $\ast$wall)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxyref{Wall}{p.}{class_wall} \doxyref{View}{p.}{class_view}. \end{DoxyCompactList}\item 
+void {\bf draw} ()
+\begin{DoxyCompactList}\small\item\em Draw the \doxyref{Wall}{p.}{class_wall}. \end{DoxyCompactList}\item 
+{\bf Screen\-Entity} $\ast$ {\bf get\-Entity} ()
+\begin{DoxyCompactList}\small\item\em Returns the entity this view is connected to. \end{DoxyCompactList}\item 
+virtual {\bf $\sim$\-Wall\-View} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\doxyref{View}{p.}{class_view} representing a \doxyref{Wall}{p.}{class_wall}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Wall\-View@{Wall\-View}!Wall\-View@{Wall\-View}}
+\index{Wall\-View@{Wall\-View}!WallView@{Wall\-View}}
+\subsubsection[{Wall\-View}]{\setlength{\rightskip}{0pt plus 5cm}Wall\-View\-::\-Wall\-View (
+\begin{DoxyParamCaption}
+\item[{sf\-::\-Render\-Window $\ast$}]{window, }
+\item[{{\bf Assets} $\ast$}]{assets, }
+\item[{{\bf Wall} $\ast$}]{wall}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_wall_view_ab28c8c3101191902a69707c9459af1c4}
+
+
+Constructor for the \doxyref{Wall}{p.}{class_wall} \doxyref{View}{p.}{class_view}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & A pointer to the window instance \\
+\hline
+{\em assets} & A pointer to the assets instance \\
+\hline
+{\em alien} & A pointer to the \doxyref{Wall}{p.}{class_wall} instance \\
+\hline
+\end{DoxyParams}
+\index{Wall\-View@{Wall\-View}!$\sim$\-Wall\-View@{$\sim$\-Wall\-View}}
+\index{$\sim$\-Wall\-View@{$\sim$\-Wall\-View}!WallView@{Wall\-View}}
+\subsubsection[{$\sim$\-Wall\-View}]{\setlength{\rightskip}{0pt plus 5cm}Wall\-View\-::$\sim$\-Wall\-View (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_wall_view_afdeea7e72f99af78a491814d9901de31}
+
+
+\subsection{Member Function Documentation}
+\index{Wall\-View@{Wall\-View}!draw@{draw}}
+\index{draw@{draw}!WallView@{Wall\-View}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void Wall\-View\-::draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_wall_view_a3017cd76b3a4df89eb18b3a3c58d1c89}
+
+
+Draw the \doxyref{Wall}{p.}{class_wall}. 
+
+\doxyref{Wall\-View.\-cpp}{p.}{_wall_view_8cpp}
+
+Created on\-: 21 dec. 2013 Author\-: Ruben 
+
+Implements {\bf View} \doxyref{}{p.}{class_view_af21dd2c6c379ae4ea8bb61583c80127a}.
+
+\index{Wall\-View@{Wall\-View}!get\-Entity@{get\-Entity}}
+\index{get\-Entity@{get\-Entity}!WallView@{Wall\-View}}
+\subsubsection[{get\-Entity}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Screen\-Entity}$\ast$ Wall\-View\-::get\-Entity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{class_wall_view_ac6af2cd27f706b73e9ee3f46522b7282}
+
+
+Returns the entity this view is connected to. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the \doxyref{Screen\-Entity}{p.}{class_screen_entity} 
+\end{DoxyReturn}
+
+
+Reimplemented from {\bf View} \doxyref{}{p.}{class_view_af797129ad63a82b2c90a136bcf298321}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/views/{\bf Wall\-View.\-h}\item 
+src/views/{\bf Wall\-View.\-cpp}\end{DoxyCompactItemize}

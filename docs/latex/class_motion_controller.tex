@@ -1,0 +1,142 @@
+\section{Motion\-Controller Class Reference}
+\label{class_motion_controller}\index{Motion\-Controller@{Motion\-Controller}}
+
+
+The \doxyref{Controller}{p.}{class_controller} who is in control of the motion during the game.  
+
+
+
+
+{\ttfamily \#include $<$Motion\-Controller.\-h$>$}
+
+
+
+Inheritance diagram for Motion\-Controller\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{class_motion_controller__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf Motion\-Controller} ({\bf S\-I} $\ast$si)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void {\bf move\-Gun} ({\bf util\-::\-Direction} direction)
+\begin{DoxyCompactList}\small\item\em Moves the gun to a certain direction. \end{DoxyCompactList}\item 
+void {\bf move\-Aliens} ()
+\begin{DoxyCompactList}\small\item\em Moves the Aliens with one step. \end{DoxyCompactList}\item 
+void {\bf move\-Bullets} ()
+\begin{DoxyCompactList}\small\item\em Moves all the Bullets with one step. \end{DoxyCompactList}\item 
+void {\bf shoot\-Gun} ()
+\begin{DoxyCompactList}\small\item\em Shoots a bullet out of the gun. \end{DoxyCompactList}\item 
+void {\bf shoot\-Alien} ()
+\begin{DoxyCompactList}\small\item\em shoots a bullet out of a random alien \end{DoxyCompactList}\item 
+virtual {\bf $\sim$\-Motion\-Controller} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The \doxyref{Controller}{p.}{class_controller} who is in control of the motion during the game. 
+
+\doxyref{Motion\-Controller.\-h}{p.}{_motion_controller_8h}
+
+Created on\-: 20 dec. 2013 Author\-: Ruben 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Motion\-Controller@{Motion\-Controller}!Motion\-Controller@{Motion\-Controller}}
+\index{Motion\-Controller@{Motion\-Controller}!MotionController@{Motion\-Controller}}
+\subsubsection[{Motion\-Controller}]{\setlength{\rightskip}{0pt plus 5cm}Motion\-Controller\-::\-Motion\-Controller (
+\begin{DoxyParamCaption}
+\item[{{\bf S\-I} $\ast$}]{si}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_motion_controller_aeaf39bf663d3b3c59029704e59ed6188}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em si} & The Space Invaders Element \\
+\hline
+\end{DoxyParams}
+\index{Motion\-Controller@{Motion\-Controller}!$\sim$\-Motion\-Controller@{$\sim$\-Motion\-Controller}}
+\index{$\sim$\-Motion\-Controller@{$\sim$\-Motion\-Controller}!MotionController@{Motion\-Controller}}
+\subsubsection[{$\sim$\-Motion\-Controller}]{\setlength{\rightskip}{0pt plus 5cm}Motion\-Controller\-::$\sim$\-Motion\-Controller (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_motion_controller_aa8036ec12abe080dbcf8ecabc68ac223}
+
+
+\subsection{Member Function Documentation}
+\index{Motion\-Controller@{Motion\-Controller}!move\-Aliens@{move\-Aliens}}
+\index{move\-Aliens@{move\-Aliens}!MotionController@{Motion\-Controller}}
+\subsubsection[{move\-Aliens}]{\setlength{\rightskip}{0pt plus 5cm}void Motion\-Controller\-::move\-Aliens (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_motion_controller_ae586e8e01f90c6b6bf7ce399db9d8534}
+
+
+Moves the Aliens with one step. 
+
+\index{Motion\-Controller@{Motion\-Controller}!move\-Bullets@{move\-Bullets}}
+\index{move\-Bullets@{move\-Bullets}!MotionController@{Motion\-Controller}}
+\subsubsection[{move\-Bullets}]{\setlength{\rightskip}{0pt plus 5cm}void Motion\-Controller\-::move\-Bullets (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_motion_controller_afe6e23bf4adcbf97ce66a1712956bf3e}
+
+
+Moves all the Bullets with one step. 
+
+\index{Motion\-Controller@{Motion\-Controller}!move\-Gun@{move\-Gun}}
+\index{move\-Gun@{move\-Gun}!MotionController@{Motion\-Controller}}
+\subsubsection[{move\-Gun}]{\setlength{\rightskip}{0pt plus 5cm}void Motion\-Controller\-::move\-Gun (
+\begin{DoxyParamCaption}
+\item[{{\bf util\-::\-Direction}}]{direction}
+\end{DoxyParamCaption}
+)}\label{class_motion_controller_aab1cd98bda7a1c4f8d9101991da553a4}
+
+
+Moves the gun to a certain direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & The direction to move to\\
+\hline
+\end{DoxyParams}
+\doxyref{Motion\-Controller.\-cpp}{p.}{_motion_controller_8cpp}
+
+Created on\-: 20 dec. 2013 Author\-: Ruben \index{Motion\-Controller@{Motion\-Controller}!shoot\-Alien@{shoot\-Alien}}
+\index{shoot\-Alien@{shoot\-Alien}!MotionController@{Motion\-Controller}}
+\subsubsection[{shoot\-Alien}]{\setlength{\rightskip}{0pt plus 5cm}void Motion\-Controller\-::shoot\-Alien (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_motion_controller_a1deaa936f06c799cf7b90c5ddaeebcfd}
+
+
+shoots a bullet out of a random alien 
+
+\index{Motion\-Controller@{Motion\-Controller}!shoot\-Gun@{shoot\-Gun}}
+\index{shoot\-Gun@{shoot\-Gun}!MotionController@{Motion\-Controller}}
+\subsubsection[{shoot\-Gun}]{\setlength{\rightskip}{0pt plus 5cm}void Motion\-Controller\-::shoot\-Gun (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_motion_controller_a3021dcc433a02525b04fb13ff05b9de4}
+
+
+Shoots a bullet out of the gun. 
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/controllers/{\bf Motion\-Controller.\-h}\item 
+src/controllers/{\bf Motion\-Controller.\-cpp}\end{DoxyCompactItemize}

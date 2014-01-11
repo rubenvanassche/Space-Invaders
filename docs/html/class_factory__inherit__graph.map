@@ -1,0 +1,6 @@
+<map id="Factory" name="Factory">
+<area shape="rect" id="node2" href="$class_alien_factory.html" title="A factory for building Aliens. " alt="" coords="5,147,128,283"/>
+<area shape="rect" id="node3" href="$class_bullet_factory.html" title="A factory for building Bullets. " alt="" coords="153,154,308,275"/>
+<area shape="rect" id="node4" href="$class_gun_factory.html" title="A factory for building Guns. " alt="" coords="333,154,469,275"/>
+<area shape="rect" id="node5" href="$class_wall_factory.html" title="A factory for building Walls. " alt="" coords="495,169,615,261"/>
+</map>
