@@ -127,6 +127,13 @@ public:
 	virtual void setSpeed(int speed){this->fMovePixels = speed;};
 
 	/**
+	 * @brief Return the Speed of an Entity
+	 *
+	 * @return An int containing this entity's speed
+	 */
+	virtual int getSpeed(){return this->fMovePixels;};
+
+	/**
 	 * @brief raises the score from an Screen Entity
 	 *
 	 * @param score The score to add to this entity's existing score

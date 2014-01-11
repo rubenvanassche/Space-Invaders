@@ -43,7 +43,7 @@ public:
 	 *
 	 * @return int The ticktock
 	 */
-	int getTickTock(){return this->fTickTock;};
+	int getTickTock() const {return this->fTickTock;};
 
 	/**
 	 * @brief shoot a bullet out of the gun of this alien
@@ -55,7 +55,7 @@ public:
 	 *
 	 * @return enumeration with Russel, Carl, Doug or Muntz
 	 */
-	AlienType getType(){return this->fType;};
+	AlienType getType() const {return this->fType;};
 
 	virtual ~Alien();
 private:

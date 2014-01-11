@@ -36,25 +36,20 @@ bool ScreenEntity::collides(ScreenEntity* otherEntity){
 	sf::Vector2f bound4 = otherEntity->getLocation() + sf::Vector2f(otherEntitySize.getWidth(), otherEntitySize.getHeight());
 
 	if(this->fSize.in(bound1)){
-		std::cout << "P1(" << bound1.x << ", " << bound1.y << ")" << std::endl;
 		return true;
 	}
 
 	if(this->fSize.in(bound2)){
-		std::cout << "P2(" << bound2.x << ", " << bound2.y << ")" << std::endl;
 		return true;
 	}
 
 	if(this->fSize.in(bound3)){
-		std::cout << "P3(" << bound3.x << ", " << bound3.y << ")" << std::endl;
 		return true;
 	}
 
 	if(this->fSize.in(bound4)){
-		std::cout << "P4(" << bound4.x << ", " << bound4.y << ")" << std::endl;
 		return true;
 	}
-
 
 	return false;
 }

@@ -103,12 +103,16 @@ void GameController::buildGame(int level){
 		alienFactory.createCarl(sf::Vector2f(alienXLocations.at(i), 160));
 	}
 
+	for(auto it = this->fSI->model->aliens->begin();it != this->fSI->model->aliens->end();it++){
+		(*it)->setSpeed(4+level*0.35);
+	}
+
 	// Create the infoview on top of the game
 	InfoView* info = new InfoView(this->fSI->window, this->fSI->assets, this->fSI->model->guns->front());
 	this->fSI->view->views->push_back(info);
 
 	// Change the frequency of bullets fired by aliens
-	this->aliensBulletShootFrequency = 3.0 - level*0.06;
+	this->aliensBulletShootFrequency = 3.0 - level*0.055;
 }
 
 

@@ -25,12 +25,17 @@ void MotionController::moveAliens(){
 		return;
 	}
 
-	ScreenEntity* mostLeft = *this->fSI->model->aliens->end();
+	ScreenEntity* mostLeft = *this->fSI->model->aliens->rbegin();
 	ScreenEntity* mostRight = *this->fSI->model->aliens->begin();
 
-	for(auto it =  this->fSI->model->aliens->begin();it != this->fSI->model->aliens->end();it++){
+	std::list<Alien*>::iterator it =  this->fSI->model->aliens->begin();
+	std::list<Alien*>::reverse_iterator rIt = this->fSI->model->aliens->rbegin();
+
+	while(it != this->fSI->model->aliens->end() and rIt  != this->fSI->model->aliens->rend()){
 		if((*it)->isDead() == true){
 			// We're not working with dead Aliens so skip this one
+			rIt++;
+			it++;
 			continue;
 		}
 
@@ -38,19 +43,14 @@ void MotionController::moveAliens(){
 			// If our current it's X is bigger then our temp most right, change it
 			mostRight = *it;
 		}
-	}
-
-	for(auto it = this->fSI->model->aliens->end();it != this->fSI->model->aliens->begin();it--){
-		if((*it)->isDead() == true){
-			// We're not working with dead Aliens so skip this one
-			continue;
-		}
 
 		if((*it)->getLocation().x < mostLeft->getLocation().x){
 			// If our current it's X is smaller then our temp most left, change it
 			mostLeft = *it;
 		}
 
+		rIt++;
+		it++;
 	}
 
 	if(mostLeft->isDead() == true and mostRight->isDead() == true){
@@ -101,11 +101,11 @@ void MotionController::moveBullets(){
 		return;
 	}
 
-	for(auto it =  this->fSI->model->bullets->begin();it != this->fSI->model->bullets->end();it++){
+	for(auto it = this->fSI->model->bullets->begin();it != this->fSI->model->bullets->end();it++){
 		if((*it)->getLocation().y < 0 or (*it)->getLocation().y > this->fSI->model->game->getHeight()){
 			// Bullet is of the screen so remove this one
 			(*it)->kill(true);
-			this->fSI->model->bullets->remove(*it);
+			//this->fSI->model->bullets->erase(it++);
 			continue;
 		}
 

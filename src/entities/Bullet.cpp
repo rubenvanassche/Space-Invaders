@@ -26,12 +26,12 @@ void Bullet::kill(bool forced){
 	if(this->isDead()){
 		// there is still a view corresponding to this entity
 		if(this->fEntityView != nullptr){
-			for(auto it = this->fSI->view->views->begin();it != this->fSI->view->views->end();it++){
+			for(auto it = this->fSI->view->views->begin(); it != this->fSI->view->views->end();it++){
 				if((*it)->getEntity() == this){
 					// found it, so remove it!
 					delete *it;
-					this->fSI->view->views->remove(*it);
-					//break;
+					this->fSI->view->views->erase(it);
+					break;
 				}
 			}
 
