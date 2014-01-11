@@ -2,6 +2,7 @@
 #include "libraries/Utilities.h"
 #include "libraries/Entity.h"
 #include "libraries/Factory.h"
+#include "libraries/Assets.h"
 #include "libraries/SI.h"
 
 #include "controllers/ScreenController.h"
@@ -28,6 +29,7 @@ int main(int argc, char * argv[]){
 	si.model = new SI_Model(&si);
 	si.view = new SI_View(&si);
 	si.window = new sf::RenderWindow(sf::VideoMode(600, 400), "Space Invaders");
+	si.assets = new Assets();
 
 	si.controller->screen = new ScreenController(&si);
 	si.controller->event = new EventController(&si);

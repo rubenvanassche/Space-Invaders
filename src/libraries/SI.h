@@ -19,6 +19,7 @@ class ScreenEntity;
 class View;
 class Factory;
 class Controller;
+class Assets;
 
 class ScreenController;
 class EventController;
@@ -88,6 +89,7 @@ public:
 	SI_Model* model;
 	SI_View* view;
 	sf::RenderWindow* window;
+	Assets* assets;
 	virtual ~SI();
 };
 

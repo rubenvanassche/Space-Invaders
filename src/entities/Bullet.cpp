@@ -17,26 +17,31 @@ void Bullet::move(util::Direction direction){
 	util::move(this->fSize, this->fDirection, this->fMovePixels);
 }
 
-bool Bullet::isDead(){
-	if(fLifes <= 0){
+
+void Bullet::kill(bool forced){
+	if(forced == true){
+		this->fLifes = 0;
+	}
+
+	if(this->isDead()){
 		// there is still a view corresponding to this entity
 		if(this->fEntityView != nullptr){
 			for(auto it = this->fSI->view->views->begin();it != this->fSI->view->views->end();it++){
 				if((*it)->getEntity() == this){
 					// found it, so remove it!
-					it++;
-					this->fSI->view->views->erase(--it);
-					break;
+					delete *it;
+					this->fSI->view->views->remove(*it);
+					//break;
 				}
 			}
 
 			this->fEntityView = nullptr;
 		}
 
-		return true;
-	}else{
-		return false;
+		return;
 	}
+
+	this->fLifes -= 1;
 }
 
 Bullet::~Bullet() {

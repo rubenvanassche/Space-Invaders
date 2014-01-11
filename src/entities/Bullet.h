@@ -28,11 +28,6 @@ public:
 	void move(util::Direction direction);
 
 	/*
-	 * @brief check if the bullet is dead if so it also removes the View corresponding with this bullet
-	 */
-	bool isDead();
-
-	/*
 	 * @brief get a pointer to the screen entity from where this bullet was fired
 	 */
 	ScreenEntity* getFiredfrom(){return this->fFrom;};
@@ -41,6 +36,11 @@ public:
 	 * @brief get the type of bullet(ALIEN, HUMAN)
 	 */
 	bulletType getType(){return this->fType;};
+
+	/*
+	 * @brief Kills an Entity(remove one life)
+	 */
+	void kill(bool forced = false);
 
 	virtual ~Bullet();
 private:

@@ -20,6 +20,9 @@ public:
 	// Use the Factory Constructor
 	using Factory::Factory;
 	void createRussel(sf::Vector2f location);
+	void createDoug(sf::Vector2f location);
+	void createCarl(sf::Vector2f location);
+	void createMuntz(sf::Vector2f location);
 	virtual ~AlienFactory();
 };
 

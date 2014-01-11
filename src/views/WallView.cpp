@@ -19,34 +19,29 @@ void WallView::draw(){
 	// get the wall's life
 	int wallLife = this->fWall->getLifes();
 
-	if(wallLife == 1){
-		sf::Texture texture;
-		if (!texture.loadFromFile("Resources/Walls/three.png")){
-			std::runtime_error("Resource couldn't be found!");
+	sf::Texture* texture;
+	try{
+		if(wallLife == 1){
+			texture = this->fAssets->getTexture("Resources/Walls/three.png");
+		}else if(wallLife == 2){
+			texture = this->fAssets->getTexture("Resources/Walls/two.png");
+		}else if(wallLife == 3){
+			texture = this->fAssets->getTexture("Resources/Walls/one.png");
+		}else{
+			std::runtime_error("Wall can only have three lives not more, not less");
 		}
-		sf::Sprite sprite(texture);
-		sprite.setPosition(wallLocation);
-		this->fWindow->draw(sprite);
-	}else if(wallLife == 2){
-		sf::Texture texture;
-		if (!texture.loadFromFile("Resources/Walls/two.png")){
-			std::runtime_error("Resource couldn't be found!");
-		}
-		sf::Sprite sprite(texture);
-		sprite.setPosition(wallLocation);
-		this->fWindow->draw(sprite);
-	}else if(wallLife == 3){
-		sf::Texture texture;
-		if (!texture.loadFromFile("Resources/Walls/one.png")){
-			std::runtime_error("Resource couldn't be found!");
-		}
-		sf::Sprite sprite(texture);
-		sprite.setPosition(wallLocation);
-		this->fWindow->draw(sprite);
-	}else{
-		std::runtime_error("Wall can only have three lives not more, not less");
+	}catch(std::runtime_error &e){
+		sf::RectangleShape rectangle;
+		rectangle.setPosition(wallLocation);
+		rectangle.setSize(sf::Vector2f(this->fWall->getWidth(), this->fWall->getHeight()));
+		rectangle.setFillColor(sf::Color(255, 255, 255));
+		this->fWindow->draw(rectangle);
+		return;
 	}
 
+	sf::Sprite sprite(*texture);
+	sprite.setPosition(wallLocation);
+	this->fWindow->draw(sprite);
 }
 
 WallView::~WallView() {

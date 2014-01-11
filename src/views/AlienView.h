@@ -19,7 +19,7 @@ public:
 	 *
 	 * @param alien A pointer to the Alien instance
 	 */
-	AlienView(sf::RenderWindow* window, Alien* alien) : fAlien(alien), View(window){this->fColor = sf::Color(255, 255, 0);};
+	AlienView(sf::RenderWindow* window, Assets* assets, Alien* alien) : fAlien(alien), View(window, assets){this->fColor = sf::Color(255, 255, 0);};
 
 	/*
 	 * @brief Constructor for the Alien View
@@ -27,7 +27,7 @@ public:
 	 * @param alien A pointer to the Alien instance
 	 * @param color The color of the gun
 	 */
-	AlienView(sf::RenderWindow* window, Alien* alien, sf::Color color) : fAlien(alien), fColor(color), View(window){};
+	AlienView(sf::RenderWindow* window, Assets* assets, Alien* alien, sf::Color color) : fAlien(alien), fColor(color), View(window, assets){};
 
 	/*
 	 * @brief Draw the Alien by returning a VertexArray
@@ -38,6 +38,11 @@ public:
 
 	virtual ~AlienView();
 private:
+	/*
+	 * @brief Draws an alternative alien for some reason
+	 */
+	void drawAlternative();
+
 	Alien* fAlien = nullptr;
 	sf::Color fColor;
 };

@@ -25,6 +25,14 @@ public:
 	 * @brief redraws the whole window
 	 */
 	void redraw();
+
+	/*
+	 * @brief Draws a view, just one
+	 *
+	 * @param view The view to draw
+	 */
+	void draw(View &view);
+
 	virtual ~ScreenController();
 };
 

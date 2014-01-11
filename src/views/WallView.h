@@ -15,7 +15,7 @@
 
 class WallView : public View{
 public:
-	WallView(sf::RenderWindow* window, Wall* wall) : View(window), fWall(wall){};
+	WallView(sf::RenderWindow* window, Assets* assets, Wall* wall) : View(window, assets), fWall(wall){};
 
 	/*
 	 * @brief Draw the Gun by returning a VertexArray

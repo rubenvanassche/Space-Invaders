@@ -25,10 +25,22 @@ void MotionController::moveAliens(){
 		return;
 	}
 
-	ScreenEntity* mostLeft = *this->fSI->model->aliens->begin();
+	ScreenEntity* mostLeft = *this->fSI->model->aliens->end();
 	ScreenEntity* mostRight = *this->fSI->model->aliens->begin();
 
 	for(auto it =  this->fSI->model->aliens->begin();it != this->fSI->model->aliens->end();it++){
+		if((*it)->isDead() == true){
+			// We're not working with dead Aliens so skip this one
+			continue;
+		}
+
+		if((*it)->getLocation().x > mostRight->getLocation().x){
+			// If our current it's X is bigger then our temp most right, change it
+			mostRight = *it;
+		}
+	}
+
+	for(auto it = this->fSI->model->aliens->end();it != this->fSI->model->aliens->begin();it--){
 		if((*it)->isDead() == true){
 			// We're not working with dead Aliens so skip this one
 			continue;
@@ -39,15 +51,11 @@ void MotionController::moveAliens(){
 			mostLeft = *it;
 		}
 
-		if((*it)->getLocation().x > mostRight->getLocation().x){
-			// If our current it's X is bigger then our temp most right, change it
-			mostRight = *it;
-		}
 	}
 
 	if(mostLeft->isDead() == true and mostRight->isDead() == true){
 		// All our Aliens are dead, so stop here
-		this->fSI->controller->game->gameWon();
+		this->fSI->controller->game->gameEnded(true);
 		return;
 	}
 
@@ -96,13 +104,8 @@ void MotionController::moveBullets(){
 	for(auto it =  this->fSI->model->bullets->begin();it != this->fSI->model->bullets->end();it++){
 		if((*it)->getLocation().y < 0 or (*it)->getLocation().y > this->fSI->model->game->getHeight()){
 			// Bullet is of the screen so remove this one
-			(*it)->kill();
-			it++;
-			this->fSI->model->bullets->erase(--it);
-			it--;
-			/*
-			 * TODO: Add a function to remove the view, can't be done now because we don't have a pointer from model to view
-			 */
+			(*it)->kill(true);
+			this->fSI->model->bullets->remove(*it);
 			continue;
 		}
 
@@ -112,6 +115,7 @@ void MotionController::moveBullets(){
 	this->fSI->controller->collision->check();
 
 	this->fSI->controller->screen->redraw();
+
 }
 
 void MotionController::shootGun(){

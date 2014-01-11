@@ -21,6 +21,8 @@ public:
 	// Use the Factory Constructor
 	using Factory::Factory;
 	void createBlaster();
+	void createShooter();
+	void createCannoner();
 	virtual ~GunFactory();
 };
 

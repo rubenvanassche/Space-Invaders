@@ -17,7 +17,7 @@
 
 class InfoView : public View {
 public:
-	InfoView(sf::RenderWindow* window, Gun* gun) : View(window), fGun(gun){};
+	InfoView(sf::RenderWindow* window, Assets* assets, Gun* gun) : View(window, assets), fGun(gun){};
 
 	/*
 	 * @brief Draw the Gun by returning a VertexArray

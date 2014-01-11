@@ -11,7 +11,7 @@ void WallFactory::createWall(sf::Vector2f location){
 	Wall* wallPtr = new Wall(location, this->fSI);
 	this->fSI->model->walls->push_back(wallPtr);
 
-	WallView* wallViewPtr = new WallView(this->fSI->window, wallPtr);
+	WallView* wallViewPtr = new WallView(this->fSI->window, this->fSI->assets, wallPtr);
 	this->fSI->view->views->push_back(wallViewPtr);
 
 }

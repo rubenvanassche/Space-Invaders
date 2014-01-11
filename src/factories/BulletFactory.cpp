@@ -11,16 +11,20 @@ void BulletFactory::createBullet(sf::Vector2f location, util::Direction directio
 	Bullet* bulletPtr = new Bullet(location, direction, from, bt, this->fSI);
 	this->fSI->model->bullets->push_back(bulletPtr);
 
-	BulletView* bulletViewPtr = new BulletView(this->fSI->window, bulletPtr);
+	BulletView* bulletViewPtr = new BulletView(this->fSI->window, this->fSI->assets, bulletPtr);
 	this->fSI->view->views->push_back(bulletViewPtr);
+
+	this->fSI->model->bullets->back()->appendView(bulletViewPtr);
 }
 
 void BulletFactory::createHumanBullet(sf::Vector2f location, ScreenEntity* from){
 	Bullet* bulletPtr = new Bullet(location, util::UP, from, HUMAN, this->fSI);
 	this->fSI->model->bullets->push_back(bulletPtr);
 
-	BulletView* bulletViewPtr = new BulletView(this->fSI->window, bulletPtr);
+	BulletView* bulletViewPtr = new BulletView(this->fSI->window, this->fSI->assets, bulletPtr);
 	this->fSI->view->views->push_back(bulletViewPtr);
+
+	this->fSI->model->bullets->back()->appendView(bulletViewPtr);
 }
 
 void BulletFactory::createAlienBullet(sf::Vector2f location, ScreenEntity* from){
@@ -28,8 +32,10 @@ void BulletFactory::createAlienBullet(sf::Vector2f location, ScreenEntity* from)
 	bulletPtr->setSpeed(2);
 	this->fSI->model->bullets->push_back(bulletPtr);
 
-	BulletView* bulletViewPtr = new BulletView(this->fSI->window, bulletPtr);
+	BulletView* bulletViewPtr = new BulletView(this->fSI->window, this->fSI->assets, bulletPtr);
 	this->fSI->view->views->push_back(bulletViewPtr);
+
+	this->fSI->model->bullets->back()->appendView(bulletViewPtr);
 }
 
 BulletFactory::~BulletFactory() {

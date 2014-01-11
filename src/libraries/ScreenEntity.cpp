@@ -68,9 +68,13 @@ bool ScreenEntity::isDead(){
 
 }
 
-void ScreenEntity::kill(){
+void ScreenEntity::kill(bool forced){
 	if(this->isDead()){
 		return;
+	}
+
+	if(forced == true){
+		this->fLifes = 0;
 	}
 
 	this->fLifes -= 1;

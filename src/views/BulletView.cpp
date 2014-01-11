@@ -14,14 +14,24 @@ void BulletView::draw() {
 
 	// Get the starting point
 	sf::Vector2f bulletLocation = this->fBullet->getLocation();
+	sf::Texture* texture;
 
-	sf::Texture texture;
-	if (!texture.loadFromFile("Resources/Bullets/two.png")){
-		std::runtime_error("Resource couldn't be found!");
+	try{
+		if(this->fBullet->getType() == ALIEN){
+			texture = this->fAssets->getTexture("Resources/Bullets/two.png");
+		}else if(this->fBullet->getType() == HUMAN){
+			texture = this->fAssets->getTexture("Resources/Bullets/one.png");
+		}
+	}catch(std::runtime_error &e){
+		sf::RectangleShape rectangle;
+		rectangle.setPosition(bulletLocation);
+		rectangle.setSize(sf::Vector2f(this->fBullet->getWidth(), this->fBullet->getHeight()));
+		rectangle.setFillColor(sf::Color(255, 255, 255));
+		this->fWindow->draw(rectangle);
+		return;
 	}
-	sf::Sprite sprite(texture);
+	sf::Sprite sprite(*texture);
 	sprite.setPosition(bulletLocation);
-
 	this->fWindow->draw(sprite);
 }
 

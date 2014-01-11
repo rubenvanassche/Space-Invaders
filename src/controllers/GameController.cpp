@@ -8,7 +8,7 @@
 #include "GameController.h"
 
 void GameController::start(){
-	StartScreenView startScreenView(this->fSI->window, this->fSI->model->game);
+	StartScreenView startScreenView(this->fSI->window, this->fSI->assets, this->fSI->model->game);
 	this->fSI->view->views->push_back(&startScreenView);
 
 	this->fSI->controller->screen->redraw();
@@ -56,14 +56,14 @@ void GameController::startGame(){
 			clock2.restart();
 		}
 
-		if(clock3.getElapsedTime() >= sf::seconds(3.0)){
+		if(clock3.getElapsedTime() >= sf::seconds(this->aliensBulletShootFrequency)){
 			this->fSI->controller->motion->shootAlien();
 			clock3.restart();
 		}
 
 		// Check for if dead
 		if(this->fSI->model->guns->front()->isDead()){
-			this->gameOver();
+			this->gameEnded(false);
 		}
 
 		// Sleep for a while so our while loop doesn't go crazy on the CPU
@@ -94,51 +94,72 @@ void GameController::buildGame(int level){
 		alienFactory.createRussel(sf::Vector2f(alienXLocations.at(i), 40));
 	}
 	for(int i = 0;i < alienXLocations.size();i++){
-		alienFactory.createRussel(sf::Vector2f(alienXLocations.at(i), 80));
+		alienFactory.createDoug(sf::Vector2f(alienXLocations.at(i), 80));
 	}
 	for(int i = 0;i < alienXLocations.size();i++){
 		alienFactory.createRussel(sf::Vector2f(alienXLocations.at(i), 120));
 	}
 	for(int i = 0;i < alienXLocations.size();i++){
-		alienFactory.createRussel(sf::Vector2f(alienXLocations.at(i), 160));
+		alienFactory.createCarl(sf::Vector2f(alienXLocations.at(i), 160));
 	}
 
 	// Create the infoview on top of the game
-	InfoView* info = new InfoView(this->fSI->window, this->fSI->model->guns->front());
+	InfoView* info = new InfoView(this->fSI->window, this->fSI->assets, this->fSI->model->guns->front());
 	this->fSI->view->views->push_back(info);
+
+	// Change the frequency of bullets fired by aliens
+	this->aliensBulletShootFrequency = 3.0 - level*0.06;
 }
 
-void GameController::gameOver(){
+
+void GameController::gameEnded(bool won){
+	// Remove everything
+	this->clear();
+
+	// Create out GameWon View
+	GameEndedView outputView(this->fSI->window, this->fSI->assets, this->fSI->model->game, won);
+
 	while(this->fSI->window->isOpen()){
 		//Process events
 		sf::Event event;
 		while (this->fSI->window->pollEvent(event)){
-			this->fSI->controller->event->startScreen(event);
+			this->fSI->controller->event->gameEndScreen(event);
 		}
 
-		GameOverView gameOver(this->fSI->window, this->fSI->model->game);
-		this->fSI->view->views->push_back(&gameOver);
-		this->fSI->controller->screen->redraw();
-
+		this->fSI->controller->screen->draw(outputView);
 
 		// Sleep for a while so our while loop doesn't go crazy on the CPU
 		sf::sleep(sf::seconds(0.1));
 	}
 }
 
-void GameController::gameWon(){
-	while(this->fSI->window->isOpen()){
-		//Process events
-		sf::Event event;
-		while (this->fSI->window->pollEvent(event)){
-			this->fSI->controller->event->startScreen(event);
-		}
-
-		std::cout << "Game Won" << std::endl;
-
-		// Sleep for a while so our while loop doesn't go crazy on the CPU
-		sf::sleep(sf::seconds(0.1));
+void GameController::clear(){
+	for(auto it = this->fSI->model->aliens->begin();it != this->fSI->model->aliens->end();it++){
+			delete *it;
 	}
+
+	for(auto it = this->fSI->model->bullets->begin();it != this->fSI->model->bullets->end();it++){
+		delete *it;
+	}
+
+	for(auto it = this->fSI->model->walls->begin();it != this->fSI->model->walls->end();it++){
+		delete *it;
+	}
+
+	for(auto it = this->fSI->model->guns->begin();it != this->fSI->model->guns->end();it++){
+		delete *it;
+	}
+
+	for(auto it = this->fSI->view->views->begin();it != this->fSI->view->views->end();it++){
+		delete *it;
+	}
+
+
+	this->fSI->model->aliens->clear();
+	this->fSI->model->bullets->clear();
+	this->fSI->model->walls->clear();
+	this->fSI->model->guns->clear();
+	this->fSI->view->views->clear();
 }
 
 

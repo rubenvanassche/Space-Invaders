@@ -19,7 +19,7 @@ class GameController;
 
 class StartScreenView : public View {
 public:
-	StartScreenView(sf::RenderWindow* window, Game* game) : View(window), fGame(game){};
+	StartScreenView(sf::RenderWindow* window, Assets* assets, Game* game) : View(window, assets), fGame(game){};
 
 	/*
 	 * @brief Draw the Gun by returning a VertexArray

@@ -63,6 +63,20 @@ public:
 	virtual sf::Vector2f getLocation(){return this->fSize.getGrabPoint();};
 
 	/*
+	 * @brief Get the height of this entity
+	 *
+	 * @return int the height
+	 */
+	virtual int getHeight(){return this->fSize.getHeight();};
+
+	/*
+	 * @brief Get the width of this entity
+	 *
+	 * @return int the width
+	 */
+	virtual int getWidth(){return this->fSize.getWidth();};
+
+	/*
 	 * @brief Get the size of this Model
 	 *
 	 * @return Size the size object
@@ -74,12 +88,14 @@ public:
 	 *
 	 * #return bool representing if the Model is dead or not
 	 */
-	bool isDead();
+	virtual bool isDead();
 
 	/*
 	 * @brief Kills an Entity(remove one life)
+	 *
+	 * @param forced Kill the anyway(default:false)
 	 */
-	virtual void kill();
+	virtual void kill(bool forced = false);
 
 	/*
 	 * @brief Get information about how many lives this Model has

@@ -20,6 +20,11 @@
  */
 class EventController : public Controller{
 public:
+	/*
+	 * @brief Constructor
+	 *
+	 * @param si The Space Invaders Element
+	 */
 	EventController(SI* si) : Controller(si){};
 
 	/*
@@ -31,6 +36,11 @@ public:
 	 * @brief records an user defined event during the start screen
 	 */
 	void startScreen(sf::Event event);
+
+	/*
+	 * @brief records an user defined event during the gameover or gamewon screen
+	 */
+	void gameEndScreen(sf::Event event);
 
 	/*
 	 * @brief stop the game because we're death

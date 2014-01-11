@@ -16,7 +16,7 @@
 #include <iostream>
 #include "../views/StartScreenView.h"
 #include "../views/InfoView.h"
-#include "../views/GameOverView.h"
+#include "../views/GameEndedView.h"
 #include "../controllers/ScreenController.h"
 #include "../controllers/EventController.h"
 #include "../controllers/MotionController.h"
@@ -34,9 +34,11 @@ public:
 	void start();
 	void startGame();
 	void buildGame(int level);
-	void gameOver();
-	void gameWon();
+	void gameEnded(bool won);
+	void clear();
 	virtual ~GameController();
+private:
+	double aliensBulletShootFrequency = 3.0;
 };
 
 #endif /* GAMECONTROLLER_H_ */

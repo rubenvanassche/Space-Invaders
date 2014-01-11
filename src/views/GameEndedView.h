@@ -12,13 +12,14 @@
 #include "../entities/Game.h"
 #include <SFML/Graphics.hpp>
 
-class GameOverView : public View {
+class GameEndedView : public View {
 public:
-	GameOverView(sf::RenderWindow* window, Game* game) : fGame(game), View(window){};
+	GameEndedView(sf::RenderWindow* window, Assets* assets, Game* game, bool won) : fGame(game), fWon(won), View(window, assets){};
 	void draw();
-	virtual ~GameOverView();
+	virtual ~GameEndedView();
 private:
 	Game* fGame;
+	bool fWon;
 };
 
 #endif /* GAMEOVERVIEW_H_ */

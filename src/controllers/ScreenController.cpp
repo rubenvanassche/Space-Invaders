@@ -24,6 +24,13 @@ void ScreenController::redraw(){
 	this->fSI->window->display();
 }
 
+void ScreenController::draw(View &view){
+	// Clean the Window
+	this->fSI->window->clear();
+	view.draw();
+	this->fSI->window->display();
+}
+
 
 ScreenController::~ScreenController() {
 	// TODO Auto-generated destructor stub
