@@ -12,8 +12,16 @@
 #include "../libraries/View.h"
 #include <SFML/Window.hpp>
 
+/*
+ * @brief The Controller who handles the screen
+ */
 class ScreenController : public Controller {
 public:
+	/*
+	 * @brief Constructor
+	 *
+	 * @param si The Space Invaders Element
+	 */
 	ScreenController(SI* si) : Controller(si){};
 
 	/*

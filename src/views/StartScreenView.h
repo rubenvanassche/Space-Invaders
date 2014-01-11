@@ -17,12 +17,22 @@
 
 class GameController;
 
+/*
+ * @brief View representing the start screen at the bgeiining of the game
+ */
 class StartScreenView : public View {
 public:
+	/*
+	 * @brief Constructor for the Start Screen View
+	 *
+	 * @param window A pointer to the window instance
+	 * @param assets A pointer to the assets instance
+	 * @param alien A pointer to the Game instance
+	 */
 	StartScreenView(sf::RenderWindow* window, Assets* assets, Game* game) : View(window, assets), fGame(game){};
 
 	/*
-	 * @brief Draw the Gun by returning a VertexArray
+	 * @brief Draw the Start Screen
 	 */
 	void draw();
 	virtual ~StartScreenView();

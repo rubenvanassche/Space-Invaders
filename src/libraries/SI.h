@@ -81,7 +81,9 @@ private:
 	SI* si;
 };
 
-
+/*
+ * @brief The Space Invaders Elements, the connection through the whole system
+ */
 class SI {
 public:
 	SI();

@@ -14,9 +14,18 @@
 
 class SI;
 
+/*
+ * @brief The library for Controllers
+ */
 class Controller {
 public:
+	/*
+	 * @brief The Controller Constructor
+	 *
+	 * @param si The Space Invaders Element
+	 */
 	Controller(SI* si) : fSI(si){};
+
 	virtual ~Controller(){};
 protected:
 	SI* fSI;

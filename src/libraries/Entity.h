@@ -10,9 +10,16 @@
 
 #include "../libraries/SI.h"
 
-
+/*
+ * @brief The library for Entities
+ */
 class Entity {
 public:
+	/*
+	 * @brief The Entity Constructor
+	 *
+	 * @param si The Space Invaders Element
+	 */
 	Entity(SI* si) : fSI(si){};
 
 	virtual ~Entity(){};

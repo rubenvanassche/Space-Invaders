@@ -17,12 +17,16 @@
 enum AlienType{RUSSEL, CARL, DOUG, MUNTZ};
 
 /*
- * @brief The Alien model
+ * @brief The Alien Entity
  */
 class Alien : public ScreenEntity{
 public:
 	/*
 	 * @brief Alien Constructor
+	 *
+	 * @param location The location of the Alien
+	 * @param si The Space Invaders Element
+	 * @param type the Type of Alien, it can be RUSSEL, DOUG, MUNTZ or CARL
 	 */
 	Alien(sf::Vector2f location, SI* si, AlienType type);
 

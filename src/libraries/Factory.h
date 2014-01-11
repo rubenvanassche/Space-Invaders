@@ -14,8 +14,16 @@
 #include <list>
 #include <memory>
 
+/*
+ * @brief The library for Factories
+ */
 class Factory {
 public:
+	/*
+	 * @brief The Factory Constructor
+	 *
+	 * @param si The Space Invaders Element
+	 */
 	Factory(SI* si) : fSI(si){};
 
 	virtual ~Factory(){};

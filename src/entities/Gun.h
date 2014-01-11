@@ -18,7 +18,7 @@
 
 
 /*
- * @brief The Gun model
+ * @brief The Gun Entity
  */
 class Gun : public ScreenEntity {
 public:
@@ -27,6 +27,7 @@ public:
 	 *
 	 * @param location A point containing info of the location of the gun
 	 * @param size A size
+	 * @param si The Space Invaders Element
 	 */
 	Gun(sf::Vector2f location, int scale, SI* si);
 

@@ -14,9 +14,18 @@
 #include "../controllers/GameController.h"
 #include "../controllers/CollisionController.h"
 
+/*
+ * @brief The Controller who is in control of the motion during the game
+ */
 class MotionController : public Controller {
 public:
+	/*
+	 * @brief Constructor
+	 *
+	 * @param si The Space Invaders Element
+	 */
 	MotionController(SI* si) : Controller(si) {};
+
 	/*
 	 * @brief Moves the gun to a certain direction
 	 *

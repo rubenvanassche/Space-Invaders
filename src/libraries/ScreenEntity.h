@@ -17,9 +17,17 @@
 #include "Size.h"
 #include "../libraries/SI.h"
 
-
+/*
+ * @brief The library for ScreenEntities(entities who should be displayed on the screen)
+ */
 class ScreenEntity : public Entity {
 public:
+	/*
+	 * @brief COnstructor for ScreenEntity
+	 *
+	 * @param size The size for this entity
+	 * @param si The Space Invaders Element
+	 */
 	ScreenEntity(Size size, SI* si) : fSize(size), Entity(si){};
 
 	/*
@@ -113,16 +121,22 @@ public:
 
 	/*
 	 * @brief set the speed of an Screen Entity
+	 *
+	 * @param speed The speed as an int from 0 to ...
 	 */
 	virtual void setSpeed(int speed){this->fMovePixels = speed;};
 
 	/*
 	 * @brief raises the score from an Screen Entity
+	 *
+	 * @param score The score to add to this entity's existing score
 	 */
 	virtual void raiseScore(int score){this->fScore += score;};
 
 	/*
 	 * @brief Return the Score of an Entity
+	 *
+	 * @return An int containing this entity's score
 	 */
 	virtual int getScore(){return this->fScore;};
 

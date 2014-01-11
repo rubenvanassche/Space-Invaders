@@ -42,11 +42,6 @@ public:
 	 */
 	void gameEndScreen(sf::Event event);
 
-	/*
-	 * @brief stop the game because we're death
-	 */
-	void die();
-
 	virtual ~EventController();
 
 };

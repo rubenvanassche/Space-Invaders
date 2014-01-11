@@ -79,10 +79,6 @@ void EventController::gameEndScreen(sf::Event event){
     }
 }
 
-void EventController::die(){
-
-}
-
 EventController::~EventController() {
 	// TODO Auto-generated destructor stub
 }

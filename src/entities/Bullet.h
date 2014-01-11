@@ -14,10 +14,19 @@
 enum bulletType {ALIEN, HUMAN};
 
 /*
- * @brief The Bullet model
+ * @brief The Bullet Entity
  */
 class Bullet : public ScreenEntity {
 public:
+	/*
+	 * @brief Bullet Constructor
+	 *
+	 * @param location The location of the Bullet
+	 * @param direction The Direction(UP, DOWN) the bullet need to go
+	 * @param from The Entity from where this bullet was fired
+	 * @param bulletType The type of creature(HUMAN, ALIEN) this bullet was fired from
+	 * @param si The Space Invaders Element
+	 */
 	Bullet(sf::Vector2f location, util::Direction direction, ScreenEntity* from, bulletType bullettype, SI* si);
 
 	/*
@@ -29,16 +38,22 @@ public:
 
 	/*
 	 * @brief get a pointer to the screen entity from where this bullet was fired
+	 *
+	 * @return A ScreenEntity pointer to the entity from where this bullet was shot
 	 */
 	ScreenEntity* getFiredfrom(){return this->fFrom;};
 
 	/*
 	 * @brief get the type of bullet(ALIEN, HUMAN)
+	 *
+	 * @return A bulletType
 	 */
 	bulletType getType(){return this->fType;};
 
 	/*
 	 * @brief Kills an Entity(remove one life)
+	 *
+	 * @param forced Default false, when true it will not reduce one life but kill the whole bullet
 	 */
 	void kill(bool forced = false);
 
