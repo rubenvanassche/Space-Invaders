@@ -14,11 +14,17 @@ Ruben Van Assche - s0122623
 	make
 	make install
 
+## Documentation
+The API is documented and can be found in the docs/html directory, open the index.html file to start reading.
+
 ## Generating The Documentation
 Change the following line in the CMakeLists.txt file at the root directory from:
+
 	# Documentation
 	SET(BUILD_DOCS FALSE)
+
 To:
+
 	# Documentation
 	SET(BUILD_DOCS TRUE)
 
@@ -125,9 +131,11 @@ Is being used in the whole system, some examples:
 Through the system there can be found dozens of examples why SI is very usefull, but some remarks over here:
 
 **Hiding**
+
 The SI element doesn't provide hiding (yet). So let's say a controller isn't allowed to update the screen, it will be possible through the SI element. Off course this can be controlled by a privileges system in SI. So that each time the SI element is called the caller should ask for privileges and the SI element can decide to give them, but that's for a futher version.
 
 **Why do views not have access to the SI element?**
+
 Views just need to know something about their connected Entity, nothing more.
 
 
@@ -162,7 +170,30 @@ A few examples:
 - Kill: this function is overloaded in the bullet Entity, when a bullet is killed it's appropriate view will be searched so it can be removed from the memory.
 
 ### Exception Handling
-Is build into the assets class and views so when an asset(texture, font) is not avaible an simple representation is shown.  
+Is build into the assets class and views so when an asset(texture, font) is not avaible an simple representation is shown.
 
+### Extending the system
+A design is good if it is easy to add functionality without too much effort. Let's have a look at some examples:
 
+** How difficult is it to add a new type of Alien**
+Let's go wild and we want a completly new alien that travels once from left to right on the screen:
+- Create a new view which represnts the Alien.
+- Create a new function in the Alien factory which creates our new alien, give it a special name by using the setName function, and change the speed. Of course we use our new view.
+- Change the move Aliens function in the motion controller to move this type of alien only left or right.
+- Add an AlienFactory to the Game Controller's startgame function and let it create our new alien at random moments.
 
+That's it! Now out new alien can be killed and so add points to our gun, it can move, it can shoot bullets. AVerage time to build this? Maybe one hour.
+
+** How difficult is it to add a multiplayer mode?**
+- Add a new gun in the game build up process, this is just one line of code.
+- Add to the movegun function in the motion controller an index to specify the gun, 6 lines of code.
+- Add to the event controller the events for moving our second gun, 6 lines of code.
+- Check in the startgame function in game controller if one of the controllers is dead instead of one, 4 lines of code.
+- Add in the build up process a infoView connected to the second gun to show it's lives and score, 3 lines of code.
+
+Total 20 lines of code, looks quite good. Some things maybe need to be changed like the explaination for the users in the startview what the controls are for the two guns(at this moment it describes only the controls for one gun).
+
+** How difficult is it to add a wall that moves? **
+- Add a move function to motion controller, 10 lines of code.
+
+No more to do.
