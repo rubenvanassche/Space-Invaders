@@ -11,7 +11,7 @@ SET(CMAKE_CXX_FLAGS "-std=c++11")
 ADD_SUBDIRECTORY(src)
 
 # Documentation
-SET(BUILD_DOCS TRUE)
+SET(BUILD_DOCS FALSE)
 
 if(BUILD_DOCS)
     add_subdirectory(docs)

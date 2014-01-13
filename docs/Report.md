@@ -8,11 +8,13 @@ Ruben Van Assche - s0122623
 - Levels
 
 ## Compiling
-	mkdir build
-	cd build
 	cmake .
 	make
 	make install
+
+## Running
+After compining:
+	./SpaceInvaders
 
 ## Documentation
 The API is documented and can be found in the docs/html directory, open the index.html file to start reading.
