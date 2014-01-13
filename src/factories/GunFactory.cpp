@@ -30,7 +30,7 @@ void GunFactory::createShooter(){
 	this->fSI->view->views->push_back(gunViewPtr);
 
 	// Change the speed
-	gunPtr->setSpeed(4);
+	gunPtr->setSpeed(30);
 
 	// Now let's center this Gun
 	location.x = (this->fSI->model->game->getWidth() - gunPtr->getSize().getWidth())/2;
@@ -47,7 +47,7 @@ void GunFactory::createCannoner(){
 	this->fSI->view->views->push_back(gunViewPtr);
 
 	// Change the speed
-	gunPtr->setSpeed(6);
+	gunPtr->setSpeed(40);
 
 	// Now let's center this Gun
 	location.x = (this->fSI->model->game->getWidth() - gunPtr->getSize().getWidth())/2;

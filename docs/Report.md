@@ -115,6 +115,21 @@ The first view the user get's to see when he starts the game, he can select a le
 ## Design
 
 ### Space Invaders Element
+Is being used in the whole system, some examples:
+- Factories: each Factory stores it's new created views and entities automaticly in the right containers, SI provides these conatiners.
+- Gun Entity: needs to know the width of the window, so the gun doesn't go off the screen. The SI element gives it access to the game Entity which stores the game width. Also when the gun moves, the Gun Entity will update the position of the gun and immediatly ask the screen controller to redraw the screen.
+- Event Controller: will at each event(keybord touch) redirect to the approptiate function in the Game Controller using the SI element.
+- Game Controller: can ask simply information about the game(mostly the current level) and also get the amount of lives the gun(player) has to see if the game is over. Also this information can be provided wit the SI element.
+- The Motion Controller: works on large sets stored in SI, like the aliens.
+
+Through the system there can be found dozens of examples why SI is very usefull, but some remarks over here:
+
+**Hiding**
+The SI element doesn't provide hiding (yet). So let's say a controller isn't allowed to update the screen, it will be possible through the SI element. Off course this can be controlled by a privileges system in SI. So that each time the SI element is called the caller should ask for privileges and the SI element can decide to give them, but that's for a futher version.
+
+**Why do views not have access to the SI element?**
+Views just need to know something about their connected Entity, nothing more.
+
 
 ### MVC
 Though there are multiple interpretations of the MVC system mine work a little bit different then the most. Instead of defining the model as a class with entites in and defining functions in that class to work on these entites I just used a list with entities and defined it as model.
