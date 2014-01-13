@@ -175,7 +175,7 @@ Is build into the assets class and views so when an asset(texture, font) is not 
 ### Extending the system
 A design is good if it is easy to add functionality without too much effort. Let's have a look at some examples:
 
-** How difficult is it to add a new type of Alien**
+**How difficult is it to add a new type of Alien**
 Let's go wild and we want a completly new alien that travels once from left to right on the screen:
 - Create a new view which represnts the Alien.
 - Create a new function in the Alien factory which creates our new alien, give it a special name by using the setName function, and change the speed. Of course we use our new view.
@@ -184,16 +184,17 @@ Let's go wild and we want a completly new alien that travels once from left to r
 
 That's it! Now out new alien can be killed and so add points to our gun, it can move, it can shoot bullets. AVerage time to build this? Maybe one hour.
 
-** How difficult is it to add a multiplayer mode?**
+**How difficult is it to add a multiplayer mode?**
 - Add a new gun in the game build up process, this is just one line of code.
 - Add to the movegun function in the motion controller an index to specify the gun, 6 lines of code.
 - Add to the event controller the events for moving our second gun, 6 lines of code.
 - Check in the startgame function in game controller if one of the controllers is dead instead of one, 4 lines of code.
 - Add in the build up process a infoView connected to the second gun to show it's lives and score, 3 lines of code.
 
-Total 20 lines of code, looks quite good. Some things maybe need to be changed like the explaination for the users in the startview what the controls are for the two guns(at this moment it describes only the controls for one gun).
+Total 20 lines of code, looks quite good. Some things maybe need to be changed like the explaination for the users in the startview what the controls are for the two guns(at this moment it describes only the controls for one gun), but with this 20 lines a working multiplayer option can be implemented.
 
-** How difficult is it to add a wall that moves? **
+**How difficult is it to add a wall that moves?**
 - Add a move function to motion controller, 10 lines of code.
+- Call this function in the gamecontroller when the aliens move, 1 line of code.
 
 No more to do.
