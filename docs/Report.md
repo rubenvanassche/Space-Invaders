@@ -2,6 +2,17 @@
 
 Ruben Van Assche - s0122623
 
+## Introduction
+Welcome, to the Space Invaders project, in this docuemnt you find information about how to compile and run the application. Dependencies are SFML and off course a c++ complier+ linker.
+
+The document describes what each class in the system represents, after that I explain my design choises.
+
+The API is documented and can be found in the docs/html directory, open the index.html file and start reading.
+
+## Known problems
+- When opening the game, it can be that the window doesn't show anything, just press the left arrow key and you see the start screen.
+- When closing the window at certain points, the game gives a segmentation problem, not really a problem because the game is closed. But the memory keeps dirty and it just doesn't look gooed, needs to be fixed in a further version.
+
 ## Functionality
 - Aliens, Guns, Walls
 - Basic Space Invaders gameplay
@@ -13,11 +24,8 @@ Ruben Van Assche - s0122623
 	make install
 
 ## Running
-After compining:
+After compiling:
 	./SpaceInvaders
-
-## Documentation
-The API is documented and can be found in the docs/html directory, open the index.html file to start reading.
 
 ## Generating The Documentation
 Change the following line in the CMakeLists.txt file at the root directory from:
@@ -140,6 +148,12 @@ The SI element doesn't provide hiding (yet). So let's say a controller isn't all
 
 Views just need to know something about their connected Entity, nothing more.
 
+**Why the SI element?**
+
+- It reduces the amount of parameters to be given in the constructor
+- In the whole system there is only one SI element, this limits the amount of stupid errors being made
+- It makes the code readable, for example to redraw the window the only thing todo id : this->si->controller->screen->redraw();
+- You have everything you need everywhere 
 
 ### MVC
 Though there are multiple interpretations of the MVC system mine work a little bit different then the most. Instead of defining the model as a class with entities in and defining functions in that class to work on these entities I just used a list with entities and defined it as model.
@@ -179,6 +193,7 @@ Is build into the assets class and views so when an asset(texture, font) is not 
 A design is good if it is easy to add functionality without too much effort. Let's have a look at some examples:
 
 **How difficult is it to add a new type of Alien**
+
 Let's go wild and we want a completely new alien that travels once from left to right on the screen:
 - Create a new view which represents the Alien.
 - Create a new function in the Alien factory which creates our new alien, give it a special name by using the setName function, and change the speed. Of course we use our new view.
@@ -188,6 +203,7 @@ Let's go wild and we want a completely new alien that travels once from left to 
 That's it! Now out new alien can be killed and so add points to our gun, it can move, it can shoot bullets. Average time to build this? Maybe one hour.
 
 **How difficult is it to add a multiplayer mode?**
+
 - Add a new gun in the game build up process, this is just one line of code.
 - Add to the movegun function in the motion controller an index to specify the gun, 6 lines of code.
 - Add to the event controller the events for moving our second gun, 6 lines of code.
@@ -197,6 +213,7 @@ That's it! Now out new alien can be killed and so add points to our gun, it can 
 Total 20 lines of code, looks quite good. Some things maybe need to be changed like the explanation for the users in the startview what the controls are for the two guns(at this moment it describes only the controls for one gun), but with this 20 lines a working multiplayer option can be implemented.
 
 **How difficult is it to add a wall that moves?**
+
 - Add a move function to motion controller, 10 lines of code.
 - Call this function in the gamecontroller when the aliens move, 1 line of code.
 
