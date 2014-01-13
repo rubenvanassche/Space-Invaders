@@ -89,10 +89,10 @@ The bullet Entity represnts an bullet on the screen, it knows from where it was 
 **Game**
 The only entity which is not an screen entity holds information about the game such as the height and width of the game and the current level playing.
 
-**Gun**
+**Gun(ScreenEntity)**
 Is almost the same as it's base Screen Entity class but needs to handle sometimes different so some functions are overloaded. It represents of course the player's gun.
 
-**Wall**
+**Wall(ScreenEntity)**
 Probaly the most boring Entity, it is just a ScreenEntity and nothing more.
 
 ### Factories
@@ -114,12 +114,15 @@ The first view the user get's to see when he starts the game, he can select a le
 
 ## Design
 
+### Space Invaders Element
+
 ### MVC
 Though there are multiple interpretations of the MVC system mine work a little bit different then the most. Instead of defining the model as a class with entites in and defining functions in that class to work on these entites I just used a list with entities and defined it as model.
 
 **Why?**
 
-The default interpretation is great for the aliens, you can move them just by calling one function in the controller to the model and say move. The model will then decide how each alien shoudl move but that's in my opinion not the function of the model. The model should store data and not work on data. So the motion controller moves the aliens in my design, it calls on each alien Entity the move function. This move function accepts only 4 values : UP, DOWN, LEFT, RIGHT so the Entity can decide how much he has to move. This can come in handy when you want some Aliens to move faster then others. So the computation is done by the controller and the only thing the entity should do is change it's position.
+The default interpretation is great for the aliens, you can move them just by calling one function in the controller to the model and say move. The model will then decide how each alien shoudl move but that's in my opinion not the function of the model. The model should store data and not work on data. So the motion controller moves the aliens in my design, it calls on each alien Entity the move function. This move function accepts only 4 values : UP, DOWN, LEFT, RIGHT so the Entity can decide how much he has to move. 
+This can come in handy when you want some Aliens to move faster then others. So the computation is done by the controller and the only thing the entity should do is change it's position.
 
 ### Observer Pattern
 Also here I do it a little bit different, the observer pattern should be used to call the function to redraw the window with all the new elements on it. I haven't implemented a special observer class with notifiers.
@@ -127,4 +130,24 @@ Also here I do it a little bit different, the observer pattern should be used to
 **Why?**
 
 One word SI(Space Invaders Element), this element is avaible through all controllers. So when some controller decides the screen should be updated, it can call in the SI element the screen controller where the window redraw function is defined. Actually this looks like the observer pattern but it isn't exactly it. 
+
+### Factory Pattern
+In the description of the project it was said we needed to use an abstract factory pattern, I used just a facory pattern.
+
+**Why?**
+I think an abstract factory pattern is too complex for this project, it will require a lot of classes and make the code more compelx then it should be. The factory pattern has the same function as the abstract factory pattern but is much nicer. It has been used to create the different aliens(they have the same speed but a different name and image, raising the speed is just one line of code) and guns. Also each Gun and Alien have a Bullet Factory inside them to provide them at all time with bullets.
+
+### Inheritance and polymorphism
+
+The whole system rests on inheritance: each controller, factory, view, entity inherits from a base library(class). Now I have to admit these libraries doesn't look so spectacular. A better example is the ScreenEntity it inherits from the Entity and the Gun, Alien, Wall and bullet entities inherit from it.
+
+The ScreenEntity declares some special functions for entities besides the base entity class. The children of this class sometimes just use these function but it get's more interesting when they get overloaded.
+A few examples:
+- Move: this function is overloaded in Alien Entity, when the Alien is moved it will also update the ticktock which represents if the alien view should show an image of an open or closed alien. Also the gun has a modified move function which will stop moving the gun when it reaches the borders of the screen.
+- Kill: this function is overloaded in the bullet Entity, when a bullet is killed it's appropriate view will be searched so it can be removed from the memory.
+
+### Exception Handling
+Is build into the assets class and views so when an asset(texture, font) is not avaible an simple representation is shown.  
+
+
 

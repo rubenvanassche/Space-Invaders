@@ -75,7 +75,13 @@ void GameController::startGame(){
 void GameController::buildGame(int level){
 	// Build the gun
 	GunFactory gunFactory(this->fSI);
-	gunFactory.createBlaster();
+	if(level >= 0 and level <= 15){
+		gunFactory.createBlaster();
+	}else if(level > 15 and level <= 30){
+		gunFactory.createShooter();
+	}else{
+		gunFactory.createCannoner();
+	}
 
 	// Build the wall's
 	WallFactory wallFactory(this->fSI);
