@@ -10,7 +10,7 @@ The document describes what each class in the system represents, after that I ex
 The API is documented and can be found in the docs/html directory, open the index.html file and start reading.
 
 ## Known problems
-- When opening the game, it can be that the window doesn't show anything, just press the left arrow key and you see the start screen.
+- When opening the game, it can be that the window doesn't show anything, just press the right arrow key and you see the start screen.
 - When closing the window at certain points, the game gives a segmentation problem, not really a problem because the game is closed. But the memory keeps dirty and it just doesn't look gooed, needs to be fixed in a further version.
 
 ## Functionality
@@ -154,21 +154,24 @@ Views just need to know something about their connected Entity, nothing more.
 - In the whole system there is only one SI element, this limits the amount of stupid errors being made
 - It makes the code readable, for example to redraw the window the only thing todo id : this->si->controller->screen->redraw();
 - You have everything you need everywhere 
+- Adding new functionality to the system is much easier by using si
 
 ### MVC
 Though there are multiple interpretations of the MVC system mine work a little bit different then the most. Instead of defining the model as a class with entities in and defining functions in that class to work on these entities I just used a list with entities and defined it as model.
 
 **Why?**
 
-The default interpretation is great for the aliens, you can move them just by calling one function in the controller to the model and say move. The model will then decide how each alien should move but that's in my opinion not the function of the model. The model should store data and not work on data. So the motion controller moves the aliens in my design, it calls on each alien Entity the move function. This move function accepts only 4 values : UP, DOWN, LEFT, RIGHT so the Entity can decide how much he has to move. 
-This can come in handy when you want some Aliens to move faster then others. So the computation is done by the controller and the only thing the entity should do is change it's position.
+The default interpretation is great for the aliens, you can move them just by calling one function in the controller to the model and say move. The model will then decide how each alien should move but that's in my opinion not the function of the model, there is a controller for that. The model should store data and not work on data.
+
+So the motion controller moves the aliens in my design, it calls on each alien Entity the move function. This move function accepts only 4 values : UP, DOWN, LEFT, RIGHT so the Entity can decide how much he has to move. 
+This can come in handy when you want some Aliens to move faster then others. The computation is done by the controller and the only thing the entity should do is change it's position.
 
 ### Observer Pattern
 Also here I do it a little bit different, the observer pattern should be used to call the function to redraw the window with all the new elements on it. I haven't implemented a special observer class with notifiers.
 
 **Why?**
 
-One word SI(Space Invaders Element), this element is available through all controllers. So when some controller decides the screen should be updated, it can call in the SI element the screen controller where the window redraw function is defined. Actually this looks like the observer pattern but it isn't exactly it. 
+One word SI(Space Invaders Element), this element is available through all controllers and Entities. So when some controller or entity decides the screen should be updated, it can call in the SI element the screen controller where the window redraw function is defined. Actually this looks like the observer pattern but it isn't exactly it. 
 
 ### Factory Pattern
 In the description of the project it was said we needed to use an abstract factory pattern, I used just a factory pattern.
@@ -186,8 +189,10 @@ A few examples:
 - Move: this function is overloaded in Alien Entity, when the Alien is moved it will also update the ticktock which represents if the alien view should show an image of an open or closed alien. Also the gun has a modified move function which will stop moving the gun when it reaches the borders of the screen.
 - Kill: this function is overloaded in the bullet Entity, when a bullet is killed it's appropriate view will be searched so it can be removed from the memory.
 
+Another example is the view library, this one defines a virtual draw function. Each view is overloading this function with it's own code. This makes it possible to draw a gun with rectangles and triangles provided by SFML. Th aliens will be drawn by provided images. Though all views work the same way, they are all called within the screen controller's redraw function by using the draw function from teh view.
+
 ### Exception Handling
-Is build into the assets class and views so when an asset(texture, font) is not available an simple representation is shown.
+Is build into the assets class and views so when an asset(texture, font) is not available a simple representation is shown.
 
 ### Extending the system
 A design is good if it is easy to add functionality without too much effort. Let's have a look at some examples:
@@ -200,7 +205,7 @@ Let's go wild and we want a completely new alien that travels once from left to 
 - Change the move Aliens function in the motion controller to move this type of alien only left or right.
 - Add an AlienFactory to the Game Controller's startgame function and let it create our new alien at random moments.
 
-That's it! Now out new alien can be killed and so add points to our gun, it can move, it can shoot bullets. Average time to build this? Maybe one hour.
+That's it! Now our new alien can be killed and so add points to our gun, it can move, it can shoot bullets. Average time to build this? Maybe one hour.
 
 **How difficult is it to add a multiplayer mode?**
 
