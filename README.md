@@ -9,9 +9,6 @@ The document describes what each class in the system represents, after that I ex
 
 The API is documented and can be found in the docs/html directory, open the index.html file and start reading.
 
-## Known problems
-- When opening the game, it can be that the window doesn't show anything, just press the right arrow key and you see the start screen.
-
 ## Functionality
 - Aliens, Guns, Walls
 - Basic Space Invaders gameplay
