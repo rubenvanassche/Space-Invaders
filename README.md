@@ -132,6 +132,7 @@ The first view the user get's to see when he starts the game, he can select a le
 
 ### Space Invaders Element
 Is being used in the whole system, some examples:
+
 - Factories: each Factory stores it's new created views and entities automatically in the right containers, SI provides these containers.
 - Gun Entity: needs to know the width of the window, so the gun doesn't go off the screen. The SI element gives it access to the game Entity which stores the game width. Also when the gun moves, the Gun Entity will update the position of the gun and immediately ask the screen controller to redraw the screen.
 - Event Controller: will at each event(keyboard touch) redirect to the appropriate function in the Game Controller using the SI element.
@@ -186,6 +187,7 @@ The whole system rests on inheritance: each controller, factory, view, entity in
 
 The ScreenEntity declares some special functions for entities besides the base entity class. The children of this class sometimes just use these function but it get's more interesting when they get overloaded.
 A few examples:
+
 - Move: this function is overloaded in Alien Entity, when the Alien is moved it will also update the ticktock which represents if the alien view should show an image of an open or closed alien. Also the gun has a modified move function which will stop moving the gun when it reaches the borders of the screen.
 - Kill: this function is overloaded in the bullet Entity, when a bullet is killed it's appropriate view will be searched so it can be removed from the memory.
 
@@ -200,6 +202,7 @@ A design is good if it is easy to add functionality without too much effort. Let
 **How difficult is it to add a new type of Alien**
 
 Let's go wild and we want a completely new alien that travels once from left to right on the screen:
+
 - Create a new view which represents the Alien.
 - Create a new function in the Alien factory which creates our new alien, give it a special name by using the setName function, and change the speed. Of course we use our new view.
 - Change the move Aliens function in the motion controller to move this type of alien only left or right.
