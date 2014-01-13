@@ -22,12 +22,12 @@ To:
 	# Documentation
 	SET(BUILD_DOCS TRUE)
 
-## Design
+## The System
 ### Some Names
 - Controllers : work between views and entities
 - Models : set's of entities
 - Entities : specific objects, stroing information and having a interface for quering information
-- Views : objects connected to entities representing them to teh user
+- Views : objects connected to entities representing them to the user
 - Factories : systems to create Entities and views
 - SI(Space Invaders Element) :  special container containing all the models, views and controllers which is being used through the whole system
 - Libraries : classes for building all above
@@ -63,21 +63,68 @@ The base class for a View.
 ### Controllers
 Each of the following controllers inherits the base controller and define some actions in the system.
 
-***Collision Controller***
+**Collision Controller**
 Has only one function check() which is called each time after an update of all the elements(Aliens, Walls, Guns, ...) in the game. It will check if certain elements collide with each other and if so it will call the apropriate controller for handeling the collision.
 
-***Event Controller***
+**Event Controller**
 The event controller is called each time an event(keybord touch) happens, it will determine what to do after the event. This means selection the right controller and function.
 
-***Game Controller***
+**Game Controller**
 Can be seen as the "main" controller, when the game is started the first controller to be called is the game controller. It has functions to build up the game(initiate all the elements), show the startscreen and the game over or game won screen. And of course it shows the screen where the game is played and gives all the events to the approptiate controllers.
 
-***Motion Contoller***
+**Motion Contoller**
 The motion controller is the controller who moves the elements over the screen. Sometimes these elements are moved automatic, for example the aliens they will be moved each time a certain time passes by in the Game Controller. Sometimes elements are moved by the user, for example the gun is getting moved when the event controller gets an left or right keybord touch. The Game controller will recieve the event and give it to the Event controller who decides to call the Motion controller to move the gun. Besides moving elements has the motion controller also the functions to shoot bullets. These are also automatic as manual by the user called.
 
-***Screen Controller***
+**Screen Controller**
 The screen controller handles the screen(window) provided. During one cycle of the game each view will be able to draw to the window. But these views won't be showed until the screen controller's redraw method is called from somewhere. It also handles the function to close the window.
 
 ### Entities
-***Alien(ScreenEntity)***
-I
+
+**Alien(ScreenEntity)**
+Represents the data from an alien, it looks just like an ScreenEntity from where it is inherited but has also a ticktock function which can be called by the view to show the appropriate image of the alien.
+
+**Bullet(ScreenEntity)**
+The bullet Entity represnts an bullet on the screen, it knows from where it was fired and has also a special overloaded kill function which will find his view and remove it as soon as the bullet is killed. So we don't fill up our memory with unesseairy things.
+
+**Game**
+The only entity which is not an screen entity holds information about the game such as the height and width of the game and the current level playing.
+
+**Gun**
+Is almost the same as it's base Screen Entity class but needs to handle sometimes different so some functions are overloaded. It represents of course the player's gun.
+
+**Wall**
+Probaly the most boring Entity, it is just a ScreenEntity and nothing more.
+
+### Factories
+This needs no extra information, factories are created for Aliens, Bullets, Guns and Walls. They will create a Entity and place it in the model container. After that a view is created and stored in the view container. The Entity and View get linked to each other for futher information exchange and our new element is created.
+
+### Views
+Each element(Aliens, Walls, Bullets, Guns) has it's own view. In this view the corresponding entity will be queried for information like the postion and width and height of the element. The appropriate texture for the element will be asked from the assets library and then the element will be drawn on the screen. If the assets library throws an exception because the image of the element can not be found, then the view will generate a geometric shape so the game can still be played.
+
+Besides these elements views there are some other views:
+
+**Game Ended View**
+Will be shown to the user when he won or lose the game. No images over here but fonts, when those fonts couldn't be found it will print the information to the console.
+
+**Info View**
+Yet another view linked to an Screen Entity, this little text in the left corner of the screen during playing will show the user's score and remaining lives.
+
+**Start Screen View**
+The first view the user get's to see when he starts the game, he can select a level and start the game.
+
+## Design
+
+### MVC
+Though there are multiple interpretations of the MVC system mine work a little bit different then the most. Instead of defining the model as a class with entites in and defining functions in that class to work on these entites I just used a list with entities and defined it as model.
+
+**Why?**
+
+The default interpretation is great for the aliens, you can move them just by calling one function in the controller to the model and say move. The model will then decide how each alien shoudl move but that's in my opinion not the function of the model. The model should store data and not work on data. So the motion controller moves the aliens in my design, it calls on each alien Entity the move function. This move function accepts only 4 values : UP, DOWN, LEFT, RIGHT so the Entity can decide how much he has to move. This can come in handy when you want some Aliens to move faster then others. So the computation is done by the controller and the only thing the entity should do is change it's position.
+
+### Observer Pattern
+Also here I do it a little bit different, the observer pattern should be used to call the function to redraw the window with all the new elements on it. I haven't implemented a special observer class with notifiers.
+
+**Why?**
+
+One word SI(Space Invaders Element), this element is avaible through all controllers. So when some controller decides the screen should be updated, it can call in the SI element the screen controller where the window redraw function is defined. Actually this looks like the observer pattern but it isn't exactly it. 
+
