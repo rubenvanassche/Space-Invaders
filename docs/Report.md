@@ -32,7 +32,7 @@ To:
 ### Some Names
 - Controllers : work between views and entities
 - Models : set's of entities
-- Entities : specific objects, stroing information and having a interface for quering information
+- Entities : specific objects, storing information and having a interface for querying information
 - Views : objects connected to entities representing them to the user
 - Factories : systems to create Entities and views
 - SI(Space Invaders Element) :  special container containing all the models, views and controllers which is being used through the whole system
@@ -61,7 +61,7 @@ The Space Invaders Element
 A class for representing a size with an width, height and point. Beter said : a box in 2D space.
 
 **Utilities**
-File with the util namespace with some usefull utilities for the whole system.
+File with the util namespace with some useful utilities for the whole system.
 
 **View**
 The base class for a View.
@@ -70,16 +70,16 @@ The base class for a View.
 Each of the following controllers inherits the base controller and define some actions in the system.
 
 **Collision Controller**
-Has only one function check() which is called each time after an update of all the elements(Aliens, Walls, Guns, ...) in the game. It will check if certain elements collide with each other and if so it will call the apropriate controller for handeling the collision.
+Has only one function check() which is called each time after an update of all the elements(Aliens, Walls, Guns, ...) in the game. It will check if certain elements collide with each other and if so it will call the appropriate controller for handeling the collision.
 
 **Event Controller**
-The event controller is called each time an event(keybord touch) happens, it will determine what to do after the event. This means selection the right controller and function.
+The event controller is called each time an event(keyboard touch) happens, it will determine what to do after the event. This means selection the right controller and function.
 
 **Game Controller**
-Can be seen as the "main" controller, when the game is started the first controller to be called is the game controller. It has functions to build up the game(initiate all the elements), show the startscreen and the game over or game won screen. And of course it shows the screen where the game is played and gives all the events to the approptiate controllers.
+Can be seen as the "main" controller, when the game is started the first controller to be called is the game controller. It has functions to build up the game(initiate all the elements), show the startscreen and the game over or game won screen. And of course it shows the screen where the game is played and gives all the events to the appropriate controllers.
 
-**Motion Contoller**
-The motion controller is the controller who moves the elements over the screen. Sometimes these elements are moved automatic, for example the aliens they will be moved each time a certain time passes by in the Game Controller. Sometimes elements are moved by the user, for example the gun is getting moved when the event controller gets an left or right keybord touch. The Game controller will recieve the event and give it to the Event controller who decides to call the Motion controller to move the gun. Besides moving elements has the motion controller also the functions to shoot bullets. These are also automatic as manual by the user called.
+**Motion Controller**
+The motion controller is the controller who moves the elements over the screen. Sometimes these elements are moved automatic, for example the aliens they will be moved each time a certain time passes by in the Game Controller. Sometimes elements are moved by the user, for example the gun is getting moved when the event controller gets an left or right keyboard touch. The Game controller will receive the event and give it to the Event controller who decides to call the Motion controller to move the gun. Besides moving elements has the motion controller also the functions to shoot bullets. These are also automatic as manual by the user called.
 
 **Screen Controller**
 The screen controller handles the screen(window) provided. During one cycle of the game each view will be able to draw to the window. But these views won't be showed until the screen controller's redraw method is called from somewhere. It also handles the function to close the window.
@@ -90,7 +90,7 @@ The screen controller handles the screen(window) provided. During one cycle of t
 Represents the data from an alien, it looks just like an ScreenEntity from where it is inherited but has also a ticktock function which can be called by the view to show the appropriate image of the alien.
 
 **Bullet(ScreenEntity)**
-The bullet Entity represnts an bullet on the screen, it knows from where it was fired and has also a special overloaded kill function which will find his view and remove it as soon as the bullet is killed. So we don't fill up our memory with unesseairy things.
+The bullet Entity represents an bullet on the screen, it knows from where it was fired and has also a special overloaded kill function which will find his view and remove it as soon as the bullet is killed. So we don't fill up our memory with unnecessary things.
 
 **Game**
 The only entity which is not an screen entity holds information about the game such as the height and width of the game and the current level playing.
@@ -99,7 +99,7 @@ The only entity which is not an screen entity holds information about the game s
 Is almost the same as it's base Screen Entity class but needs to handle sometimes different so some functions are overloaded. It represents of course the player's gun.
 
 **Wall(ScreenEntity)**
-Probaly the most boring Entity, it is just a ScreenEntity and nothing more.
+Probably the most boring Entity, it is just a ScreenEntity and nothing more.
 
 ### Factories
 This needs no extra information, factories are created for Aliens, Bullets, Guns and Walls. They will create a Entity and place it in the model container. After that a view is created and stored in the view container. The Entity and View get linked to each other for futher information exchange and our new element is created.
@@ -122,17 +122,17 @@ The first view the user get's to see when he starts the game, he can select a le
 
 ### Space Invaders Element
 Is being used in the whole system, some examples:
-- Factories: each Factory stores it's new created views and entities automaticly in the right containers, SI provides these conatiners.
-- Gun Entity: needs to know the width of the window, so the gun doesn't go off the screen. The SI element gives it access to the game Entity which stores the game width. Also when the gun moves, the Gun Entity will update the position of the gun and immediatly ask the screen controller to redraw the screen.
-- Event Controller: will at each event(keybord touch) redirect to the approptiate function in the Game Controller using the SI element.
+- Factories: each Factory stores it's new created views and entities automatically in the right containers, SI provides these containers.
+- Gun Entity: needs to know the width of the window, so the gun doesn't go off the screen. The SI element gives it access to the game Entity which stores the game width. Also when the gun moves, the Gun Entity will update the position of the gun and immediately ask the screen controller to redraw the screen.
+- Event Controller: will at each event(keyboard touch) redirect to the appropriate function in the Game Controller using the SI element.
 - Game Controller: can ask simply information about the game(mostly the current level) and also get the amount of lives the gun(player) has to see if the game is over. Also this information can be provided wit the SI element.
 - The Motion Controller: works on large sets stored in SI, like the aliens.
 
-Through the system there can be found dozens of examples why SI is very usefull, but some remarks over here:
+Through the system there can be found dozens of examples why SI is very useful, but some remarks over here:
 
 **Hiding**
 
-The SI element doesn't provide hiding (yet). So let's say a controller isn't allowed to update the screen, it will be possible through the SI element. Off course this can be controlled by a privileges system in SI. So that each time the SI element is called the caller should ask for privileges and the SI element can decide to give them, but that's for a futher version.
+The SI element doesn't provide hiding (yet). So let's say a controller isn't allowed to update the screen, it will be possible through the SI element. Off course this can be controlled by a privileges system in SI. So that each time the SI element is called the caller should ask for privileges and the SI element can decide to give them, but that's for a further version.
 
 **Why do views not have access to the SI element?**
 
@@ -140,11 +140,11 @@ Views just need to know something about their connected Entity, nothing more.
 
 
 ### MVC
-Though there are multiple interpretations of the MVC system mine work a little bit different then the most. Instead of defining the model as a class with entites in and defining functions in that class to work on these entites I just used a list with entities and defined it as model.
+Though there are multiple interpretations of the MVC system mine work a little bit different then the most. Instead of defining the model as a class with entities in and defining functions in that class to work on these entities I just used a list with entities and defined it as model.
 
 **Why?**
 
-The default interpretation is great for the aliens, you can move them just by calling one function in the controller to the model and say move. The model will then decide how each alien shoudl move but that's in my opinion not the function of the model. The model should store data and not work on data. So the motion controller moves the aliens in my design, it calls on each alien Entity the move function. This move function accepts only 4 values : UP, DOWN, LEFT, RIGHT so the Entity can decide how much he has to move. 
+The default interpretation is great for the aliens, you can move them just by calling one function in the controller to the model and say move. The model will then decide how each alien should move but that's in my opinion not the function of the model. The model should store data and not work on data. So the motion controller moves the aliens in my design, it calls on each alien Entity the move function. This move function accepts only 4 values : UP, DOWN, LEFT, RIGHT so the Entity can decide how much he has to move. 
 This can come in handy when you want some Aliens to move faster then others. So the computation is done by the controller and the only thing the entity should do is change it's position.
 
 ### Observer Pattern
@@ -152,13 +152,14 @@ Also here I do it a little bit different, the observer pattern should be used to
 
 **Why?**
 
-One word SI(Space Invaders Element), this element is avaible through all controllers. So when some controller decides the screen should be updated, it can call in the SI element the screen controller where the window redraw function is defined. Actually this looks like the observer pattern but it isn't exactly it. 
+One word SI(Space Invaders Element), this element is available through all controllers. So when some controller decides the screen should be updated, it can call in the SI element the screen controller where the window redraw function is defined. Actually this looks like the observer pattern but it isn't exactly it. 
 
 ### Factory Pattern
-In the description of the project it was said we needed to use an abstract factory pattern, I used just a facory pattern.
+In the description of the project it was said we needed to use an abstract factory pattern, I used just a factory pattern.
 
 **Why?**
-I think an abstract factory pattern is too complex for this project, it will require a lot of classes and make the code more compelx then it should be. The factory pattern has the same function as the abstract factory pattern but is much nicer. It has been used to create the different aliens(they have the same speed but a different name and image, raising the speed is just one line of code) and guns. Also each Gun and Alien have a Bullet Factory inside them to provide them at all time with bullets.
+
+I think an abstract factory pattern is too complex for this project, it will require a lot of classes and make the code more complex then it should be. The factory pattern has the same function as the abstract factory pattern but is much nicer. It has been used to create the different aliens(they have the same speed but a different name and image, raising the speed is just one line of code) and guns. Also each Gun and Alien have a Bullet Factory inside them to provide them at all time with bullets.
 
 ### Inheritance and polymorphism
 
@@ -170,19 +171,19 @@ A few examples:
 - Kill: this function is overloaded in the bullet Entity, when a bullet is killed it's appropriate view will be searched so it can be removed from the memory.
 
 ### Exception Handling
-Is build into the assets class and views so when an asset(texture, font) is not avaible an simple representation is shown.
+Is build into the assets class and views so when an asset(texture, font) is not available an simple representation is shown.
 
 ### Extending the system
 A design is good if it is easy to add functionality without too much effort. Let's have a look at some examples:
 
 **How difficult is it to add a new type of Alien**
-Let's go wild and we want a completly new alien that travels once from left to right on the screen:
-- Create a new view which represnts the Alien.
+Let's go wild and we want a completely new alien that travels once from left to right on the screen:
+- Create a new view which represents the Alien.
 - Create a new function in the Alien factory which creates our new alien, give it a special name by using the setName function, and change the speed. Of course we use our new view.
 - Change the move Aliens function in the motion controller to move this type of alien only left or right.
 - Add an AlienFactory to the Game Controller's startgame function and let it create our new alien at random moments.
 
-That's it! Now out new alien can be killed and so add points to our gun, it can move, it can shoot bullets. AVerage time to build this? Maybe one hour.
+That's it! Now out new alien can be killed and so add points to our gun, it can move, it can shoot bullets. Average time to build this? Maybe one hour.
 
 **How difficult is it to add a multiplayer mode?**
 - Add a new gun in the game build up process, this is just one line of code.
@@ -191,7 +192,7 @@ That's it! Now out new alien can be killed and so add points to our gun, it can 
 - Check in the startgame function in game controller if one of the controllers is dead instead of one, 4 lines of code.
 - Add in the build up process a infoView connected to the second gun to show it's lives and score, 3 lines of code.
 
-Total 20 lines of code, looks quite good. Some things maybe need to be changed like the explaination for the users in the startview what the controls are for the two guns(at this moment it describes only the controls for one gun), but with this 20 lines a working multiplayer option can be implemented.
+Total 20 lines of code, looks quite good. Some things maybe need to be changed like the explanation for the users in the startview what the controls are for the two guns(at this moment it describes only the controls for one gun), but with this 20 lines a working multiplayer option can be implemented.
 
 **How difficult is it to add a wall that moves?**
 - Add a move function to motion controller, 10 lines of code.
