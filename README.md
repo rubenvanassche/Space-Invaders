@@ -1,6 +1,6 @@
 # Space Invaders
 
-![Screenshot](https://raw.github.com/rubenvanassche/space-invaders/master/docs/screenshot.png)
+![Screenshot](https://raw2.github.com/rubenvanassche/Space-Invaders/master/docs/screenshot.png)
 
 Ruben Van Assche - s0122623
 
