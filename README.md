@@ -14,6 +14,10 @@ The API is documented and can be found in the docs/html directory, open the inde
 - Basic Space Invaders gameplay
 - Levels
 
+## Binaries
+At this moment there are only binaries for OS X. Linux users can download and compile the source.
+[Download for OS X](https://github.com/rubenvanassche/Space-Invaders/releases/download/1.0/Space.Invaders.OS.X.zip)
+
 ## Compiling
 	cmake .
 	make
