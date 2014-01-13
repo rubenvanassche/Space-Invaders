@@ -11,9 +11,9 @@ void GameController::start(){
 	StartScreenView startScreenView(this->fSI->window, this->fSI->assets, this->fSI->model->game);
 	this->fSI->view->views->push_back(&startScreenView);
 
-	this->fSI->controller->screen->redraw();
-
 	while(this->fSI->window->isOpen()){
+		this->fSI->controller->screen->redraw();
+
 		//Process events
 		sf::Event event;
 		while (this->fSI->window->pollEvent(event)){
@@ -38,6 +38,11 @@ void GameController::startGame(){
 
 
 	while(this->fSI->window->isOpen()){
+		// Check for if dead
+		if(this->fSI->model->guns->front()->isDead()){
+			this->gameEnded(false);
+		}
+
 		//Process events
 		sf::Event event;
 		while (this->fSI->window->pollEvent(event)){
@@ -59,11 +64,6 @@ void GameController::startGame(){
 		if(clock3.getElapsedTime() >= sf::seconds(this->aliensBulletShootFrequency)){
 			this->fSI->controller->motion->shootAlien();
 			clock3.restart();
-		}
-
-		// Check for if dead
-		if(this->fSI->model->guns->front()->isDead()){
-			this->gameEnded(false);
 		}
 
 		// Sleep for a while so our while loop doesn't go crazy on the CPU

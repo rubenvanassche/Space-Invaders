@@ -11,7 +11,6 @@ The API is documented and can be found in the docs/html directory, open the inde
 
 ## Known problems
 - When opening the game, it can be that the window doesn't show anything, just press the right arrow key and you see the start screen.
-- When closing the window at certain points, the game gives a segmentation problem, not really a problem because the game is closed. But the memory keeps dirty and it just doesn't look gooed, needs to be fixed in a further version.
 
 ## Functionality
 - Aliens, Guns, Walls
